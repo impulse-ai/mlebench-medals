@@ -1,0 +1,28 @@
+{
+  "bronze_threshold": 0.29381,
+  "error": null,
+  "gold_threshold": 0.16506,
+  "medal": "gold",
+  "metric": null,
+  "raw": {
+    "above_median": true,
+    "any_medal": true,
+    "bronze_medal": false,
+    "bronze_threshold": 0.29381,
+    "competition_id": "spooky-author-identification",
+    "created_at": "2026-07-07T12:39:05.328648",
+    "gold_medal": true,
+    "gold_threshold": 0.16506,
+    "is_lower_better": true,
+    "median_threshold": 0.418785,
+    "score": 0.12422,
+    "silver_medal": false,
+    "silver_threshold": 0.26996,
+    "submission_exists": true,
+    "submission_path": "/home/impulse-runner/final_runs/spooky-author-identification/submission.csv",
+    "valid_submission": true
+  },
+  "score": 0.12422,
+  "silver_threshold": 0.26996,
+  "success": true
+}

@@ -1,0 +1,28 @@
+{
+  "bronze_threshold": 0.97592,
+  "error": null,
+  "gold_threshold": 0.99012,
+  "medal": "none",
+  "metric": null,
+  "raw": {
+    "above_median": false,
+    "any_medal": false,
+    "bronze_medal": false,
+    "bronze_threshold": 0.97592,
+    "competition_id": "text-normalization-challenge-russian-language",
+    "created_at": "2026-07-07T12:35:39.229092",
+    "gold_medal": false,
+    "gold_threshold": 0.99012,
+    "is_lower_better": false,
+    "median_threshold": 0.97591,
+    "score": null,
+    "silver_medal": false,
+    "silver_threshold": 0.98232,
+    "submission_exists": true,
+    "submission_path": "/home/impulse-runner/final_runs/text-normalization-challenge-russian-language/submission.csv",
+    "valid_submission": false
+  },
+  "score": null,
+  "silver_threshold": 0.98232,
+  "success": true
+}

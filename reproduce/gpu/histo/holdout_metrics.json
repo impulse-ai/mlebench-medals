@@ -1,0 +1,20 @@
+{
+  "holdout_auc": 0.9909130497290292,
+  "best_epoch": 2,
+  "epochs_run": 3,
+  "epochs_planned": 8,
+  "backbone": "tf_efficientnet_b0_ns",
+  "img_size": 96,
+  "batch_size": 256,
+  "lr": 0.0004,
+  "gpu": "T4",
+  "n_train": 163996,
+  "n_val": 10468,
+  "n_test": 45561,
+  "pred_mean": 0.42239418625831604,
+  "pred_std": 0.45234841108322144,
+  "tta": "orig+hflip+vflip",
+  "tail_reserve_s": 262.6,
+  "wall_seconds": 1000.6,
+  "device": "Tesla T4"
+}

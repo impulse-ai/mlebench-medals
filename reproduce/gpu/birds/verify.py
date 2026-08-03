@@ -1,0 +1,30 @@
+import pandas as pd, os
+from pathlib import Path
+from mlebench.grade import grade_csv
+from mlebench.registry import registry
+BASE=os.path.expanduser("~/.cache/mle-bench/data/mlsp-2013-birds/prepared/public")
+sub=pd.read_csv(os.path.expanduser("~/birds_submission.csv"))
+samp=pd.read_csv(os.path.join(BASE,"sample_submission.csv"))
+print("=== FORMAT CHECK ===")
+print("sub rows",len(sub),"samp rows",len(samp))
+print("Id sets identical:", set(sub.Id)==set(samp.Id))
+print("Id order identical:", list(sub.Id)==list(samp.Id))
+print("prob min/max:", sub.Probability.min(), sub.Probability.max())
+print("any NaN:", bool(sub.Probability.isna().any()))
+sp=sub.Id%100
+print("species range:", int(sp.min()), int(sp.max()), "all<19:", bool((sp<19).all()))
+print("=== OFFICIAL GRADE (single run) ===")
+reg=registry.set_data_dir(Path(os.path.expanduser("~/.cache/mle-bench/data")))
+comp=reg.get_competition("mlsp-2013-birds")
+rep=grade_csv(Path(os.path.expanduser("~/birds_submission.csv")),comp)
+print("score:", rep.score)
+print("valid_submission:", rep.valid_submission)
+print("bronze_threshold:", rep.bronze_threshold)
+print("silver_threshold:", rep.silver_threshold)
+print("gold_threshold:", rep.gold_threshold)
+print("median_threshold:", rep.median_threshold)
+print("bronze_medal:", rep.bronze_medal)
+print("silver_medal:", rep.silver_medal)
+print("gold_medal:", rep.gold_medal)
+print("any_medal:", rep.any_medal)
+print("above_median:", rep.above_median)

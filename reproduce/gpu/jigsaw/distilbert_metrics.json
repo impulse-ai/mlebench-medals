@@ -1,0 +1,19 @@
+{
+  "holdout_mean_auc": 0.9908125333338136,
+  "best_epoch": 1,
+  "epochs_run": 2,
+  "epochs_planned": 2,
+  "model": "distilbert-base-uncased",
+  "max_len": 220,
+  "train_bs": 64,
+  "infer_bs": 256,
+  "lr": 2e-05,
+  "gpu": "T4",
+  "n_train": 151592,
+  "n_val": 7979,
+  "n_test": 153164,
+  "infer_seconds": 302.8,
+  "infer_rows_per_s": 505.8,
+  "wall_seconds": 2179.1,
+  "device": "Tesla T4"
+}

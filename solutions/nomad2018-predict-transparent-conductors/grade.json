@@ -1,0 +1,28 @@
+{
+  "bronze_threshold": 0.06582,
+  "error": null,
+  "gold_threshold": 0.05589,
+  "medal": "gold",
+  "metric": null,
+  "raw": {
+    "above_median": true,
+    "any_medal": true,
+    "bronze_medal": false,
+    "bronze_threshold": 0.06582,
+    "competition_id": "nomad2018-predict-transparent-conductors",
+    "created_at": "2026-07-07T12:49:55.813534",
+    "gold_medal": true,
+    "gold_threshold": 0.05589,
+    "is_lower_better": true,
+    "median_threshold": 0.06988,
+    "score": 0.05373,
+    "silver_medal": false,
+    "silver_threshold": 0.06229,
+    "submission_exists": true,
+    "submission_path": "/home/impulse-runner/final_runs/nomad2018-predict-transparent-conductors/submission.csv",
+    "valid_submission": true
+  },
+  "score": 0.05373,
+  "silver_threshold": 0.06229,
+  "success": true
+}

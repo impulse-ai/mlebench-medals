@@ -1,0 +1,52 @@
+{
+  "agent": {
+    "error": "sample_baseline_no_model",
+    "success": true,
+    "wall_time_s": 19.13522243499756
+  },
+  "cache_dir": "/home/impulse-runner/.cache/mle-bench/data",
+  "grade": {
+    "bronze_threshold": 0.87372,
+    "error": null,
+    "gold_threshold": 0.93527,
+    "medal": "none",
+    "metric": null,
+    "raw": {
+      "above_median": false,
+      "any_medal": false,
+      "bronze_medal": false,
+      "bronze_threshold": 0.87372,
+      "competition_id": "mlsp-2013-birds",
+      "created_at": "2026-07-07T16:29:45.582250",
+      "gold_medal": false,
+      "gold_threshold": 0.93527,
+      "is_lower_better": false,
+      "median_threshold": 0.86572,
+      "score": 0.5,
+      "silver_medal": false,
+      "silver_threshold": 0.90038,
+      "submission_exists": true,
+      "submission_path": "/home/impulse-runner/final_runs/mlsp-2013-birds/submission.csv",
+      "valid_submission": true
+    },
+    "score": 0.5,
+    "silver_threshold": 0.90038,
+    "success": true
+  },
+  "index": 18,
+  "status": "graded",
+  "submission": {
+    "path": "/home/impulse-runner/final_runs/mlsp-2013-birds/submission.csv",
+    "validation": {
+      "columns": [
+        "Id",
+        "Probability"
+      ],
+      "rows": 1216
+    }
+  },
+  "task_id": "mlsp-2013-birds",
+  "terminal": true,
+  "timeout_s": 14400,
+  "total": 19
+}

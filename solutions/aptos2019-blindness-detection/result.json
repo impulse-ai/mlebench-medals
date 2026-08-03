@@ -1,0 +1,52 @@
+{
+  "agent": {
+    "error": null,
+    "success": true,
+    "wall_time_s": 4212.558146476746
+  },
+  "cache_dir": "/home/impulse-runner/.cache/mle-bench/data",
+  "grade": {
+    "bronze_threshold": 0.914492,
+    "error": null,
+    "gold_threshold": 0.930508,
+    "medal": "none",
+    "metric": null,
+    "raw": {
+      "above_median": false,
+      "any_medal": false,
+      "bronze_medal": false,
+      "bronze_threshold": 0.914492,
+      "competition_id": "aptos2019-blindness-detection",
+      "created_at": "2026-07-07T15:16:30.326293",
+      "gold_medal": false,
+      "gold_threshold": 0.930508,
+      "is_lower_better": false,
+      "median_threshold": 0.888912,
+      "score": null,
+      "silver_medal": false,
+      "silver_threshold": 0.919654,
+      "submission_exists": true,
+      "submission_path": "/home/impulse-runner/final_runs/aptos2019-blindness-detection/submission.csv",
+      "valid_submission": false
+    },
+    "score": null,
+    "silver_threshold": 0.919654,
+    "success": true
+  },
+  "index": 14,
+  "status": "graded",
+  "submission": {
+    "path": "/home/impulse-runner/final_runs/aptos2019-blindness-detection/submission.csv",
+    "validation": {
+      "columns": [
+        "id_code",
+        "diagnosis"
+      ],
+      "rows": 367
+    }
+  },
+  "task_id": "aptos2019-blindness-detection",
+  "terminal": true,
+  "timeout_s": 14400,
+  "total": 19
+}

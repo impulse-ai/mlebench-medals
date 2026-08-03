@@ -1,0 +1,55 @@
+{
+  "agent": {
+    "error": "sample_baseline_no_model",
+    "success": true,
+    "wall_time_s": 555.823489189148
+  },
+  "cache_dir": "/home/impulse-runner/.cache/mle-bench/data",
+  "grade": {
+    "bronze_threshold": 0.97361,
+    "error": null,
+    "gold_threshold": 0.97836,
+    "medal": "none",
+    "metric": null,
+    "raw": {
+      "above_median": false,
+      "any_medal": false,
+      "bronze_medal": false,
+      "bronze_threshold": 0.97361,
+      "competition_id": "plant-pathology-2020-fgvc7",
+      "created_at": "2026-07-07T14:06:16.487657",
+      "gold_medal": false,
+      "gold_threshold": 0.97836,
+      "is_lower_better": false,
+      "median_threshold": 0.94852,
+      "score": 0.5,
+      "silver_medal": false,
+      "silver_threshold": 0.97465,
+      "submission_exists": true,
+      "submission_path": "/home/impulse-runner/final_runs/plant-pathology-2020-fgvc7/submission.csv",
+      "valid_submission": true
+    },
+    "score": 0.5,
+    "silver_threshold": 0.97465,
+    "success": true
+  },
+  "index": 13,
+  "status": "graded",
+  "submission": {
+    "path": "/home/impulse-runner/final_runs/plant-pathology-2020-fgvc7/submission.csv",
+    "validation": {
+      "columns": [
+        "image_id",
+        "healthy",
+        "multiple_diseases",
+        "rust",
+        "scab"
+      ],
+      "rows": 183
+    }
+  },
+  "task_id": "plant-pathology-2020-fgvc7",
+  "terminal": true,
+  "timeout_s": 14400,
+  "total": 19
+}

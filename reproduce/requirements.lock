@@ -1,0 +1,54 @@
+# MLE-bench Lite-22 verifiability layer — pinned environment
+# ============================================================
+# These are the EXACT package versions our Class-A medals were produced and
+# graded under, captured verbatim from the reproducibility bundles emitted by
+# the graded sweep (runs/cloud-harvest-0708/final_runs/*/bundle/environment.json).
+#
+# Interpreter: CPython 3.11.15  (Linux-6.8.0-gcp x86_64, glibc 2.35)
+#
+# WHY THE PINS ARE LOAD-BEARING
+# -----------------------------
+# * pandas==3.0.3 is the single most important pin. pandas 3's string-dtype
+#   inference changed how CSV columns are typed. Under a different pandas, two
+#   failure modes appear:
+#     (a) the agent's feature pipeline splits a column's dtype and crashes or
+#         silently degrades (the "pandas-3 str-dtype" lesson — fixed in-code by
+#         PR #808's dtype-compat shim, which ASSUMES pandas 3 semantics);
+#     (b) mlebench's own grader compares str-vs-float and returns score=None on
+#         text-normalization (our grader.py has a dtype=str coercion fallback,
+#         PR #819, that also assumes this pandas behaviour).
+#   Reproducing on a different pandas major can change scores or medals. Pin it.
+# * numpy/scikit-learn/xgboost/lightgbm affect model fits and therefore scores
+#   at the margin; several medals are thin (nomad gold at 0.05373 vs 0.05589
+#   threshold; text-norm-en bronze at 0.99125 vs 0.99038). Pin them.
+# * mlebench itself is the GRADER — pinned to the openai/mle-bench release we
+#   graded against. This is OpenAI's code, unmodified. Do not substitute a fork.
+#
+# INSTALL
+#   python3.11 -m venv .venv && . .venv/bin/activate
+#   pip install -r reproduce/requirements.lock
+#   pip install -r requirements.txt   # pulls mlebench from git (grader)
+
+# --- Core numerical / ML stack (graded versions) ---
+pandas==3.0.3
+numpy==2.4.6
+scikit-learn==1.9.0
+scipy==1.17.1
+xgboost==3.2.0
+lightgbm==4.6.0
+
+# --- Deep-learning stack (CPU wheels; Class-A image/audio operators) ---
+# The Class-A sweep ran CPU-only torch. GPU medals (Class-B) used a separate
+# CUDA image on Vertex — see reproduce/gpu/. Install CPU wheels from the
+# PyTorch CPU index if these exact +cpu builds are unavailable on PyPI:
+#   pip install torch==2.12.1 torchvision==0.27.1 \
+#       --index-url https://download.pytorch.org/whl/cpu
+torch==2.12.1
+torchvision==0.27.1
+
+# --- Agent LLM client (the Gemini reasoning loop; needs GEMINI_API_KEY) ---
+google-genai==2.10.0
+
+# --- Grader + harness (installed via requirements.txt) ---
+# mlebench @ git+https://github.com/openai/mle-bench.git   # OpenAI's grader, unmodified
+# pyyaml, requests
