@@ -36,6 +36,64 @@ general operators (`engine/operators/`). The same code runs every task.
 Scores are the official numbers emitted by OpenAI's grader; per-competition
 approach notes and evidence artifacts are in the linked solution directories.
 
+## Why this matters
+
+[MLE-bench](https://github.com/openai/mle-bench) is OpenAI's benchmark for
+ML-engineering agents, and the standard public yardstick for whether an AI can
+do real data-science work end to end: understand a competition, prepare data,
+train models, iterate, and submit. Medals are awarded relative to the actual
+Kaggle leaderboards — i.e. against thousands of human data-science teams, not
+synthetic tasks. Lite-22 is the benchmark's low-compute split: 22 real Kaggle
+competitions.
+
+**18 of 22 medals is an 81.8% any-medal rate on Lite — above the best
+published Lite result on the official leaderboard (80.3%).** Unlike most top
+entries, our full agent source ships in this repository, and every medal can
+be independently re-graded with OpenAI's own tooling.
+
+### Comparison with the official leaderboard (Lite split, as of August 2026)
+
+From the leaderboard maintained in the
+[openai/mle-bench README](https://github.com/openai/mle-bench#readme)
+("Low == Lite" column, any-medal rate):
+
+| Agent | LLM(s) used | Lite any-medal (%) | Source code available |
+|---|---|---|---|
+| **Impulse EES (this repo)** | **none — deterministic operator engine** | **81.8 (18/22)** | ✓ |
+| Famou-Agent 2.0 | Gemini-3-Pro-Preview | 80.3 ± 1.52 | ✗ |
+| MLEvolve | Gemini-3-Pro-Preview | 80.30 ± 1.52 | ✓ |
+| PiEvolve (Fractal AI Research) | Gemini-3-Pro-Preview | 80.30 ± 1.52 | ✗ |
+| CAIR MARS+ | Gemini-3-Pro-Preview | 78.79 ± 1.52 | ✗ |
+| AIBuildAI | Claude-Opus-4.6 | 77.27 ± 0.00 | ✗ |
+| AIDE (OpenAI's reference agent) | o1-preview | 35.91 ± 1.86 | ✓ |
+
+How to read this honestly:
+
+- **Leaderboard figures are means over multiple seeds** (the ± is the standard
+  deviation across runs). Ours is a **single autonomous run per competition** —
+  a point estimate, not a mean. An apples-to-apples multi-seed evaluation is
+  on our roadmap.
+- **We are not (yet) an official leaderboard entry.** The comparison is
+  against numbers others published, but every one of our medals was produced
+  with the same unmodified official grader and is reproducible from this repo —
+  see [How to verify](#how-to-verify).
+- **No LLM in the loop.** The `ees:standalone` agent that produced these
+  medals makes no LLM calls: task analysis, strategy selection, and modeling
+  are done by its deterministic strategy/operator machinery
+  (`engine/`), with policy-gated web research.
+
+## The 4 of 22 we haven't medaled (yet)
+
+The same agent ran all 22 Lite competitions. These four did not reach bronze
+in the current campaign:
+
+- [ranzcr-clip-catheter-line-classification](https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification)
+- [siim-isic-melanoma-classification](https://www.kaggle.com/c/siim-isic-melanoma-classification)
+- [new-york-city-taxi-fare-prediction](https://www.kaggle.com/c/new-york-city-taxi-fare-prediction)
+- [tabular-playground-series-may-2022](https://www.kaggle.com/c/tabular-playground-series-may-2022)
+
+We list them because the claim is "18 of 22", and the 22 is the whole split.
+
 ## How to verify
 
 The evidence is pinned to source commit `3f528404`, tag
