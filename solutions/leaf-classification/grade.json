@@ -1,0 +1,28 @@
+{
+  "bronze_threshold": 0.01526,
+  "error": null,
+  "gold_threshold": 0.0,
+  "medal": "none",
+  "metric": null,
+  "raw": {
+    "above_median": true,
+    "any_medal": false,
+    "bronze_medal": false,
+    "bronze_threshold": 0.01526,
+    "competition_id": "leaf-classification",
+    "created_at": "2026-07-07T13:14:37.987456",
+    "gold_medal": false,
+    "gold_threshold": 0.0,
+    "is_lower_better": true,
+    "median_threshold": 0.108345,
+    "score": 0.05826,
+    "silver_medal": false,
+    "silver_threshold": 0.00791,
+    "submission_exists": true,
+    "submission_path": "/home/juanpablomadrigalcianci/final_runs/leaf-classification/submission.csv",
+    "valid_submission": true
+  },
+  "score": 0.05826,
+  "silver_threshold": 0.00791,
+  "success": true
+}

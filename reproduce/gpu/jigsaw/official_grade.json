@@ -1,0 +1,28 @@
+{
+  "bronze_threshold": 0.98639,
+  "error": null,
+  "gold_threshold": 0.9874,
+  "medal": "bronze",
+  "raw": {
+    "above_median": true,
+    "any_medal": true,
+    "bronze_medal": true,
+    "bronze_threshold": 0.98639,
+    "competition_id": "jigsaw-toxic-comment-classification-challenge",
+    "created_at": "2026-07-09T21:17:18.590831",
+    "gold_medal": false,
+    "gold_threshold": 0.9874,
+    "is_lower_better": false,
+    "median_threshold": 0.98079,
+    "score": 0.98663,
+    "silver_medal": false,
+    "silver_threshold": 0.98668,
+    "submission_exists": true,
+    "submission_path": "/private/tmp/claude-501/-Users-juanpablomadrigalcianci-Work-Impulse-impulse-mle/5f69c0b9-f53f-4265-908e-7c822f3b4dc8/scratchpad/jigsaw/jigsaw_blend3b_submission.csv",
+    "valid_submission": true
+  },
+  "score": 0.98663,
+  "silver_threshold": 0.98668,
+  "success": true,
+  "task_id": "jigsaw-toxic-comment-classification-challenge"
+}

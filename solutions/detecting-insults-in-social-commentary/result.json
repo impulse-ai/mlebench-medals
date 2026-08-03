@@ -1,0 +1,14 @@
+{
+  "agent": {
+    "error": "ValueError: no shared text column found",
+    "success": false,
+    "wall_time_s": 2.2127301692962646
+  },
+  "cache_dir": "/home/juanpablomadrigalcianci/.cache/mle-bench/data",
+  "index": 1,
+  "status": "agent_failed",
+  "task_id": "detecting-insults-in-social-commentary",
+  "terminal": true,
+  "timeout_s": 14400,
+  "total": 19
+}

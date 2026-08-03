@@ -1,0 +1,28 @@
+{
+  "bronze_threshold": 0.9738,
+  "error": null,
+  "gold_threshold": 0.9835,
+  "medal": "none",
+  "metric": null,
+  "raw": {
+    "above_median": false,
+    "any_medal": false,
+    "bronze_medal": false,
+    "bronze_threshold": 0.9738,
+    "competition_id": "histopathologic-cancer-detection",
+    "created_at": "2026-07-07T16:04:18.765612",
+    "gold_medal": false,
+    "gold_threshold": 0.9835,
+    "is_lower_better": false,
+    "median_threshold": 0.9477,
+    "score": 0.5,
+    "silver_medal": false,
+    "silver_threshold": 0.9798,
+    "submission_exists": true,
+    "submission_path": "/home/juanpablomadrigalcianci/final_runs/histopathologic-cancer-detection/submission.csv",
+    "valid_submission": true
+  },
+  "score": 0.5,
+  "silver_threshold": 0.9798,
+  "success": true
+}

@@ -1,0 +1,19 @@
+# Light split — fast iteration set, covers all 4 modalities.
+# Each task should complete in <30 min on a single CPU machine (no GPU needed).
+# Distinct from MLE-bench's official "lite" split (22 tasks; some GPU-heavy).
+#
+# Curated for daily smoke testing during Phase 1 capability development.
+# Verify each task id resolves via `mlebench list-comps` before relying on it.
+name: light
+description: Fast iteration set for daily smoke testing (~8 tasks, CPU-friendly).
+tasks:
+  # tabular
+  - spaceship-titanic
+  - nomad2018-predict-transparent-conductors
+  - tabular-playground-series-may-2022
+  # NLP (small)
+  - detecting-insults-in-social-commentary
+  # vision (small)
+  - aerial-cactus-identification
+  # audio (small) — binary AUC on 2-second whale-call clips; CPU librosa+GBM lane
+  - the-icml-2013-whale-challenge-right-whale-redux

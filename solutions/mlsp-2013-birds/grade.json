@@ -1,0 +1,28 @@
+{
+  "bronze_threshold": 0.87372,
+  "error": null,
+  "gold_threshold": 0.93527,
+  "medal": "none",
+  "metric": null,
+  "raw": {
+    "above_median": false,
+    "any_medal": false,
+    "bronze_medal": false,
+    "bronze_threshold": 0.87372,
+    "competition_id": "mlsp-2013-birds",
+    "created_at": "2026-07-07T16:29:45.582250",
+    "gold_medal": false,
+    "gold_threshold": 0.93527,
+    "is_lower_better": false,
+    "median_threshold": 0.86572,
+    "score": 0.5,
+    "silver_medal": false,
+    "silver_threshold": 0.90038,
+    "submission_exists": true,
+    "submission_path": "/home/juanpablomadrigalcianci/final_runs/mlsp-2013-birds/submission.csv",
+    "valid_submission": true
+  },
+  "score": 0.5,
+  "silver_threshold": 0.90038,
+  "success": true
+}

@@ -1,0 +1,14 @@
+{
+  "agent": {
+    "error": "ValueError: no shared text column found",
+    "success": false,
+    "wall_time_s": 9.54085898399353
+  },
+  "cache_dir": "/home/juanpablomadrigalcianci/.cache/mle-bench/data",
+  "index": 6,
+  "status": "agent_failed",
+  "task_id": "random-acts-of-pizza",
+  "terminal": true,
+  "timeout_s": 14400,
+  "total": 19
+}

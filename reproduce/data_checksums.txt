@@ -1,0 +1,54 @@
+# MLE-bench Lite-22 prepared-data checksum manifest
+#
+# Columns: sha256  rows(newlines)  task/relative_path
+# The private answer file (prepared/private/test.csv) is the grading anchor:
+# if its sha256 matches, mlebench is scoring your submission against the
+# identical held-out labels our medals were graded against.
+#
+# Regenerate/verify:  python reproduce/generate_checksums.py [--verify]
+# '(NOT PREPARED)' = task absent from this cache; run `mlebench prepare -c <task>`.
+#
+1c85c903c5dd02909cc561bd2ba1db9071104bebdf49237c05a11494dd6b9462       3326  aerial-cactus-identification/prepared/public/sample_submission.csv
+49b835b26ac6bae926fbd92ed508e8d9eb87989366b2cc76342b67ccde38b676       3326  aerial-cactus-identification/prepared/private/test.csv
+----------------------------------------------------------------         NA  aptos2019-blindness-detection/prepared/public/sample_submission.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  aptos2019-blindness-detection/prepared/private/test.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  denoising-dirty-documents/prepared/public/sample_submission.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  denoising-dirty-documents/prepared/private/test.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  detecting-insults-in-social-commentary/prepared/public/sample_submission.csv  (NOT PREPARED)
+f009da3fd2d954bc23fc56e129d28fa8acd0941d3da5fcda1aa88ac83b6cfaa1       2648  detecting-insults-in-social-commentary/prepared/private/test.csv
+9e02a595300e98f61fbdf6451a63774b582a16dac7e26f714f757b1ca8b62421       1024  dog-breed-identification/prepared/public/sample_submission.csv
+3abb718d18071e82c69543f9e61f2b46dded03cfb5a478559fa92b788bb3580c       1024  dog-breed-identification/prepared/private/test.csv
+f7b2fa52b6d6170499efa4670fc8516ec04fece800676da1a5ab9daa17cd6b6e       2501  dogs-vs-cats-redux-kernels-edition/prepared/public/sample_submission.csv
+----------------------------------------------------------------         NA  dogs-vs-cats-redux-kernels-edition/prepared/private/test.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  histopathologic-cancer-detection/prepared/public/sample_submission.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  histopathologic-cancer-detection/prepared/private/test.csv  (NOT PREPARED)
+81dc6e1f9eeb89ebb9e651a9ea6a3c971980ae9d12e29c687adcadfe610813b5     153165  jigsaw-toxic-comment-classification-challenge/prepared/public/sample_submission.csv
+2a56dcbeba5c05f965a636f56cb5ae972bad60c3b952c239b49be18d7ab70f49     153165  jigsaw-toxic-comment-classification-challenge/prepared/private/test.csv
+eda4dbc07a075c2bc5441e151e20927a7a06a16bdc03abe0d95a031e4f19079c        100  leaf-classification/prepared/public/sample_submission.csv
+1637ed876ed80d00411eeb031e3321ae84d0dc3f2137e2ed7ee630a162eed362        100  leaf-classification/prepared/private/test.csv
+c6a0270502cbbb4389b02950e01c75edc2da4e6d03b6537682ea4aeff80ac7fb       1217  mlsp-2013-birds/prepared/public/sample_submission.csv
+----------------------------------------------------------------         NA  mlsp-2013-birds/prepared/private/test.csv  (NOT PREPARED)
+2ffb30d6529752503276f5a67e33c052e659967bfd96c8551748c3fa43c64ff4       9915  new-york-city-taxi-fare-prediction/prepared/public/sample_submission.csv
+88be6a25945b5d29237c12cab7c095cb818eaf54ff256c817a28931f77df72b6       9915  new-york-city-taxi-fare-prediction/prepared/private/test.csv
+ac544665f7e066febfc1f49a4ba10f26d2b25221694c4710c42ac4941ac40acd        241  nomad2018-predict-transparent-conductors/prepared/public/sample_submission.csv
+0a6655ae9ac46cf0f54524b6a19e3e0b8cc5cb5e1f5eb40d6ff3e9386ff0ad01        241  nomad2018-predict-transparent-conductors/prepared/private/test.csv
+785fb697f188fff19ab6d442c0875d2229e5579faa24d428e9c949c37ba16aa0        184  plant-pathology-2020-fgvc7/prepared/public/sample_submission.csv
+9f3f54a432089a45dec35cf2ba57b2efec51c7666a57aaae28c1cec9f458c0ea        184  plant-pathology-2020-fgvc7/prepared/private/test.csv
+----------------------------------------------------------------         NA  random-acts-of-pizza/prepared/public/sample_submission.csv  (NOT PREPARED)
+c11189d2e7a7974f5fb29ce226f4d3369a4038a5031eaf4d8acb2e81f335ecbc       1163  random-acts-of-pizza/prepared/private/test.csv
+----------------------------------------------------------------         NA  ranzcr-clip-catheter-line-classification/prepared/public/sample_submission.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  ranzcr-clip-catheter-line-classification/prepared/private/test.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  siim-isic-melanoma-classification/prepared/public/sample_submission.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  siim-isic-melanoma-classification/prepared/private/test.csv  (NOT PREPARED)
+5a9d701524a2659476f62e30fa4e61ecfbeb754e0e9c11a8528a7486992ad1f6       1959  spooky-author-identification/prepared/public/sample_submission.csv
+2cf7dc57104a6b5467b44702e7a1ba4888f21f307b502a9707317d5c00ab636a       1959  spooky-author-identification/prepared/private/test.csv
+3499d8d28fbdc19984916a54c80c3357e2f9876ddc9328f5a91b5abf8835cee9     400001  tabular-playground-series-dec-2021/prepared/public/sample_submission.csv
+0786e322b5cbc7432ad09f84f355b031d13f94d2bdf94ca0b89770776fcf0c0e     400001  tabular-playground-series-dec-2021/prepared/private/test.csv
+9f557b7177f5983dedabfc538aea050561bb4e4a362bfe4a35040959c26a6f6a     100001  tabular-playground-series-may-2022/prepared/public/sample_submission.csv
+7633a64a9aeb74fccc000165c8dd3410448a9cb12fca99738c4efcf7f79af7ba     100001  tabular-playground-series-may-2022/prepared/private/test.csv
+----------------------------------------------------------------         NA  text-normalization-challenge-english-language/prepared/public/sample_submission.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  text-normalization-challenge-english-language/prepared/private/test.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  text-normalization-challenge-russian-language/prepared/public/sample_submission.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  text-normalization-challenge-russian-language/prepared/private/test.csv  (NOT PREPARED)
+----------------------------------------------------------------         NA  the-icml-2013-whale-challenge-right-whale-redux/prepared/public/sample_submission.csv  (NOT PREPARED)
+cc9f2e4262aeb374c6b57f810274ccfd8c7f582570cf1f107f772fd33a7b3518      25150  the-icml-2013-whale-challenge-right-whale-redux/prepared/private/test.csv

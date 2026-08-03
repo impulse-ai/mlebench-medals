@@ -1,0 +1,19 @@
+{
+  "holdout_mean_auc": 0.9892624999288784,
+  "best_epoch": 1,
+  "epochs_run": 3,
+  "epochs_planned": 3,
+  "model": "roberta-base",
+  "max_len": 256,
+  "train_bs": 40,
+  "infer_bs": 256,
+  "lr": 1e-05,
+  "gpu": "T4",
+  "n_train": 151592,
+  "n_val": 7979,
+  "n_test": 153164,
+  "infer_seconds": 669.9,
+  "infer_rows_per_s": 228.6,
+  "wall_seconds": 7043.8,
+  "device": "Tesla T4"
+}

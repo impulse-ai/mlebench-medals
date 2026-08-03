@@ -1,0 +1,53 @@
+{
+  "agent": {
+    "error": null,
+    "success": true,
+    "wall_time_s": 92.59127187728882
+  },
+  "cache_dir": "/home/juanpablomadrigalcianci/.cache/mle-bench/data",
+  "grade": {
+    "bronze_threshold": 0.06582,
+    "error": null,
+    "gold_threshold": 0.05589,
+    "medal": "gold",
+    "metric": null,
+    "raw": {
+      "above_median": true,
+      "any_medal": true,
+      "bronze_medal": false,
+      "bronze_threshold": 0.06582,
+      "competition_id": "nomad2018-predict-transparent-conductors",
+      "created_at": "2026-07-07T12:49:55.813534",
+      "gold_medal": true,
+      "gold_threshold": 0.05589,
+      "is_lower_better": true,
+      "median_threshold": 0.06988,
+      "score": 0.05373,
+      "silver_medal": false,
+      "silver_threshold": 0.06229,
+      "submission_exists": true,
+      "submission_path": "/home/juanpablomadrigalcianci/final_runs/nomad2018-predict-transparent-conductors/submission.csv",
+      "valid_submission": true
+    },
+    "score": 0.05373,
+    "silver_threshold": 0.06229,
+    "success": true
+  },
+  "index": 8,
+  "status": "graded",
+  "submission": {
+    "path": "/home/juanpablomadrigalcianci/final_runs/nomad2018-predict-transparent-conductors/submission.csv",
+    "validation": {
+      "columns": [
+        "id",
+        "formation_energy_ev_natom",
+        "bandgap_energy_ev"
+      ],
+      "rows": 240
+    }
+  },
+  "task_id": "nomad2018-predict-transparent-conductors",
+  "terminal": true,
+  "timeout_s": 14400,
+  "total": 19
+}

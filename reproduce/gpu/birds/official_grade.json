@@ -1,0 +1,28 @@
+{
+  "bronze_threshold": 0.87372,
+  "error": null,
+  "gold_threshold": 0.93527,
+  "medal": "silver",
+  "raw": {
+    "above_median": true,
+    "any_medal": true,
+    "bronze_medal": false,
+    "bronze_threshold": 0.87372,
+    "competition_id": "mlsp-2013-birds",
+    "created_at": "2026-07-09T21:17:17.527616",
+    "gold_medal": false,
+    "gold_threshold": 0.93527,
+    "is_lower_better": false,
+    "median_threshold": 0.86572,
+    "score": 0.93143,
+    "silver_medal": true,
+    "silver_threshold": 0.90038,
+    "submission_exists": true,
+    "submission_path": "/private/tmp/claude-501/-Users-juanpablomadrigalcianci-Work-Impulse-impulse-mle/5f69c0b9-f53f-4265-908e-7c822f3b4dc8/scratchpad/birds_submission.csv",
+    "valid_submission": true
+  },
+  "score": 0.93143,
+  "silver_threshold": 0.90038,
+  "success": true,
+  "task_id": "mlsp-2013-birds"
+}

@@ -1,0 +1,52 @@
+{
+  "agent": {
+    "error": null,
+    "success": true,
+    "wall_time_s": 336.58034229278564
+  },
+  "cache_dir": "/home/juanpablomadrigalcianci/.cache/mle-bench/data",
+  "grade": {
+    "bronze_threshold": 0.95658,
+    "error": null,
+    "gold_threshold": 0.9566,
+    "medal": "none",
+    "metric": null,
+    "raw": {
+      "above_median": true,
+      "any_medal": false,
+      "bronze_medal": false,
+      "bronze_threshold": 0.95658,
+      "competition_id": "tabular-playground-series-dec-2021",
+      "created_at": "2026-07-07T12:44:45.182631",
+      "gold_medal": false,
+      "gold_threshold": 0.9566,
+      "is_lower_better": false,
+      "median_threshold": 0.95342,
+      "score": 0.9554,
+      "silver_medal": false,
+      "silver_threshold": 0.95658,
+      "submission_exists": true,
+      "submission_path": "/home/juanpablomadrigalcianci/final_runs/tabular-playground-series-dec-2021/submission.csv",
+      "valid_submission": true
+    },
+    "score": 0.9554,
+    "silver_threshold": 0.95658,
+    "success": true
+  },
+  "index": 3,
+  "status": "graded",
+  "submission": {
+    "path": "/home/juanpablomadrigalcianci/final_runs/tabular-playground-series-dec-2021/submission.csv",
+    "validation": {
+      "columns": [
+        "Id",
+        "Cover_Type"
+      ],
+      "rows": 400000
+    }
+  },
+  "task_id": "tabular-playground-series-dec-2021",
+  "terminal": true,
+  "timeout_s": 14400,
+  "total": 19
+}

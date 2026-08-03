@@ -1,0 +1,28 @@
+{
+  "bronze_threshold": 0.04517,
+  "error": null,
+  "gold_threshold": 0.01794,
+  "medal": "none",
+  "metric": null,
+  "raw": {
+    "above_median": false,
+    "any_medal": false,
+    "bronze_medal": false,
+    "bronze_threshold": 0.04517,
+    "competition_id": "denoising-dirty-documents",
+    "created_at": "2026-07-07T16:05:37.314720",
+    "gold_medal": false,
+    "gold_threshold": 0.01794,
+    "is_lower_better": true,
+    "median_threshold": 0.07325,
+    "score": 0.28616,
+    "silver_medal": false,
+    "silver_threshold": 0.02609,
+    "submission_exists": true,
+    "submission_path": "/home/juanpablomadrigalcianci/final_runs/denoising-dirty-documents/submission.csv",
+    "valid_submission": true
+  },
+  "score": 0.28616,
+  "silver_threshold": 0.02609,
+  "success": true
+}
