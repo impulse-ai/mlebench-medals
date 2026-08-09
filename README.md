@@ -59,7 +59,7 @@ From the leaderboard maintained in the
 
 | Agent | LLM(s) used | Lite any-medal (%) | Source code available |
 |---|---|---|---|
-| **Impulse EES (this repo)** | **Gemini (Impulse agent platform)** | **81.8 (18/22)** | ✓ |
+| **Impulse EES (this repo)** | **none — rule-based engine** | **81.8 (18/22)** | ✓ |
 | Famou-Agent 2.0 | Gemini-3-Pro-Preview | 80.3 ± 1.52 | ✗ |
 | MLEvolve | Gemini-3-Pro-Preview | 80.30 ± 1.52 | ✓ |
 | PiEvolve (Fractal AI Research) | Gemini-3-Pro-Preview | 80.30 ± 1.52 | ✗ |
@@ -77,11 +77,13 @@ How to read this honestly:
   against numbers others published, but every one of our medals was produced
   with the same unmodified official grader and is reproducible from this repo —
   see [How to verify](#how-to-verify).
-- **Gemini-driven orchestration, deterministic execution.** Strategy and
-  orchestration in the Impulse agent are Gemini-driven (the same platform that
-  powers our production product); model training, scoring, and submission
-  generation run in the deterministic operator library
-  (`engine/operators/`). Grading throughout is OpenAI's, unmodified.
+- **No LLM in the benchmark loop.** Every medal run records
+  `agent: ees:standalone`: a rule-based controller over a deterministic
+  operator library (`engine/`). Agent identity is written into each
+  task's `request.json`/`session.json`, so this is checkable from the run
+  artifacts themselves. Impulse's commercial platform pairs this engine with
+  a Gemini-driven coding agent; the benchmark numbers above measure the
+  engine on its own.
 
 ## The 4 of 22 we haven't medaled (yet)
 
