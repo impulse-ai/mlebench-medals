@@ -63,6 +63,18 @@ class ResultsContractTests(unittest.TestCase):
         self.assertIn("11 gold / 5 silver / 3 bronze", text)
         self.assertIn("tabular-playground-series-may-2022", text)
 
+    def test_every_medal_solution_lists_three_confirmations(self):
+        data = self.load_results()
+        for task in data["tasks"]:
+            if task["best_medal"] is None:
+                continue
+            text = (
+                ROOT / "solutions" / task["task_id"] / "README.md"
+            ).read_text()
+            self.assertIn("Three-run confirmation", text)
+            for confirmation in task["confirmations"]:
+                self.assertIn(confirmation["display_score"], text)
+
 
 if __name__ == "__main__":
     unittest.main()

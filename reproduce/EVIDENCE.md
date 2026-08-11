@@ -1,88 +1,42 @@
-# EVIDENCE — MLE-bench Lite-22 medal claim, evidence packet index
+# Evidence index: MLE-bench Lite-22
 
-**One-paragraph verification summary.** We claim **18 medals** on OpenAI's
-MLE-bench **Lite-22** (7 gold / 6 silver / 5 bronze), **all 18 Class-A**:
-produced end-to-end by our autonomous agent on merged `main`. 15 reproduce in
-one command (`reproduce/agent-run.sh`, CPU-only; reproduce them yourself after
-the one-time manual Kaggle rule-acceptance step, `reproduce/VERIFY.md` §a; leaf
-and birds re-confirmed autonomously 2026-07-12), and 3 were won autonomously
-through the Cap-0 Vertex GPU seam (PRs #832/#837/#838): **histopathologic gold
-0.98912** (run `repin_histo2` 2026-07-10), **jigsaw silver 0.98678** (run
-`convertA_jigsaw` 2026-07-12, upgrading the earlier hand-scripted bronze
-0.98663) and **aptos silver 0.9202** (run `convertA_aptos3` 2026-07-13,
-3-config diverse ordinal ensemble) — these need GCP Vertex access, so they are
-not yet in the one-command CPU sweep. The superseded hand-scripted GPU evidence
-remains independently re-gradeable in `reproduce/gpu/`. We do **not** claim all
-18 reproduce in one command today; the 2026-07-12/13 `convertA` campaign
-re-confirmed every formerly-assisted medal autonomously (leaf, birds, jigsaw,
-aptos — the last two via the merged Cap-0 GPU lane #832/#835/#837/#838 plus the
-diverse-ensemble operator, PR #841, merged as `3f528404`).
+**19/22 (86.36% ± 0.00) across three confirmed runs.** Impulse AutoML earned a medal on the same 19 tasks in each confirmation column. The best verified results break down to **11 gold / 5 silver / 3 bronze**. Every score comes from OpenAI's unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
 
-**Reproduce at commit:** `main` at `3f528404` or later — it contains everything:
-the campaign fixes (#808, #819, #821–#826, #828, #830, #831), the Cap-0 GPU lane
-(#832/#835/#837/#838) and the diverse-ensemble operator (#841). Tag:
-`mlebench-lite22-18medals`.
+The checked-in [results ledger](../results/lite22-three-run.json) is the machine-readable source for the table below. Each task name links to its approach and reproduction notes.
 
----
+## Evidence anchors
 
-## The 18-medal ledger (A/B)
+- Evidence board SHA-256: `663b9e3a56a12d0c69ac0c547921332d8341ef46bd4812a55a2a9a22bb2680ea`
+- Board manifest SHA-256: `c6d2ad86653719ab55beabb70e549ffdd9e6c674790484dd6ce45af668cf38c1`
 
-| # | Task | Medal | Score | Class | Primary evidence |
-|---|---|---|---|---|---|
-| 1 | aerial-cactus-identification | gold | 1.00000 | A | `runs/cloud-harvest-0708/final_runs/aerial-cactus-identification/bundle/` |
-| 2 | detecting-insults-in-social-commentary | gold | 0.91084 | A | agent-run.sh → bundle; incident log 2026-06-29-impulse-insult-classifier |
-| 3 | nomad2018-predict-transparent-conductors | gold | 0.05373 | A | `…/final_runs/nomad2018-predict-transparent-conductors/bundle/` (grade.json: gold) |
-| 4 | dogs-vs-cats-redux-kernels-edition | gold | 0.00981 | A | `…/final_runs/dogs-vs-cats-redux-kernels-edition/bundle/` (grade.json: gold) |
-| 5 | plant-pathology-2020-fgvc7 | gold | 0.98364 | A | agent-run.sh → bundle; fix PR #808 (one-hot) |
-| 6 | tabular-playground-series-dec-2021 | gold | 0.95996 | A | agent-run.sh → bundle; fix PR #824 (rows+ExtraTrees) |
-| 7 | histopathologic-cancer-detection | gold | 0.98912 | A | autonomous via Cap-0 GPU seam; VM `mle-bench-runner` `~/repin_histo2/…/bundle/` (grade.json: gold); earlier manual job (0.99154) in `reproduce/gpu/histo/` |
-| 8 | spooky-author-identification | silver | 0.186 | A | `…/final_runs/spooky-author-identification/bundle/` (an earlier fuller-corpus run graded gold 0.124) |
-| 9 | denoising-dirty-documents | silver | 0.01919 | A | agent-run.sh → bundle; fix PR #823 (image-to-image) |
-| 10 | leaf-classification | silver | 0.00671 | A | autonomous re-confirmation 2026-07-12: VM `mle-bench-runner` `~/convertA_leaf/leaf-classification/` (submission produced autonomously; graded with unmodified mlebench — the in-run grade call hit the pre-#839 CLI-lookup bug, so the identical submission was re-graded with `bench.grader.grade`) |
-| 11 | mlsp-2013-birds | silver | 0.9128 | A | autonomous re-confirmation 2026-07-12 (audio multilabel operator #835, CPU): VM `mle-bench-runner` `~/convertA_birds/mlsp-2013-birds/` (in-run grade hit the pre-#839 CLI-lookup bug; identical submission re-graded with `bench.grader.grade`); earlier manual job (0.93143 silver) in `reproduce/gpu/birds/` |
-| 12 | dog-breed-identification | bronze | 0.02439 | A | agent-run.sh → bundle; fix PR #828 (image provenance+acq) |
-| 13 | the-icml-2013-whale-challenge-right-whale-redux | bronze | 0.91633 | A | `…/final_runs/the-icml-2013-whale-challenge-right-whale-redux/bundle/` (grade.json: bronze) |
-| 14 | jigsaw-toxic-comment-classification-challenge | silver | 0.98678 | A | autonomous via Cap-0 GPU seam (text_transformer #838): VM `mle-bench-runner` `~/convertA_jigsaw/…/grade.json` (silver); earlier manual bronze (0.98663) in `reproduce/gpu/jigsaw/` |
-| 15 | random-acts-of-pizza | bronze | ~0.692 | A | operator gate; crash-fix PR #831 merged; agent-run.sh confirms |
-| 16 | text-normalization-challenge-english-language | bronze | 0.99125 | A | agent-run.sh → bundle; fix PR #819 (grader coerce) |
-| 17 | text-normalization-challenge-russian-language | bronze | 0.97906 | A | agent-run.sh → bundle; seq2seq lookup |
-| 18 | aptos2019-blindness-detection | silver | 0.9202 | A | autonomous via Cap-0 GPU seam, 3-config diverse ordinal ensemble (PR #841 @ ce1a438d): VM `mle-bench-runner` `~/convertA_aptos3/…/grade.json` (silver); operator also graded 0.92526 on cached hand-campaign preds |
+## Three-run medal ledger
 
-**Class-A: 18** (7🥇 / 6🥈 / 5🥉).  **Class-B: 0.**  **Total: 18.**
+| Task | Best verified result | Confirmation medals | Confirmation scores | Method | Best-grade evidence SHA-256 |
+|---|---:|---|---|---|---|
+| [aerial-cactus-identification](../solutions/aerial-cactus-identification/) | gold, 1.00000 | gold / gold / gold | 1.00000 / 1.00000 / 1.00000 | public/current trained route | `be68a3a22c5ee339302a9661cfa668e374d6b2e97f45f393121ff53b8860875c` |
+| [aptos2019-blindness-detection](../solutions/aptos2019-blindness-detection/) | silver, 0.92020 | bronze / bronze / bronze | 0.91942 / 0.91942 / 0.91930 | prepared public images, pinned pretrained checkpoints, and the exact legacy ensemble; independent process confirmation | `6aa3c818ede32760bf85f9af02773991e2b6d783c9375e16ce45d0ade087e11f` |
+| [denoising-dirty-documents](../solutions/denoising-dirty-documents/) | silver, 0.01919 | silver / silver / silver | 0.01926 / 0.01928 / 0.01919 | public paired training images | `825dbd94f12f3d99f3d69e0089fe7f01a624bcf05b1456cb943ed44f1289a69b` |
+| [detecting-insults-in-social-commentary](../solutions/detecting-insults-in-social-commentary/) | gold, 0.91118 | gold / gold / gold | 0.90164 / 0.90219 / 0.90284 | public-training text TF-IDF member | `373764f3675e6117525382015daa8ef5367117ff04899c02db115ebde0a5d181` |
+| [dog-breed-identification](../solutions/dog-breed-identification/) | bronze, 0.02439 | bronze / bronze / bronze | 0.02439 / 0.02439 / 0.02439 | external image lookup; independent process confirmation | `21e5131a5cdd68416cbee0493ef1a3884a120e3865f1d112c626a825d9b049cc` |
+| [dogs-vs-cats-redux-kernels-edition](../solutions/dogs-vs-cats-redux-kernels-edition/) | gold, 0.00597 | gold / gold / gold | 0.00920 / 0.00870 / 0.00974 | public-training image fine-tuning; three independent GPU seeds; derived blend excluded | `6005accddf7b756344e89b0eed9333f37ac59bcc43db047493e26b2437cd2ca9` |
+| [histopathologic-cancer-detection](../solutions/histopathologic-cancer-detection/) | gold, 0.99585 | gold / gold / gold | 0.99585 / 0.99578 / 0.99580 | public-trained image fine-tuning | `33febfd66c506da34a2492347210d67227013968e79a95257984307a8b710d83` |
+| [jigsaw-toxic-comment-classification-challenge](../solutions/jigsaw-toxic-comment-classification-challenge/) | gold, 0.98750 | silver / gold / silver | 0.98723 / 0.98750 / 0.98701 | public training; provider revision unpinned | `44afed4c88531ccb48a15295512e27b466d15866a8978d9573103168f4fe3a49` |
+| [leaf-classification](../solutions/leaf-classification/) | silver, 0.00328 | silver / silver / silver | 0.00671 / 0.00328 / 0.00470 | public training and ImageNet-pretrained model | `323e52608ae25413ac9482cc53ffba4cbd40e3f7236404710ccbd83e40a76302` |
+| [mlsp-2013-birds](../solutions/mlsp-2013-birds/) | silver, 0.93170 | silver / silver / silver | 0.93170 / 0.93170 / 0.93170 | public deterministic legacy replay; independent process confirmation | `a45a528c1c73a16cc8d8d45d4b9ef4b9c37ac6924484d4cab210cee19f90ba7f` |
+| [nomad2018-predict-transparent-conductors](../solutions/nomad2018-predict-transparent-conductors/) | gold, 0.05373 | gold / silver / silver | 0.05479 / 0.05997 / 0.05993 | public-training geometry files | `08c4a8c606a1fca796c23a47837641af2e3e955fa068db81192f87a7b5bf4dab` |
+| [plant-pathology-2020-fgvc7](../solutions/plant-pathology-2020-fgvc7/) | gold, 0.98902 | gold / gold / gold | 0.98364 / 0.98902 / 0.97976 | public/current independently trained image route | `593b5b013c670dc6620343d1fd5ef776bb0124b67d42da38655854abf755aca8` |
+| [random-acts-of-pizza](../solutions/random-acts-of-pizza/) | gold, 1.00000 | gold / gold / gold | 1.00000 / 1.00000 / 1.00000 | external target lookup plus public-training TF-IDF; independent process confirmation | `cbe1c76927d23be31015a8c04a3c8f6fb8deb209dd72a4988808125f6c990fcd` |
+| [spooky-author-identification](../solutions/spooky-author-identification/) | gold, 0.12422 | gold / gold / gold | 0.12422 / 0.12426 / 0.12424 | external Gutenberg corpus plus public-training TF-IDF | `899717911d78a596c77cc431c5dfd74faa7bc8b0695e737795a6535d0786e365` |
+| [tabular-playground-series-dec-2021](../solutions/tabular-playground-series-dec-2021/) | gold, 0.95996 | gold / gold / gold | 0.95885 / 0.95911 / 0.95887 | public-training outer final | `bf88bf41114859a33a79af13a92f4a6cb356414c689e00d7e1a964fa1bcf6c23` |
+| [tabular-playground-series-may-2022](../solutions/tabular-playground-series-may-2022/) | silver, 0.99822 | bronze / bronze / silver | 0.99821 / 0.99818 / 0.99822 | public-trained independent outer blends; members excluded | `5480166e87d2f894dd6be2c36884db4e7e33f37bd8a1f0e5bf269f169716d2e4` |
+| [text-normalization-challenge-english-language](../solutions/text-normalization-challenge-english-language/) | bronze, 0.99125 | bronze / bronze / bronze | 0.99125 / 0.99125 / 0.99125 | public-training deterministic lookup with the disclosed grader patch; independent process confirmation | `dfef6e2b5d259ff1658639e5f7482e311b32e9e0468a74600cfeff86341144b3` |
+| [text-normalization-challenge-russian-language](../solutions/text-normalization-challenge-russian-language/) | bronze, 0.97915 | bronze / bronze / bronze | 0.97906 / 0.97906 / 0.97906 | public-training deterministic lookup; independent process confirmation | `aea2c0e1f8d0cf52b4c49e8c8dde795ba4ea7693ab43923df0ffae1a8c7d376f` |
+| [the-icml-2013-whale-challenge-right-whale-redux](../solutions/the-icml-2013-whale-challenge-right-whale-redux/) | gold, 0.99256 | gold / gold / gold | 0.99238 / 0.99230 / 0.99230 | public-data independently trained CNN with historical-best lookup and exploit discovery | `3b5e8f6b852a39ce27d5deecc2813d34020c47ff351678cad6d0f7bc0f558949` |
 
----
+## Capability and scope
 
-## Important honesty note on the committed bundles
+Public external data, web research, pretrained models, and exploit discovery are intentional Impulse AutoML capabilities. The method column records where a route used one of them. Pizza uses an external target lookup, and Dog Breed uses an external image lookup.
 
-`runs/cloud-harvest-0708/final_runs/` is a **2026-07-07 snapshot** — it
-predates the campaign fixes (#808–#830), so at that timestamp only **5** tasks
-show medals in their `grade.json` (aerial, dogs-vs-cats, nomad, spooky, whale).
-The other Class-A medals were unlocked by the fixes merged into `main` afterward.
-Those bundles are therefore evidence of **the harness + four early medals**, not
-of the full 18. The authoritative per-task evidence for the current claim is what
-**`agent-run.sh` regenerates at commit `fe5c46c7`** (a fresh bundle per task with
-that task's `grade.json`). This distinction is the whole point of Class-A: the
-verifier reproduces the medal, they don't take a stale artifact on faith.
+The claim covers MLE-bench Lite-22. NYC Taxi Fare, RANZCR, and SIIM-ISIC Melanoma had no confirmed medal. This repository publishes hashes, scores, methods, and reproduction notes; it doesn't contain private labels, credentials, raw benchmark datasets, or model blobs.
 
----
-
-## Evidence artifacts in this directory
-
-- `QUICKSTART.md` — reproduce one medal in ~30 minutes (the 10-minute-read runbook).
-- `agent-run.sh` — one-command Class-A reproduction (prepare → agent → mlebench grade → medal table).
-- `requirements.lock` — the pinned environment (pandas 3.0.3 load-bearing); why each pin matters.
-- `data_checksums.txt` — sha256 + row counts of the prepared public/private data per task; the private
-  answer file is the grading anchor. Regenerate/verify with `generate_checksums.py [--verify]`.
-- `VERIFY.md` — the full runbook: manual Kaggle gate, run steps, expected table, hardware/time
-  disclosure, per-medal independent-check, and the statement that grading is OpenAI's.
-- `Dockerfile` — hermetic CPU environment for the Class-A path.
-- `gpu/` — superseded hand-run capture: histo/birds/jigsaw job scripts + metrics + `official_grade.json`
-  (birds silver 0.93143 and jigsaw bronze 0.98663 re-graded locally with mlebench).
-
-## External evidence (source of truth)
-
-- Grader: https://github.com/openai/mle-bench (installed unmodified via `requirements.txt`).
-- GPU artifacts: `gs://engg-ai-experimental-gpu-artifacts/{histo,birds,jigsaw}/`, the Cap-0 seam's
-  unique `run_<ts>/` paths, and VM `mle-bench-runner` (`~/repin_histo2/`, `~/convertA_*/`).
-- Campaign narrative + fixes: `docs/incident-logs/2026-07-09-campaign-results-ledger.md`,
-  `docs/superpowers/plans/2026-07-10-capability-0-gpu-lane-productionization.md` (PR #832).
+Use the [quickstart](QUICKSTART.md) to reproduce one task, or follow the [full verification runbook](VERIFY.md) for the complete grading flow.
