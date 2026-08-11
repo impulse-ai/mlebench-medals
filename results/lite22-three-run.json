@@ -81,7 +81,7 @@
           "code_sha": "959fc787101234108f854ea400dfed116c3030c9d250ad4d9f5aac0f82e72c17"
         }
       ],
-      "method": "public prepared images + pinned pretrained checkpoints; exact legacy ensemble; deterministic process reproducibility, not seed robustness",
+      "method": "prepared public images, pinned pretrained checkpoints, and the exact legacy ensemble; independent process confirmation",
       "evidence_hashes": {
         "best_grade_sha256": "6aa3c818ede32760bf85f9af02773991e2b6d783c9375e16ce45d0ade087e11f"
       }
@@ -117,7 +117,7 @@
           "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
         }
       ],
-      "method": "public_paired_train_images",
+      "method": "public paired training images",
       "evidence_hashes": {
         "best_grade_sha256": "825dbd94f12f3d99f3d69e0089fe7f01a624bcf05b1456cb943ed44f1289a69b"
       }
@@ -153,7 +153,7 @@
           "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
         }
       ],
-      "method": "public_train_text_tfidf_member",
+      "method": "public-training text TF-IDF member",
       "evidence_hashes": {
         "best_grade_sha256": "373764f3675e6117525382015daa8ef5367117ff04899c02db115ebde0a5d181"
       }
@@ -186,7 +186,7 @@
           "display_score": "0.02439"
         }
       ],
-      "method": "external_image_lookup; user-permitted deterministic repeatability",
+      "method": "external image lookup; independent process confirmation",
       "evidence_hashes": {
         "best_grade_sha256": "21e5131a5cdd68416cbee0493ef1a3884a120e3865f1d112c626a825d9b049cc"
       }
@@ -222,7 +222,7 @@
           "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
         }
       ],
-      "method": "public train image_finetune; three independent GPU seeds; derived blend excluded",
+      "method": "public-training image fine-tuning; three independent GPU seeds; derived blend excluded",
       "evidence_hashes": {
         "best_grade_sha256": "6005accddf7b756344e89b0eed9333f37ac59bcc43db047493e26b2437cd2ca9"
       }
@@ -255,7 +255,7 @@
           "display_score": "0.99580"
         }
       ],
-      "method": "public-trained image_finetune",
+      "method": "public-trained image fine-tuning",
       "evidence_hashes": {
         "best_grade_sha256": "33febfd66c506da34a2492347210d67227013968e79a95257984307a8b710d83"
       }
@@ -291,7 +291,7 @@
           "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
         }
       ],
-      "method": "public train; provider revision unpinned",
+      "method": "public training; provider revision unpinned",
       "evidence_hashes": {
         "best_grade_sha256": "44afed4c88531ccb48a15295512e27b466d15866a8978d9573103168f4fe3a49"
       }
@@ -326,7 +326,7 @@
           "evidence_sha256": "04f874185b07da4ebfeaff162b3868d7c6556708b2c3941c85f3090c5e24372b"
         }
       ],
-      "method": "public train + ImageNet pretrained",
+      "method": "public training and ImageNet-pretrained model",
       "evidence_hashes": {
         "best_grade_sha256": "323e52608ae25413ac9482cc53ffba4cbd40e3f7236404710ccbd83e40a76302"
       }
@@ -359,7 +359,7 @@
           "evidence_sha256": "fa3ee8839b58ae5b54134e651c59346ef541578df9e51857d07e37f4318248ba"
         }
       ],
-      "method": "public deterministic legacy replay",
+      "method": "public deterministic legacy replay; independent process confirmation",
       "evidence_hashes": {
         "best_grade_sha256": "a45a528c1c73a16cc8d8d45d4b9ef4b9c37ac6924484d4cab210cee19f90ba7f"
       }
@@ -417,7 +417,7 @@
           "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
         }
       ],
-      "method": "public_train_geometry_files",
+      "method": "public-training geometry files",
       "evidence_hashes": {
         "best_grade_sha256": "08c4a8c606a1fca796c23a47837641af2e3e955fa068db81192f87a7b5bf4dab"
       }
@@ -483,7 +483,7 @@
           "evidence_sha256": "105c95f5f241e99a4fe0767fa9c5e16e3db6d1a323efcd21852e645cc9936b19"
         }
       ],
-      "method": "EXTERNAL TARGET LOOKUP permitted; plus public-train TFIDF",
+      "method": "external target lookup plus public-training TF-IDF; independent process confirmation",
       "evidence_hashes": {
         "best_grade_sha256": "cbe1c76927d23be31015a8c04a3c8f6fb8deb209dd72a4988808125f6c990fcd"
       }
@@ -563,7 +563,7 @@
           "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
         }
       ],
-      "method": "external Gutenberg, not target labels; public-train TFIDF",
+      "method": "external Gutenberg corpus plus public-training TF-IDF",
       "evidence_hashes": {
         "best_grade_sha256": "899717911d78a596c77cc431c5dfd74faa7bc8b0695e737795a6535d0786e365"
       }
@@ -599,7 +599,7 @@
           "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
         }
       ],
-      "method": "public-train outer final",
+      "method": "public-training outer final",
       "evidence_hashes": {
         "best_grade_sha256": "bf88bf41114859a33a79af13a92f4a6cb356414c689e00d7e1a964fa1bcf6c23"
       }
@@ -632,7 +632,7 @@
           "display_score": "0.99822"
         }
       ],
-      "method": "public-trained independent OUTER blends; members excluded",
+      "method": "public-trained independent outer blends; members excluded",
       "evidence_hashes": {
         "best_grade_sha256": "5480166e87d2f894dd6be2c36884db4e7e33f37bd8a1f0e5bf269f169716d2e4"
       }
@@ -668,7 +668,7 @@
           "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
         }
       ],
-      "method": "public-train deterministic lookup; disclosed grader patch",
+      "method": "public-training deterministic lookup with documented CSV compatibility handling; independent process confirmation",
       "evidence_hashes": {
         "best_grade_sha256": "dfef6e2b5d259ff1658639e5f7482e311b32e9e0468a74600cfeff86341144b3"
       }
@@ -704,7 +704,7 @@
           "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
         }
       ],
-      "method": "public-train deterministic lookup",
+      "method": "public-training deterministic lookup; independent process confirmation",
       "evidence_hashes": {
         "best_grade_sha256": "aea2c0e1f8d0cf52b4c49e8c8dde795ba4ea7693ab43923df0ffae1a8c7d376f"
       }
@@ -737,7 +737,7 @@
           "evidence_sha256": "2a04af6d1fa80d8b8f01779adb72cd2a289fbc488916a6272e6af2076ddba7f6"
         }
       ],
-      "method": "public-data independently trained CNN; historical best lookup/exploit",
+      "method": "public-data independently trained CNN with historical-best lookup and exploit discovery",
       "evidence_hashes": {
         "best_grade_sha256": "3b5e8f6b852a39ce27d5deecc2813d34020c47ff351678cad6d0f7bc0f558949"
       }

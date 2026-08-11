@@ -23,7 +23,7 @@ A CPU image-to-image denoising operator for per-pixel regression: it detects the
 | 3 | silver | 0.01919 |
 
 **Best verified result:** silver, `0.01919`.
-**Method:** public_paired_train_images.
+**Method:** public paired training images.
 **Best-grade evidence SHA-256:** `825dbd94f12f3d99f3d69e0089fe7f01a624bcf05b1456cb943ed44f1289a69b`.
 
 ## Verify it yourself

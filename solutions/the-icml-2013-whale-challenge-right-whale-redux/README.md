@@ -25,7 +25,7 @@ The older snapshot used [`audio_embedding.py`](../../bench/ees_core/operators/au
 | 3 | gold | 0.99230 |
 
 **Best verified result:** gold, `0.99256`.
-**Method:** public-data independently trained CNN; historical best lookup/exploit.
+**Method:** public-data independently trained CNN with historical-best lookup and exploit discovery.
 **Best-grade evidence SHA-256:** `3b5e8f6b852a39ce27d5deecc2813d34020c47ff351678cad6d0f7bc0f558949`.
 
 ## Verify it yourself

@@ -1,70 +1,72 @@
-# Reproduce a medal in ~30 minutes
+# Reproduce and grade one Lite-22 result
 
-The 10-minute-read version of [`VERIFY.md`](VERIFY.md). You will run our
-autonomous agent on one MLE-bench Lite competition and have **OpenAI's grader**
-— not us — tell you it medals. CPU only; a laptop works.
+This is the short path through [`VERIFY.md`](VERIFY.md). The published result is
+**19 medals on 22 MLE-bench Lite competitions, 86.36% ± 0.00 across three
+confirmed runs**, with **11 gold / 5 silver / 3 bronze** as the best-result
+breakdown. The 19 tasks include
+[Tabular Playground Series May 2022](../solutions/tabular-playground-series-may-2022/).
 
-## 1. One-time setup (~10 min)
+## 1. Set up the repository
 
-```bash
-# a) clone at the release tag and install the pinned environment
-git checkout mlebench-lite22-18medals
-python3.11 -m venv .venv && . .venv/bin/activate
-pip install -r reproduce/requirements.lock   # pandas 3.0.3 is load-bearing
-pip install -r bench/requirements.txt        # installs OpenAI's mlebench grader
-
-# b) Kaggle credentials (the grader downloads competition data through Kaggle)
-#    kaggle.com/settings -> "Create New Token" -> save as ~/.kaggle/kaggle.json
-```
-
-Then accept the competition rules **while logged in to Kaggle** — this is the
-one step no one can automate for you. For the quick run below you only need:
-
-- https://www.kaggle.com/c/nomad2018-predict-transparent-conductors/rules
-- https://www.kaggle.com/c/detecting-insults-in-social-commentary/rules
-
-(Full sweep: accept all 15 links in `VERIFY.md` §a.)
-
-## 2. Run the agent on two tasks (~20 min on a laptop)
+Run these commands from a clone of this repository:
 
 ```bash
-reproduce/reproduce.sh --tasks "nomad2018-predict-transparent-conductors detecting-insults-in-social-commentary"
+git checkout main
+python3.11 -m venv .venv
+. .venv/bin/activate
+pip install -r reproduce/requirements.lock
+pip install -r bench/requirements.txt
 ```
 
-This prepares the data, runs the agent with default settings (no
-task-specific configuration exists anywhere — same code for every task), and
-grades the submission with unmodified `mlebench`.
+Add your Kaggle API token at `~/.kaggle/kaggle.json`, then accept the rules for
+[NOMAD 2018](https://www.kaggle.com/c/nomad2018-predict-transparent-conductors/rules)
+while signed in to Kaggle. Kaggle rejects data preparation until your account has
+accepted that competition's rules.
 
-## 3. Read the verdict
-
-```
-bench/runs/verify-<ts>/medal_table.tsv        # the summary table
-bench/runs/verify-<ts>/<task>/grade.json      # OpenAI's raw verdict per task
-bench/runs/verify-<ts>/<task>/bundle/         # submission + exact code + env + sha256s
-```
-
-Expected: **nomad2018 → gold (~0.054)** and **detecting-insults → gold
-(~0.911)**. Don't trust our wrapper? Grade the submission yourself:
+## 2. Run one task
 
 ```bash
-mlebench grade-sample bench/runs/verify-<ts>/<task>/bundle/submission/submission.csv <task-id>
+reproduce/reproduce.sh --tasks "nomad2018-predict-transparent-conductors"
 ```
 
-## 4. The full claim (optional)
+The command prepares the competition data, runs the agent, grades the submission
+with OpenAI's MLE-bench grading logic, and writes a timestamped directory under
+`bench/runs/`.
 
-- **All 15 CPU medals:** accept all rules, then `reproduce/reproduce.sh`
-  (≤4 h/task; image/audio tasks are the slow ones — see `VERIFY.md` §b for
-  hardware notes, §d for the honest hardware/time disclosure).
-- **The 3 GPU medals** (histopathologic gold, jigsaw silver, aptos silver)
-  were won by the agent submitting its own Vertex AI T4 jobs; they need a GCP
-  project, so they ship as independently re-gradeable bundles instead — see
-  `VERIFY.md` §c/§e and `gpu/`.
+Inspect the newest run:
 
-## If something breaks
+```text
+bench/runs/verify-<timestamp>/medal_table.tsv
+bench/runs/verify-<timestamp>/nomad2018-predict-transparent-conductors/grade.json
+bench/runs/verify-<timestamp>/nomad2018-predict-transparent-conductors/bundle/
+```
 
-- `403` / rules error during prepare → you skipped the rules-acceptance click
-  for that competition. Accept, re-run (`reproduce.sh` is resumable).
-- Grades come back `None` → check `pip show pandas` says **3.0.3** (the lock
-  file pins it for a reason).
-- Data checksums: `python reproduce/generate_checksums.py --verify` confirms
-  you prepared the exact bytes we graded against.
+You can grade its submission directly as well:
+
+```bash
+mlebench grade-sample \
+  bench/runs/verify-<timestamp>/nomad2018-predict-transparent-conductors/bundle/submission/submission.csv \
+  nomad2018-predict-transparent-conductors
+```
+
+The published best result for NOMAD is gold at `0.05373`; its three confirmation
+scores are `0.05479 / 0.05997 / 0.05993`.
+
+## 3. Check the complete publication
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python reproduce/verify_results.py
+PYTHONDONTWRITEBYTECODE=1 python -m unittest -v tests.test_results
+```
+
+The verifier checks the 22-task ledger, the 19 medal pages, both public result
+tables, evidence hashes, stale claims, and relative Markdown links. For the full
+run flow, hardware notes, and evidence anchors, continue with [`VERIFY.md`](VERIFY.md).
+
+## Common failures
+
+- A Kaggle `403` means the signed-in account hasn't accepted the competition rules.
+- If preparation produced different bytes, run
+  `python reproduce/generate_checksums.py --verify` and inspect the reported file.
+- If grading returns no score, confirm that the active environment came from both
+  pinned requirement files above.

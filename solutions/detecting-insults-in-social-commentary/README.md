@@ -23,7 +23,7 @@ A word+character TF-IDF operator: a `FeatureUnion` of word- and char-n-gram TF-I
 | 3 | gold | 0.90284 |
 
 **Best verified result:** gold, `0.91118`.
-**Method:** public_train_text_tfidf_member.
+**Method:** public-training text TF-IDF member.
 **Best-grade evidence SHA-256:** `373764f3675e6117525382015daa8ef5367117ff04899c02db115ebde0a5d181`.
 
 ## Verify it yourself

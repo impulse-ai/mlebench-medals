@@ -25,7 +25,7 @@ The older snapshot used an image-provenance operator. It matched the competition
 | 3 | silver | 0.00470 |
 
 **Best verified result:** silver, `0.00328`.
-**Method:** public train + ImageNet pretrained.
+**Method:** public training and ImageNet-pretrained model.
 **Best-grade evidence SHA-256:** `323e52608ae25413ac9482cc53ffba4cbd40e3f7236404710ccbd83e40a76302`.
 
 ## Verify it yourself

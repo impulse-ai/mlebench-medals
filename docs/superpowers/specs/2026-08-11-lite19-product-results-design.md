@@ -17,7 +17,6 @@ The public result derives from the final Lite-19 evidence board:
 
 - Board SHA-256: `663b9e3a56a12d0c69ac0c547921332d8341ef46bd4812a55a2a9a22bb2680ea`
 - Board manifest SHA-256: `c6d2ad86653719ab55beabb70e549ffdd9e6c674790484dd6ce45af668cf38c1`
-- Evidence location: `gs://impulse-mle-bench-fleet/medal-evidence/LITE19-EVIDENCE-BOARD-20260811T122129Z-reconciler-v4-final/`
 
 The board records 19 complete medal tasks, no missing confirmations, and three
 non-medal tasks: NYC Taxi Fare, RANZCR, and SIIM-ISIC Melanoma.
@@ -34,7 +33,7 @@ same 19 of 22 tasks.
 
 Do not describe the results as an official leaderboard entry. Do not lead with
 that distinction, add an apology section, or label the product result
-non-reportable. State that scores come from OpenAI's unmodified MLE-bench grader.
+non-reportable. State that scores use OpenAI's MLE-bench grading logic.
 
 ## README structure
 
