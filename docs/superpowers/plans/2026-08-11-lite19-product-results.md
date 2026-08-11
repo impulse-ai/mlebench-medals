@@ -311,7 +311,7 @@ Append this shape to every medal solution page, using task-specific data:
 | 2 | gold | 0.98750 |
 | 3 | silver | 0.98701 |
 
-**Best verified result:** gold, `0.98750`.  
+**Best verified result:** gold, `0.98750`.
 **Method:** stochastic RoBERTa seeds with public training data.
 ```
 
