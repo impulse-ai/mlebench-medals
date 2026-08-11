@@ -56,7 +56,11 @@ def verify_results(root: Path) -> list[str]:
             if not (root / "solutions" / task["task_id"] / "README.md").is_file():
                 errors.append(f"missing solution README for {task['task_id']}")
     for index in range(3):
-        count = sum(task["confirmations"][index]["medal"] is not None for task in tasks)
+        count = sum(
+            len(task["confirmations"]) > index
+            and task["confirmations"][index]["medal"] is not None
+            for task in tasks
+        )
         if count != 19:
             errors.append(f"confirmation {index + 1} must medal on exactly 19 tasks")
     expected_rate = round(100 * 19 / 22, 2)
