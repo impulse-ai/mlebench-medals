@@ -56,6 +56,13 @@ class ResultsContractTests(unittest.TestCase):
         self.assertIn("stale public claim: 18 medals", errors)
         self.assertIn("stale public claim: single autonomous run", errors)
 
+    def test_readme_carries_current_public_claim(self):
+        text = (ROOT / "README.md").read_text()
+        self.assertIn("19 medals on MLE-bench Lite-22", text)
+        self.assertIn("86.36% ± 0.00", text)
+        self.assertIn("11 gold / 5 silver / 3 bronze", text)
+        self.assertIn("tabular-playground-series-may-2022", text)
+
 
 if __name__ == "__main__":
     unittest.main()
