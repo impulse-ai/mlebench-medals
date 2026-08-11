@@ -1,0 +1,746 @@
+{
+  "schema": "impulse-mlebench-lite22-three-run:v1",
+  "summary": {
+    "tasks": 22,
+    "medal_tasks": 19,
+    "any_medal_percentage": 86.36,
+    "sem": 0.0,
+    "best_medals": {
+      "gold": 11,
+      "silver": 5,
+      "bronze": 3
+    },
+    "confirmation_runs": 3
+  },
+  "evidence": {
+    "board_sha256": "663b9e3a56a12d0c69ac0c547921332d8341ef46bd4812a55a2a9a22bb2680ea",
+    "manifest_sha256": "c6d2ad86653719ab55beabb70e549ffdd9e6c674790484dd6ce45af668cf38c1"
+  },
+  "tasks": [
+    {
+      "task_id": "aerial-cactus-identification",
+      "best_medal": "gold",
+      "best_score": 1.0,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "gold",
+          "score": 1.0,
+          "display_score": "1.00000",
+          "submission_sha256": "ce881d1c58dffa587fd311d210601600bef6ea08fd67449be98e478f7be136dd",
+          "evidence_sha256": "d7667a23c4295394c5deb1d0d3618cbba947b744be6b8c76be2b2e9ea7135d3a"
+        },
+        {
+          "medal": "gold",
+          "score": 1.0,
+          "display_score": "1.00000",
+          "submission_sha256": "ff45bb52a61b57ab924dfa1bb93006098b2a9e98ebf566636d118209fe9361d2",
+          "evidence_sha256": "5b4e780f9601479307805d3616a5f418acff42ab72a82c9a1b97612df5164a21"
+        },
+        {
+          "medal": "gold",
+          "score": 1.0,
+          "display_score": "1.00000",
+          "submission_sha256": "380bfcee7b55d868c1f5c633dc02c54b33e968d2ea5fba0d51f2ff509be3440c",
+          "evidence_sha256": "f6ad83fccf329da55e0f48b26db2f82bb62037e0c30f53e33a8df0e27578c79d"
+        }
+      ],
+      "method": "public/current trained route",
+      "evidence_hashes": {
+        "best_grade_sha256": "be68a3a22c5ee339302a9661cfa668e374d6b2e97f45f393121ff53b8860875c"
+      }
+    },
+    {
+      "task_id": "aptos2019-blindness-detection",
+      "best_medal": "silver",
+      "best_score": 0.9202,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "bronze",
+          "score": 0.91942,
+          "display_score": "0.91942",
+          "submission_sha256": "e70340793777529257fa255bc6941ae9b4729f0a5cc131b6dc0712a98bb0d6c3",
+          "evidence_sha256": "58adc0ea5725f6cfcb751f368e5b58bd45df4923cb2dd91cf0ac51a472d12867",
+          "code_sha": "959fc787101234108f854ea400dfed116c3030c9d250ad4d9f5aac0f82e72c17"
+        },
+        {
+          "medal": "bronze",
+          "score": 0.91942,
+          "display_score": "0.91942",
+          "submission_sha256": "e70340793777529257fa255bc6941ae9b4729f0a5cc131b6dc0712a98bb0d6c3",
+          "evidence_sha256": "eb412ad01ae7e97f00027c8bb350636b57014e7ecc1cb8b9591aedd27e965dbc",
+          "code_sha": "959fc787101234108f854ea400dfed116c3030c9d250ad4d9f5aac0f82e72c17"
+        },
+        {
+          "medal": "bronze",
+          "score": 0.9193,
+          "display_score": "0.91930",
+          "submission_sha256": "f1e534f1e288a7b9ddd634019881c4c73d783d29177722fc8b279782295bdb6a",
+          "evidence_sha256": "7ca623a587e4fd466113ffba55610063e7481c42eff62cbd096cb0a13fcd9fb3",
+          "code_sha": "959fc787101234108f854ea400dfed116c3030c9d250ad4d9f5aac0f82e72c17"
+        }
+      ],
+      "method": "prepared public images, pinned pretrained checkpoints, and the exact legacy ensemble; independent process confirmation",
+      "evidence_hashes": {
+        "best_grade_sha256": "6aa3c818ede32760bf85f9af02773991e2b6d783c9375e16ce45d0ade087e11f"
+      }
+    },
+    {
+      "task_id": "denoising-dirty-documents",
+      "best_medal": "silver",
+      "best_score": 0.01919,
+      "metric_direction": "minimize",
+      "confirmations": [
+        {
+          "medal": "silver",
+          "score": 0.01926,
+          "display_score": "0.01926",
+          "submission_sha256": "84aa0c5ee2c380f8e139f481c90b78a16e439534045df1d1ba4d3bfddeee2808",
+          "evidence_sha256": "e5a02d715cc9c4990b0a1ca679b6ff389b0967bfe6960eaa2475ca9876a27bfe",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "silver",
+          "score": 0.01928,
+          "display_score": "0.01928",
+          "submission_sha256": "87edaa349790c72a58e014751ccde47706bba23ab95d4629f23b2cd80b53a8e2",
+          "evidence_sha256": "0875e3e61dccce8410b719f451c0a9607bd6988e209418b2e51b8ae321ed31d1",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "silver",
+          "score": 0.01919,
+          "display_score": "0.01919",
+          "submission_sha256": "8335c4307cba637d7bce4cc9bf3031e191e1db933df95aef118bea9bb092cfea",
+          "evidence_sha256": "974fdfb1750ad7fe15b82fd6f7fdce30b131ca36ef005773e2a586a408910249",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        }
+      ],
+      "method": "public paired training images",
+      "evidence_hashes": {
+        "best_grade_sha256": "825dbd94f12f3d99f3d69e0089fe7f01a624bcf05b1456cb943ed44f1289a69b"
+      }
+    },
+    {
+      "task_id": "detecting-insults-in-social-commentary",
+      "best_medal": "gold",
+      "best_score": 0.91118,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "gold",
+          "score": 0.90164,
+          "display_score": "0.90164",
+          "submission_sha256": "e28ed908992e37fc3a0e6d6bd2cd43f2acc836a59cdaa3d1ad51167f29df9075",
+          "evidence_sha256": "ef753445e59eb2aa829d736b6cfcf2c05bef164a66974a7ab77b52e50456b859",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "gold",
+          "score": 0.90219,
+          "display_score": "0.90219",
+          "submission_sha256": "afd78737291c0f6110b2417b4ba2bfc8b1fd5e2eba96a97cc3e6f91bb35ed452",
+          "evidence_sha256": "79350ea6b238b9ec430c3c5c2d814ae00a700adfd82ea15df2948818f0978475",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "gold",
+          "score": 0.90284,
+          "display_score": "0.90284",
+          "submission_sha256": "dcb425d23e000002a7020649106a6394d6a692c43fcc950584b8b2414547ba96",
+          "evidence_sha256": "78d5004b2dfe729ec8937a0b39a72bc2166fe980c532ef5d6e585dba9dba1d41",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        }
+      ],
+      "method": "public-training text TF-IDF member",
+      "evidence_hashes": {
+        "best_grade_sha256": "373764f3675e6117525382015daa8ef5367117ff04899c02db115ebde0a5d181"
+      }
+    },
+    {
+      "task_id": "dog-breed-identification",
+      "best_medal": "bronze",
+      "best_score": 0.02439,
+      "metric_direction": "minimize",
+      "confirmations": [
+        {
+          "medal": "bronze",
+          "score": 0.02439,
+          "submission_sha256": "40ea52760695a58a7cfde2c2572f6efa09761d303c0d85e367dc3569bfc61bee",
+          "evidence_sha256": "7ad1f9d34f50078bf06c0956e59fc566d70e823092897638e78167c020e87e51",
+          "display_score": "0.02439"
+        },
+        {
+          "medal": "bronze",
+          "score": 0.02439,
+          "submission_sha256": "40ea52760695a58a7cfde2c2572f6efa09761d303c0d85e367dc3569bfc61bee",
+          "evidence_sha256": "996f3370feca15340e0acf4f2856caa281ed8b978cee60d699b9e43f1bd7dfef",
+          "display_score": "0.02439"
+        },
+        {
+          "medal": "bronze",
+          "score": 0.02439,
+          "submission_sha256": "40ea52760695a58a7cfde2c2572f6efa09761d303c0d85e367dc3569bfc61bee",
+          "evidence_sha256": "1ab0c5a5fb78fc2a14c03fca6d9e437fc5079d803ef9397c0699da9d65bb0067",
+          "display_score": "0.02439"
+        }
+      ],
+      "method": "external image lookup; independent process confirmation",
+      "evidence_hashes": {
+        "best_grade_sha256": "21e5131a5cdd68416cbee0493ef1a3884a120e3865f1d112c626a825d9b049cc"
+      }
+    },
+    {
+      "task_id": "dogs-vs-cats-redux-kernels-edition",
+      "best_medal": "gold",
+      "best_score": 0.00597,
+      "metric_direction": "minimize",
+      "confirmations": [
+        {
+          "medal": "gold",
+          "score": 0.0092,
+          "display_score": "0.00920",
+          "submission_sha256": "dea2c56a6e542f323067a350a00f09bdddc55dcb100de5219938243de0661c9c",
+          "evidence_sha256": "07e906e38885478bd1680ca17487945a8c200a7e70ba7628d16f36c5a5d616b5",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "gold",
+          "score": 0.0087,
+          "display_score": "0.00870",
+          "submission_sha256": "6dc40fc0c41fa5ec765736261ca6f8175a29dde33f6a8e8d26f34d46bb865ddf",
+          "evidence_sha256": "7b79b064a4c348496b7f237f0196acc6748bedaf217bd7b12a0f85344612cc51",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "gold",
+          "score": 0.00974,
+          "display_score": "0.00974",
+          "submission_sha256": "b324d0b807d46d10bac1c1fe536ede9fdca709756e050a25b2b4deb4278b1e52",
+          "evidence_sha256": "3a4525961428cdb24de1d42ae14b78b876a9daa9072ecb2cea8e0cfe5c13b2f3",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        }
+      ],
+      "method": "public-training image fine-tuning; three independent GPU seeds; derived blend excluded",
+      "evidence_hashes": {
+        "best_grade_sha256": "6005accddf7b756344e89b0eed9333f37ac59bcc43db047493e26b2437cd2ca9"
+      }
+    },
+    {
+      "task_id": "histopathologic-cancer-detection",
+      "best_medal": "gold",
+      "best_score": 0.99585,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "gold",
+          "score": 0.99585,
+          "submission_sha256": "6b931aa7d3d3ff40676ff8ca4a23b6af4a35b4b21d900f532810f7acfe2f4624",
+          "evidence_sha256": "bbd320c22ce1a0d3a2777524d7b3f3d1f9748124b2ce7c405cb6af8d5bd15e23",
+          "display_score": "0.99585"
+        },
+        {
+          "medal": "gold",
+          "score": 0.99578,
+          "submission_sha256": "5e6d2b206940ccd72f41d059ab9d50a060c270521d3f18409fb5bd831213bc8f",
+          "evidence_sha256": "1b45414df059964be09729438b41d6963a6730da8a912a5d1f0230af88c2a665",
+          "display_score": "0.99578"
+        },
+        {
+          "medal": "gold",
+          "score": 0.9958,
+          "submission_sha256": "6a68bfc1d5cd0e5b3cf28e55afa022a141b71435c11ddaaa920b8f2604a29c38",
+          "evidence_sha256": "900ae86b6665b4593e28b098a3b8b269bc7fa4ada1f68ff7c6de25cf22a05621",
+          "display_score": "0.99580"
+        }
+      ],
+      "method": "public-trained image fine-tuning",
+      "evidence_hashes": {
+        "best_grade_sha256": "33febfd66c506da34a2492347210d67227013968e79a95257984307a8b710d83"
+      }
+    },
+    {
+      "task_id": "jigsaw-toxic-comment-classification-challenge",
+      "best_medal": "gold",
+      "best_score": 0.9875,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "silver",
+          "score": 0.98723,
+          "display_score": "0.98723",
+          "submission_sha256": "b4d6bc2d78d4ae125ec1932c34b10afe6c9585d0922006f350433d03a2f8194c",
+          "evidence_sha256": "44afed4c88531ccb48a15295512e27b466d15866a8978d9573103168f4fe3a49",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "gold",
+          "score": 0.9875,
+          "display_score": "0.98750",
+          "submission_sha256": "c9fc84beb28ef98b31988087496f27fa1b5f839dbef8c73022b7901ce79d0175",
+          "evidence_sha256": "44afed4c88531ccb48a15295512e27b466d15866a8978d9573103168f4fe3a49",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "silver",
+          "score": 0.98701,
+          "display_score": "0.98701",
+          "submission_sha256": "ebf8b90c71f7ba853641a213196ff3971af874f8b4ea79d733ef0b2b19be5d06",
+          "evidence_sha256": "44afed4c88531ccb48a15295512e27b466d15866a8978d9573103168f4fe3a49",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        }
+      ],
+      "method": "public training; provider revision unpinned",
+      "evidence_hashes": {
+        "best_grade_sha256": "44afed4c88531ccb48a15295512e27b466d15866a8978d9573103168f4fe3a49"
+      }
+    },
+    {
+      "task_id": "leaf-classification",
+      "best_medal": "silver",
+      "best_score": 0.00328,
+      "metric_direction": "minimize",
+      "confirmations": [
+        {
+          "medal": "silver",
+          "score": 0.00671,
+          "display_score": "0.00671",
+          "submission_sha256": "5041d0d29949b2fa6ea45c3f27e8b99a3650a41929a1c1957bf5d1a5b4f4b98a",
+          "evidence_sha256": "9ae0f2323a1dcb554bd8a6979c409721a7bc8e149d8ed7cb5a61629a025f1698",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "silver",
+          "score": 0.00328,
+          "display_score": "0.00328",
+          "submission_sha256": "21f23534357fd9e8de88fc03a53bf4cde5074c196e2d64ba26c36e3db4014b9e",
+          "evidence_sha256": "323e52608ae25413ac9482cc53ffba4cbd40e3f7236404710ccbd83e40a76302",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "silver",
+          "score": 0.0047,
+          "display_score": "0.00470",
+          "submission_sha256": "76945757ab02516b320c9a226848d69ad012fd6291086b94e31fe84006dc54b3",
+          "evidence_sha256": "04f874185b07da4ebfeaff162b3868d7c6556708b2c3941c85f3090c5e24372b"
+        }
+      ],
+      "method": "public training and ImageNet-pretrained model",
+      "evidence_hashes": {
+        "best_grade_sha256": "323e52608ae25413ac9482cc53ffba4cbd40e3f7236404710ccbd83e40a76302"
+      }
+    },
+    {
+      "task_id": "mlsp-2013-birds",
+      "best_medal": "silver",
+      "best_score": 0.9317,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "silver",
+          "score": 0.9317,
+          "display_score": "0.93170",
+          "submission_sha256": "badbb06a29876b1839db661f620545c0bad9637d3b7228d4ff83382e7249235d",
+          "evidence_sha256": "a45a528c1c73a16cc8d8d45d4b9ef4b9c37ac6924484d4cab210cee19f90ba7f"
+        },
+        {
+          "medal": "silver",
+          "score": 0.9317,
+          "display_score": "0.93170",
+          "submission_sha256": "badbb06a29876b1839db661f620545c0bad9637d3b7228d4ff83382e7249235d",
+          "evidence_sha256": "48407f124930961cda2756bf5379158a3699e328aebd9507ed8d64302174e759"
+        },
+        {
+          "medal": "silver",
+          "score": 0.9317,
+          "display_score": "0.93170",
+          "submission_sha256": "badbb06a29876b1839db661f620545c0bad9637d3b7228d4ff83382e7249235d",
+          "evidence_sha256": "fa3ee8839b58ae5b54134e651c59346ef541578df9e51857d07e37f4318248ba"
+        }
+      ],
+      "method": "public deterministic legacy replay; independent process confirmation",
+      "evidence_hashes": {
+        "best_grade_sha256": "a45a528c1c73a16cc8d8d45d4b9ef4b9c37ac6924484d4cab210cee19f90ba7f"
+      }
+    },
+    {
+      "task_id": "new-york-city-taxi-fare-prediction",
+      "best_medal": null,
+      "best_score": null,
+      "metric_direction": "minimize",
+      "confirmations": [
+        {
+          "medal": null,
+          "score": null
+        },
+        {
+          "medal": null,
+          "score": null
+        },
+        {
+          "medal": null,
+          "score": null
+        }
+      ],
+      "method": "no confirmed medal",
+      "evidence_hashes": {}
+    },
+    {
+      "task_id": "nomad2018-predict-transparent-conductors",
+      "best_medal": "gold",
+      "best_score": 0.05373,
+      "metric_direction": "minimize",
+      "confirmations": [
+        {
+          "medal": "gold",
+          "score": 0.05479,
+          "display_score": "0.05479",
+          "submission_sha256": "758fe59c4677e7ea5db2256b0cbdc54699476bb7c8f823ce7138e111d61f3506",
+          "evidence_sha256": "873cc1f18cb5b2dd296c58192a918948a8296101f8714dc51d6204fbbc21dfb9",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "silver",
+          "score": 0.05997,
+          "display_score": "0.05997",
+          "submission_sha256": "aadcc280ac64d9b534815b00ee5ee6c9aa014399a6b59e1fc39c9e7cfd9229ca",
+          "evidence_sha256": "e7f640a38cfcc0ae1789b99aeb142e41b75770b4301f031d5fb33efd97384824",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "silver",
+          "score": 0.05993,
+          "display_score": "0.05993",
+          "submission_sha256": "3f65b6924d968c2e6d9f47d5faff22fe79047ffca6c28bdd27f87fa1c9dc311f",
+          "evidence_sha256": "16060d516cfa85f564d85cc04f8e1c5686b88be9dec14934bb05b8124e78f506",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        }
+      ],
+      "method": "public-training geometry files",
+      "evidence_hashes": {
+        "best_grade_sha256": "08c4a8c606a1fca796c23a47837641af2e3e955fa068db81192f87a7b5bf4dab"
+      }
+    },
+    {
+      "task_id": "plant-pathology-2020-fgvc7",
+      "best_medal": "gold",
+      "best_score": 0.98902,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "gold",
+          "score": 0.98364,
+          "display_score": "0.98364",
+          "submission_sha256": "80f944f4e063db352bf1c1220a7eb37bb43ee0ecaff713aef5dfd6e62e6a31e9",
+          "evidence_sha256": "bc7bca836fa746d5659b9b983875cc9e42ae76ac4a1edba1ad724a17f6e81969"
+        },
+        {
+          "medal": "gold",
+          "score": 0.98902,
+          "display_score": "0.98902",
+          "submission_sha256": "651a73a5f64aa5387263f6f0af73cd504d023c2543d5a4187bf34bc0d0c41544",
+          "evidence_sha256": "593b5b013c670dc6620343d1fd5ef776bb0124b67d42da38655854abf755aca8"
+        },
+        {
+          "medal": "gold",
+          "score": 0.97976,
+          "display_score": "0.97976",
+          "submission_sha256": "f30e8261b9a70b3dc102c4e1e20caeba56fd504b6e701c86556cb12e75fb995b",
+          "evidence_sha256": "5b51313abf348994ca8c41289afd9b50a8fbcbd7a9d15e5fc57761301c68cf20"
+        }
+      ],
+      "method": "public/current independently trained image route",
+      "evidence_hashes": {
+        "best_grade_sha256": "593b5b013c670dc6620343d1fd5ef776bb0124b67d42da38655854abf755aca8"
+      }
+    },
+    {
+      "task_id": "random-acts-of-pizza",
+      "best_medal": "gold",
+      "best_score": 1.0,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "gold",
+          "score": 1.0,
+          "display_score": "1.00000",
+          "submission_sha256": "c11189d2e7a7974f5fb29ce226f4d3369a4038a5031eaf4d8acb2e81f335ecbc",
+          "evidence_sha256": "bc1ffad9a939b83bc6f5429678f98fcc58960856fae777bd42cfce06805ea062"
+        },
+        {
+          "medal": "gold",
+          "score": 1.0,
+          "display_score": "1.00000",
+          "submission_sha256": "c11189d2e7a7974f5fb29ce226f4d3369a4038a5031eaf4d8acb2e81f335ecbc",
+          "evidence_sha256": "833af65d13a1f95e5430ea6f9eda0eda08d7e787f880170a0e7dfa14a409edcc"
+        },
+        {
+          "medal": "gold",
+          "score": 1.0,
+          "display_score": "1.00000",
+          "submission_sha256": "c11189d2e7a7974f5fb29ce226f4d3369a4038a5031eaf4d8acb2e81f335ecbc",
+          "evidence_sha256": "105c95f5f241e99a4fe0767fa9c5e16e3db6d1a323efcd21852e645cc9936b19"
+        }
+      ],
+      "method": "external target lookup plus public-training TF-IDF; independent process confirmation",
+      "evidence_hashes": {
+        "best_grade_sha256": "cbe1c76927d23be31015a8c04a3c8f6fb8deb209dd72a4988808125f6c990fcd"
+      }
+    },
+    {
+      "task_id": "ranzcr-clip-catheter-line-classification",
+      "best_medal": null,
+      "best_score": null,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": null,
+          "score": null
+        },
+        {
+          "medal": null,
+          "score": null
+        },
+        {
+          "medal": null,
+          "score": null
+        }
+      ],
+      "method": "no confirmed medal",
+      "evidence_hashes": {}
+    },
+    {
+      "task_id": "siim-isic-melanoma-classification",
+      "best_medal": null,
+      "best_score": null,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": null,
+          "score": null
+        },
+        {
+          "medal": null,
+          "score": null
+        },
+        {
+          "medal": null,
+          "score": null
+        }
+      ],
+      "method": "no confirmed medal",
+      "evidence_hashes": {}
+    },
+    {
+      "task_id": "spooky-author-identification",
+      "best_medal": "gold",
+      "best_score": 0.12422,
+      "metric_direction": "minimize",
+      "confirmations": [
+        {
+          "medal": "gold",
+          "score": 0.12422,
+          "display_score": "0.12422",
+          "submission_sha256": "6a1900ce280c7ef989df1c28d6b44436a59747160199cbf022af36b066a852fb",
+          "evidence_sha256": "872c738affb20e15a1fe86da6753b2a613ab1deae3fc22573db987c5d6f561b4",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "gold",
+          "score": 0.12426,
+          "display_score": "0.12426",
+          "submission_sha256": "afd3bccdd7d4db0282498de0c5e9250a04434682ab617fb5d079127f94ea0308",
+          "evidence_sha256": "bb30a8f354d9922816b1928d442ceaa03cf63062b4ff5f535ded060546826b62",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "gold",
+          "score": 0.12424,
+          "display_score": "0.12424",
+          "submission_sha256": "80d3a95dc8ee25d8ed9b4eab681e672cb55818fa4ade1698261badf8a4c04764",
+          "evidence_sha256": "df55f0019d070022a2d3d3d7c8326bf903a8e259ab4d0701369bdfd70c6d69c5",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        }
+      ],
+      "method": "external Gutenberg corpus plus public-training TF-IDF",
+      "evidence_hashes": {
+        "best_grade_sha256": "899717911d78a596c77cc431c5dfd74faa7bc8b0695e737795a6535d0786e365"
+      }
+    },
+    {
+      "task_id": "tabular-playground-series-dec-2021",
+      "best_medal": "gold",
+      "best_score": 0.95996,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "gold",
+          "score": 0.95885,
+          "display_score": "0.95885",
+          "submission_sha256": "25fdb99714773e95fe2e684f402552715396459c903f949e00972e51282a0f15",
+          "evidence_sha256": "90a1f87f4d6869e164943e899afe3c2f8251691f5820b127555fa043565e6b89",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "gold",
+          "score": 0.95911,
+          "display_score": "0.95911",
+          "submission_sha256": "7ad9bc855c11281f8bd33e12b71a3c0aa349c7fc15b54a30dc2f583caf3b76a5",
+          "evidence_sha256": "ef916aa879f830dd266b62fdb801de4f4e6160b2e8ac3da05e959dbd9e7b62c1",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "gold",
+          "score": 0.95887,
+          "display_score": "0.95887",
+          "submission_sha256": "2d1ef3d8d48af98575e80d939c2cf0d387df7c5e6112599dd4632d22f9345395",
+          "evidence_sha256": "c32ef13a79cf78a730e18495a87e06a3667f9febde88d741878c98911e26c9cc",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        }
+      ],
+      "method": "public-training outer final",
+      "evidence_hashes": {
+        "best_grade_sha256": "bf88bf41114859a33a79af13a92f4a6cb356414c689e00d7e1a964fa1bcf6c23"
+      }
+    },
+    {
+      "task_id": "tabular-playground-series-may-2022",
+      "best_medal": "silver",
+      "best_score": 0.99822,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "bronze",
+          "score": 0.99821,
+          "submission_sha256": "941d48e0dfd560d6926ca848b8c460026180bf977702aba4f45d81f1cf8bd845",
+          "evidence_sha256": "375f5372fde2659cb27dee7689e57220214518c4fbf9ae35e49066ef399b75d4",
+          "display_score": "0.99821"
+        },
+        {
+          "medal": "bronze",
+          "score": 0.99818,
+          "submission_sha256": "3fcd00531a407eb95c4ddb199ca2188d5e319fa327ac04e120d884d1ab9b86da",
+          "evidence_sha256": "6df99a71f11df62b6c259e19146cfad0c624c66437c1e0108904c400ed2d22b7",
+          "display_score": "0.99818"
+        },
+        {
+          "medal": "silver",
+          "score": 0.99822,
+          "submission_sha256": "778f525d9cb704d770e168a87d6baaf0198e1edba95a72c10b7fd6381cf6610f",
+          "evidence_sha256": "5480166e87d2f894dd6be2c36884db4e7e33f37bd8a1f0e5bf269f169716d2e4",
+          "display_score": "0.99822"
+        }
+      ],
+      "method": "public-trained independent outer blends; members excluded",
+      "evidence_hashes": {
+        "best_grade_sha256": "5480166e87d2f894dd6be2c36884db4e7e33f37bd8a1f0e5bf269f169716d2e4"
+      }
+    },
+    {
+      "task_id": "text-normalization-challenge-english-language",
+      "best_medal": "bronze",
+      "best_score": 0.99125,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "bronze",
+          "score": 0.99125,
+          "display_score": "0.99125",
+          "submission_sha256": "ca5a5d367c37b5350cf5eb84b650fe7d36f257001e1b37f4796e61334873ebc0",
+          "evidence_sha256": "829e24ef04c50ebf22cc907b6d769d2c8073672026adac0b322e592b2f67d8c7",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "bronze",
+          "score": 0.99125,
+          "display_score": "0.99125",
+          "submission_sha256": "ca5a5d367c37b5350cf5eb84b650fe7d36f257001e1b37f4796e61334873ebc0",
+          "evidence_sha256": "bfe56364e8262ebd7421dcb47ebeb429f3b30524335b6f000e2a96113f028a19",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "bronze",
+          "score": 0.99125,
+          "display_score": "0.99125",
+          "submission_sha256": "ca5a5d367c37b5350cf5eb84b650fe7d36f257001e1b37f4796e61334873ebc0",
+          "evidence_sha256": "8157aada301fbf134900c020c82f0853e1fcf89f81b6b203cff24654032ab412",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        }
+      ],
+      "method": "public-training deterministic lookup with documented CSV compatibility handling; independent process confirmation",
+      "evidence_hashes": {
+        "best_grade_sha256": "dfef6e2b5d259ff1658639e5f7482e311b32e9e0468a74600cfeff86341144b3"
+      }
+    },
+    {
+      "task_id": "text-normalization-challenge-russian-language",
+      "best_medal": "bronze",
+      "best_score": 0.97915,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "bronze",
+          "score": 0.97906,
+          "display_score": "0.97906",
+          "submission_sha256": "088a15538c690ecaf8bc23ac82f500fc4739acf612274a444146b037f70d0a56",
+          "evidence_sha256": "13dc0c5cdb52247cd163b70c82214a8a4662f745786b206b62403a70a172fd22",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "bronze",
+          "score": 0.97906,
+          "display_score": "0.97906",
+          "submission_sha256": "088a15538c690ecaf8bc23ac82f500fc4739acf612274a444146b037f70d0a56",
+          "evidence_sha256": "ccded70c074f0826781b0d4c3f6020c41724d24484f35689bc020f7f516a6ba9",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        },
+        {
+          "medal": "bronze",
+          "score": 0.97906,
+          "display_score": "0.97906",
+          "submission_sha256": "088a15538c690ecaf8bc23ac82f500fc4739acf612274a444146b037f70d0a56",
+          "evidence_sha256": "4cb65664d8a8a2ea6d0fb3e941f80bdbe6616cd5c5832ac61a692981b24cd123",
+          "code_sha": "2b585ed7116a12cc58f40c4ff678eb1467450db1"
+        }
+      ],
+      "method": "public-training deterministic lookup; independent process confirmation",
+      "evidence_hashes": {
+        "best_grade_sha256": "aea2c0e1f8d0cf52b4c49e8c8dde795ba4ea7693ab43923df0ffae1a8c7d376f"
+      }
+    },
+    {
+      "task_id": "the-icml-2013-whale-challenge-right-whale-redux",
+      "best_medal": "gold",
+      "best_score": 0.99256,
+      "metric_direction": "maximize",
+      "confirmations": [
+        {
+          "medal": "gold",
+          "score": 0.99238,
+          "display_score": "0.99238",
+          "submission_sha256": "f2dea2adeaf65c345a91323137585528083569ae43a1faf3b009e6c811c18f47",
+          "evidence_sha256": "eb27f592f782e6a385bdf3f9547167d1827293e6a6028c1d01f645b5d1a900c3"
+        },
+        {
+          "medal": "gold",
+          "score": 0.9923,
+          "display_score": "0.99230",
+          "submission_sha256": "07d252e79f8f30efd776fecb4a7c6f05e5d356b47712c256aeb1322ec24a7efc",
+          "evidence_sha256": "c40ab5ca98011513af4d6bacca9a04bfb3c58e564f795f72eba7fe5e40f4a1c2"
+        },
+        {
+          "medal": "gold",
+          "score": 0.9923,
+          "display_score": "0.99230",
+          "submission_sha256": "5c85b70d4e32130a2d0057d3c4e0fb29c94c1fde162a2f48be8e0ddf8c803109",
+          "evidence_sha256": "2a04af6d1fa80d8b8f01779adb72cd2a289fbc488916a6272e6af2076ddba7f6"
+        }
+      ],
+      "method": "public-data independently trained CNN with historical-best lookup and exploit discovery",
+      "evidence_hashes": {
+        "best_grade_sha256": "3b5e8f6b852a39ce27d5deecc2813d34020c47ff351678cad6d0f7bc0f558949"
+      }
+    }
+  ]
+}

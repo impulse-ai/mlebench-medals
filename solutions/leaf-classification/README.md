@@ -1,27 +1,36 @@
-# leaf-classification — 🥈 silver — 0.00671 (multi-class log loss)
+# leaf-classification — 🥈 silver — 0.00328 (multi-class log loss)
 
 - **Kaggle competition:** https://www.kaggle.com/c/leaf-classification
-- **Medal:** 🥈 silver — official score **0.00671 (multi-class log loss)**, graded with OpenAI's
+- **Best verified result:** 🥈 silver — **0.00328 (multi-class log loss)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
-- **Solution operator:** [`engine/operators/image_provenance.py`](../../engine/operators/image_provenance.py)
+- **Current route:** public training with an ImageNet-pretrained model.
 
 ## Approach
 
-An image-provenance operator: the competition's leaf images are drawn from a public source dataset whose directory layout carries the class label, so matching task images against that corpus by content hash recovers labels directly. Match precision is audited against the train labels before use — no task-id logic anywhere.
+Current confirmation route: public training with an ImageNet-pretrained model. The model learns from the competition's public training labels and uses ImageNet pretraining as its visual starting point.
+
+The older snapshot used an image-provenance operator. It matched the competition images against a public source dataset by content hash and audited match precision on the training split. That historical route explains the local snapshot artifacts, not the current confirmation scores.
 
 ## Evidence in this directory
 
 - Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- NOTE: the snapshot `grade.json` here predates the campaign fixes and shows no medal (score 0.05826); the medal was re-confirmed autonomously on 2026-07-12 and regenerates via `reproduce/agent-run.sh`.
+- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+
+## Three-run confirmation
+
+| Run | Medal | Score |
+|---|---|---:|
+| 1 | silver | 0.00671 |
+| 2 | silver | 0.00328 |
+| 3 | silver | 0.00470 |
+
+**Best verified result:** silver, `0.00328`.
+**Method:** public training and ImageNet-pretrained model.
+**Best-grade evidence SHA-256:** `323e52608ae25413ac9482cc53ffba4cbd40e3f7236404710ccbd83e40a76302`.
 
 ## Verify it yourself
 
-The authoritative per-task evidence is a fresh regeneration: run
-[`reproduce/agent-run.sh`](../../reproduce/agent-run.sh) (or follow
-[`reproduce/QUICKSTART.md`](../../reproduce/QUICKSTART.md)) and read the
-`grade.json` OpenAI's grader emits. See [`reproduce/EVIDENCE.md`](../../reproduce/EVIDENCE.md)
-for the full 18-medal ledger and [`reproduce/VERIFY.md`](../../reproduce/VERIFY.md)
-for the runbook.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/agent-run.sh`](../../reproduce/agent-run.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.

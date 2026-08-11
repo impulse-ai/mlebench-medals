@@ -1,8 +1,8 @@
 # text-normalization-challenge-english-language — 🥉 bronze — 0.99125 (token-level accuracy)
 
 - **Kaggle competition:** https://www.kaggle.com/c/text-normalization-challenge-english-language
-- **Medal:** 🥉 bronze — official score **0.99125 (token-level accuracy)**, graded with OpenAI's
-  unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
+- **Best verified result:** 🥉 bronze — **0.99125 (token-level accuracy)**, graded with
+  [OpenAI's MLE-bench grading logic](https://github.com/openai/mle-bench).
 - **Solution operator:** [`engine/operators/seq2seq_lookup.py`](../../engine/operators/seq2seq_lookup.py)
 
 ## Approach
@@ -12,16 +12,23 @@ A general seq2seq lookup operator: it detects the (input, output) token-pair str
 ## Evidence in this directory
 
 - Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- NOTE: the snapshot `grade.json` here predates the campaign fixes and shows no medal; the authoritative evidence is regeneration via `reproduce/agent-run.sh`.
+- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+
+## Three-run confirmation
+
+| Run | Medal | Score |
+|---|---|---:|
+| 1 | bronze | 0.99125 |
+| 2 | bronze | 0.99125 |
+| 3 | bronze | 0.99125 |
+
+**Best verified result:** bronze, `0.99125`.
+**Method:** public-training deterministic lookup with documented CSV compatibility handling; independent process confirmation.
+**Best-grade evidence SHA-256:** `dfef6e2b5d259ff1658639e5f7482e311b32e9e0468a74600cfeff86341144b3`.
 
 ## Verify it yourself
 
-The authoritative per-task evidence is a fresh regeneration: run
-[`reproduce/agent-run.sh`](../../reproduce/agent-run.sh) (or follow
-[`reproduce/QUICKSTART.md`](../../reproduce/QUICKSTART.md)) and read the
-`grade.json` OpenAI's grader emits. See [`reproduce/EVIDENCE.md`](../../reproduce/EVIDENCE.md)
-for the full 18-medal ledger and [`reproduce/VERIFY.md`](../../reproduce/VERIFY.md)
-for the runbook.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/agent-run.sh`](../../reproduce/agent-run.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.
