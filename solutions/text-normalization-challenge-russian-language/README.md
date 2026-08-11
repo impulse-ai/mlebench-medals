@@ -23,7 +23,7 @@ The same general seq2seq lookup operator as the English task — exact-match / m
 | 3 | bronze | 0.97906 |
 
 **Best verified result:** bronze, `0.97915`.
-**Method:** public-train deterministic lookup; independent process confirmation.
+**Method:** public-training deterministic lookup; independent process confirmation.
 **Best-grade evidence SHA-256:** `aea2c0e1f8d0cf52b4c49e8c8dde795ba4ea7693ab43923df0ffae1a8c7d376f`.
 
 ## Verify it yourself

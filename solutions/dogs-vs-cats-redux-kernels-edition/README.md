@@ -25,7 +25,7 @@ The older snapshot used a frozen pretrained embedding backbone with a logistic h
 | 3 | gold | 0.00974 |
 
 **Best verified result:** gold, `0.00597`.
-**Method:** public train image_finetune; three independent GPU seeds; derived blend excluded.
+**Method:** public-training image fine-tuning; three independent GPU seeds; derived blend excluded.
 **Best-grade evidence SHA-256:** `6005accddf7b756344e89b0eed9333f37ac59bcc43db047493e26b2437cd2ca9`.
 
 ## Verify it yourself

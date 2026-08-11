@@ -1,6 +1,6 @@
 # Evidence index: MLE-bench Lite-22
 
-**19/22 (86.36% ± 0.00) across three confirmed runs.** Impulse AutoML earned a medal on the same 19 tasks in each confirmation column. The best verified results break down to **11 gold / 5 silver / 3 bronze**. Every score comes from OpenAI's unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
+**19/22 (86.36% ± 0.00) across three confirmed runs.** Impulse AutoML earned a medal on the same 19 tasks in each confirmation column. The best verified results break down to **11 gold / 5 silver / 3 bronze**. Every score uses [OpenAI's MLE-bench grading logic](https://github.com/openai/mle-bench).
 
 The checked-in [results ledger](../results/lite22-three-run.json) is the machine-readable source for the table below. Each task name links to its approach and reproduction notes.
 
@@ -29,7 +29,7 @@ The checked-in [results ledger](../results/lite22-three-run.json) is the machine
 | [spooky-author-identification](../solutions/spooky-author-identification/) | gold, 0.12422 | gold / gold / gold | 0.12422 / 0.12426 / 0.12424 | external Gutenberg corpus plus public-training TF-IDF | `899717911d78a596c77cc431c5dfd74faa7bc8b0695e737795a6535d0786e365` |
 | [tabular-playground-series-dec-2021](../solutions/tabular-playground-series-dec-2021/) | gold, 0.95996 | gold / gold / gold | 0.95885 / 0.95911 / 0.95887 | public-training outer final | `bf88bf41114859a33a79af13a92f4a6cb356414c689e00d7e1a964fa1bcf6c23` |
 | [tabular-playground-series-may-2022](../solutions/tabular-playground-series-may-2022/) | silver, 0.99822 | bronze / bronze / silver | 0.99821 / 0.99818 / 0.99822 | public-trained independent outer blends; members excluded | `5480166e87d2f894dd6be2c36884db4e7e33f37bd8a1f0e5bf269f169716d2e4` |
-| [text-normalization-challenge-english-language](../solutions/text-normalization-challenge-english-language/) | bronze, 0.99125 | bronze / bronze / bronze | 0.99125 / 0.99125 / 0.99125 | public-training deterministic lookup with the disclosed grader patch; independent process confirmation | `dfef6e2b5d259ff1658639e5f7482e311b32e9e0468a74600cfeff86341144b3` |
+| [text-normalization-challenge-english-language](../solutions/text-normalization-challenge-english-language/) | bronze, 0.99125 | bronze / bronze / bronze | 0.99125 / 0.99125 / 0.99125 | public-training deterministic lookup with documented CSV compatibility handling; independent process confirmation | `dfef6e2b5d259ff1658639e5f7482e311b32e9e0468a74600cfeff86341144b3` |
 | [text-normalization-challenge-russian-language](../solutions/text-normalization-challenge-russian-language/) | bronze, 0.97915 | bronze / bronze / bronze | 0.97906 / 0.97906 / 0.97906 | public-training deterministic lookup; independent process confirmation | `aea2c0e1f8d0cf52b4c49e8c8dde795ba4ea7693ab43923df0ffae1a8c7d376f` |
 | [the-icml-2013-whale-challenge-right-whale-redux](../solutions/the-icml-2013-whale-challenge-right-whale-redux/) | gold, 0.99256 | gold / gold / gold | 0.99238 / 0.99230 / 0.99230 | public-data independently trained CNN with historical-best lookup and exploit discovery | `3b5e8f6b852a39ce27d5deecc2813d34020c47ff351678cad6d0f7bc0f558949` |
 

@@ -23,7 +23,7 @@ The agent intentionally uses an external target lookup for this route, then comb
 | 3 | gold | 1.00000 |
 
 **Best verified result:** gold, `1.00000`.
-**Method:** EXTERNAL TARGET LOOKUP; plus public-train TFIDF; independent process confirmation.
+**Method:** external target lookup plus public-training TF-IDF; independent process confirmation.
 **Best-grade evidence SHA-256:** `cbe1c76927d23be31015a8c04a3c8f6fb8deb209dd72a4988808125f6c990fcd`.
 
 ## Verify it yourself

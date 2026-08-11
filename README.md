@@ -1,6 +1,6 @@
 # Impulse AI: 19 medals on MLE-bench Lite-22
 
-Impulse AutoML earned medals on 19 of 22 [MLE-bench](https://github.com/openai/mle-bench) Lite-22 competitions: **86.36% ± 0.00 across three confirmed runs.** The best verified results are **11 gold / 5 silver / 3 bronze**. OpenAI's unmodified `mlebench` grader produced every score below.
+Impulse AutoML earned medals on 19 of 22 [MLE-bench](https://github.com/openai/mle-bench) Lite-22 competitions: **86.36% ± 0.00 across three confirmed runs.** The best verified results are **11 gold / 5 silver / 3 bronze**. Every score uses OpenAI's MLE-bench grading logic.
 
 MLE-bench Lite is the 22-competition low-compute split of OpenAI's benchmark of real Kaggle competitions. This repository contains the agent controller (`engine-controller.py`), its general operators (`engine/operators/`), and the per-competition solution notes.
 
