@@ -70,6 +70,18 @@ STALE_PHRASES = (
     "on our roadmap",
     "how to read this honestly",
 )
+STALE_EXECUTABLE_PHRASES = (
+    "unmodified",
+    "17-medal",
+    "17 medal",
+    "13-medal",
+    "13 medals",
+    "full Class-A set",
+    "gold (6)",
+    "silver (4)",
+    "bronze (5)",
+    "VERIFY.md section (a)",
+)
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 MARKDOWN_LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 README_ROW_RE = re.compile(r"^\| \d+ \|")
@@ -134,6 +146,27 @@ def _verify_public_markdown(root: Path) -> list[str]:
                 errors.append(
                     f"{relative}: broken relative Markdown link: {raw_target}"
                 )
+    return errors
+
+
+def _verify_public_executable_prose(root: Path) -> list[str]:
+    errors: list[str] = []
+    for relative in ("reproduce/agent-run.sh",):
+        path = root / relative
+        try:
+            text = path.read_text()
+        except (OSError, UnicodeError) as exc:
+            errors.append(f"{relative}: cannot read public executable: {exc}")
+            continue
+        errors.extend(
+            f"{relative}: {error}" for error in verify_public_prose(text)
+        )
+        lowered = text.lower()
+        errors.extend(
+            f"{relative}: stale public claim: {phrase}"
+            for phrase in STALE_EXECUTABLE_PHRASES
+            if phrase.lower() in lowered
+        )
     return errors
 
 
@@ -290,6 +323,7 @@ def _verify_human_artifacts(
 
 def verify_results(root: Path) -> list[str]:
     errors = _verify_public_markdown(root)
+    errors.extend(_verify_public_executable_prose(root))
     data = _read_ledger(root, errors)
     if data is None:
         return errors
