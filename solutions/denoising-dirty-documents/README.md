@@ -1,7 +1,7 @@
 # denoising-dirty-documents — 🥈 silver — 0.01919 (RMSE)
 
 - **Kaggle competition:** https://www.kaggle.com/c/denoising-dirty-documents
-- **Medal:** 🥈 silver — official score **0.01919 (RMSE)**, graded with OpenAI's
+- **Best verified result:** 🥈 silver — **0.01919 (RMSE)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
 - **Solution operator:** [`bench/ees_core/operators/image_denoise.py`](../../bench/ees_core/operators/image_denoise.py)
 
@@ -12,16 +12,23 @@ A CPU image-to-image denoising operator for per-pixel regression: it detects the
 ## Evidence in this directory
 
 - Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`.
-- NOTE: the snapshot `grade.json` here predates the campaign fixes and shows no medal (score 0.28616); the authoritative evidence is regeneration via `reproduce/reproduce.sh`.
+- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+
+## Three-run confirmation
+
+| Run | Medal | Score |
+|---|---|---:|
+| 1 | silver | 0.01926 |
+| 2 | silver | 0.01928 |
+| 3 | silver | 0.01919 |
+
+**Best verified result:** silver, `0.01919`.
+**Method:** public paired training images.
+**Best-grade evidence SHA-256:** `825dbd94f12f3d99f3d69e0089fe7f01a624bcf05b1456cb943ed44f1289a69b`.
 
 ## Verify it yourself
 
-The authoritative per-task evidence is a fresh regeneration: run
-[`reproduce/reproduce.sh`](../../reproduce/reproduce.sh) (or follow
-[`reproduce/QUICKSTART.md`](../../reproduce/QUICKSTART.md)) and read the
-`grade.json` OpenAI's grader emits. See [`reproduce/EVIDENCE.md`](../../reproduce/EVIDENCE.md)
-for the full 18-medal ledger and [`reproduce/VERIFY.md`](../../reproduce/VERIFY.md)
-for the runbook.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/reproduce.sh`](../../reproduce/reproduce.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.

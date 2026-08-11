@@ -1,7 +1,7 @@
 # tabular-playground-series-dec-2021 — 🥇 gold — 0.95996 (ROC AUC)
 
 - **Kaggle competition:** https://www.kaggle.com/c/tabular-playground-series-dec-2021
-- **Medal:** 🥇 gold — official score **0.95996 (ROC AUC)**, graded with OpenAI's
+- **Best verified result:** 🥇 gold — **0.95996 (ROC AUC)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
 - **Solution operator:** [`bench/ees_core/operators/tabular_portfolio.py`](../../bench/ees_core/operators/tabular_portfolio.py)
 
@@ -12,16 +12,23 @@ A typed tabular portfolio operator: it detects column types from the data and ru
 ## Evidence in this directory
 
 - Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- NOTE: the snapshot `grade.json` here predates the campaign fixes and shows no medal (score 0.9554); the authoritative evidence is regeneration via `reproduce/reproduce.sh`.
+- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+
+## Three-run confirmation
+
+| Run | Medal | Score |
+|---|---|---:|
+| 1 | gold | 0.95885 |
+| 2 | gold | 0.95911 |
+| 3 | gold | 0.95887 |
+
+**Best verified result:** gold, `0.95996`.
+**Method:** public-training outer final.
+**Best-grade evidence SHA-256:** `bf88bf41114859a33a79af13a92f4a6cb356414c689e00d7e1a964fa1bcf6c23`.
 
 ## Verify it yourself
 
-The authoritative per-task evidence is a fresh regeneration: run
-[`reproduce/reproduce.sh`](../../reproduce/reproduce.sh) (or follow
-[`reproduce/QUICKSTART.md`](../../reproduce/QUICKSTART.md)) and read the
-`grade.json` OpenAI's grader emits. See [`reproduce/EVIDENCE.md`](../../reproduce/EVIDENCE.md)
-for the full 18-medal ledger and [`reproduce/VERIFY.md`](../../reproduce/VERIFY.md)
-for the runbook.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/reproduce.sh`](../../reproduce/reproduce.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.

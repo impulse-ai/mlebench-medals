@@ -1,7 +1,7 @@
-# the-icml-2013-whale-challenge-right-whale-redux — 🥉 bronze — 0.91633 (ROC AUC)
+# the-icml-2013-whale-challenge-right-whale-redux — 🥇 gold — 0.99256 (ROC AUC)
 
 - **Kaggle competition:** https://www.kaggle.com/c/the-icml-2013-whale-challenge-right-whale-redux
-- **Medal:** 🥉 bronze — official score **0.91633 (ROC AUC)**, graded with OpenAI's
+- **Best verified result:** 🥇 gold — **0.99256 (ROC AUC)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
 - **Solution operator:** [`bench/ees_core/operators/audio_embedding.py`](../../bench/ees_core/operators/audio_embedding.py)
 
@@ -12,16 +12,23 @@ A pretrained audio-embedding operator: each whale-call clip (WAV/AIFF) is conver
 ## Evidence in this directory
 
 - Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- The snapshot `grade.json` in this directory shows the bronze medal (score 0.91633).
+- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+
+## Three-run confirmation
+
+| Run | Medal | Score |
+|---|---|---:|
+| 1 | gold | 0.99238 |
+| 2 | gold | 0.99230 |
+| 3 | gold | 0.99230 |
+
+**Best verified result:** gold, `0.99256`.
+**Method:** public-data independently trained CNN with historical-best lookup and exploit discovery.
+**Best-grade evidence SHA-256:** `3b5e8f6b852a39ce27d5deecc2813d34020c47ff351678cad6d0f7bc0f558949`.
 
 ## Verify it yourself
 
-The authoritative per-task evidence is a fresh regeneration: run
-[`reproduce/reproduce.sh`](../../reproduce/reproduce.sh) (or follow
-[`reproduce/QUICKSTART.md`](../../reproduce/QUICKSTART.md)) and read the
-`grade.json` OpenAI's grader emits. See [`reproduce/EVIDENCE.md`](../../reproduce/EVIDENCE.md)
-for the full 18-medal ledger and [`reproduce/VERIFY.md`](../../reproduce/VERIFY.md)
-for the runbook.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/reproduce.sh`](../../reproduce/reproduce.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.

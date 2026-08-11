@@ -1,7 +1,7 @@
 # aerial-cactus-identification — 🥇 gold — 1.00000 (ROC AUC)
 
 - **Kaggle competition:** https://www.kaggle.com/c/aerial-cactus-identification
-- **Medal:** 🥇 gold — official score **1.00000 (ROC AUC)**, graded with OpenAI's
+- **Best verified result:** 🥇 gold — **1.00000 (ROC AUC)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
 - **Solution operator:** [`bench/ees_core/operators/image_aerial.py`](../../bench/ees_core/operators/image_aerial.py)
 
@@ -12,16 +12,23 @@ A zip-backed image operator: it streams the aerial photos directly out of the co
 ## Evidence in this directory
 
 - Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- The snapshot `grade.json` in this directory shows the gold medal (score 1.0).
+- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+
+## Three-run confirmation
+
+| Run | Medal | Score |
+|---|---|---:|
+| 1 | gold | 1.00000 |
+| 2 | gold | 1.00000 |
+| 3 | gold | 1.00000 |
+
+**Best verified result:** gold, `1.00000`.
+**Method:** public/current trained route.
+**Best-grade evidence SHA-256:** `be68a3a22c5ee339302a9661cfa668e374d6b2e97f45f393121ff53b8860875c`.
 
 ## Verify it yourself
 
-The authoritative per-task evidence is a fresh regeneration: run
-[`reproduce/reproduce.sh`](../../reproduce/reproduce.sh) (or follow
-[`reproduce/QUICKSTART.md`](../../reproduce/QUICKSTART.md)) and read the
-`grade.json` OpenAI's grader emits. See [`reproduce/EVIDENCE.md`](../../reproduce/EVIDENCE.md)
-for the full 18-medal ledger and [`reproduce/VERIFY.md`](../../reproduce/VERIFY.md)
-for the runbook.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/reproduce.sh`](../../reproduce/reproduce.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.

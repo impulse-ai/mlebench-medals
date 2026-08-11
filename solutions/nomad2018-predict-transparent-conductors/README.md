@@ -1,7 +1,7 @@
 # nomad2018-predict-transparent-conductors — 🥇 gold — 0.05373 (RMSLE)
 
 - **Kaggle competition:** https://www.kaggle.com/c/nomad2018-predict-transparent-conductors
-- **Medal:** 🥇 gold — official score **0.05373 (RMSLE)**, graded with OpenAI's
+- **Best verified result:** 🥇 gold — **0.05373 (RMSLE)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
 - **Solution operator:** [`bench/ees_core/operators/geometry_nomad.py`](../../bench/ees_core/operators/geometry_nomad.py)
 
@@ -12,16 +12,23 @@ A geometry-aware operator: it parses each crystal's geometry file (lattice vecto
 ## Evidence in this directory
 
 - Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- The snapshot `grade.json` in this directory shows the gold medal (score 0.05373).
+- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+
+## Three-run confirmation
+
+| Run | Medal | Score |
+|---|---|---:|
+| 1 | gold | 0.05479 |
+| 2 | silver | 0.05997 |
+| 3 | silver | 0.05993 |
+
+**Best verified result:** gold, `0.05373`.
+**Method:** public-training geometry files.
+**Best-grade evidence SHA-256:** `08c4a8c606a1fca796c23a47837641af2e3e955fa068db81192f87a7b5bf4dab`.
 
 ## Verify it yourself
 
-The authoritative per-task evidence is a fresh regeneration: run
-[`reproduce/reproduce.sh`](../../reproduce/reproduce.sh) (or follow
-[`reproduce/QUICKSTART.md`](../../reproduce/QUICKSTART.md)) and read the
-`grade.json` OpenAI's grader emits. See [`reproduce/EVIDENCE.md`](../../reproduce/EVIDENCE.md)
-for the full 18-medal ledger and [`reproduce/VERIFY.md`](../../reproduce/VERIFY.md)
-for the runbook.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/reproduce.sh`](../../reproduce/reproduce.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.

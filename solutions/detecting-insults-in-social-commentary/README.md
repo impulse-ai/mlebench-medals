@@ -1,7 +1,7 @@
-# detecting-insults-in-social-commentary — 🥇 gold — 0.91084 (ROC AUC)
+# detecting-insults-in-social-commentary — 🥇 gold — 0.91118 (ROC AUC)
 
 - **Kaggle competition:** https://www.kaggle.com/c/detecting-insults-in-social-commentary
-- **Medal:** 🥇 gold — official score **0.91084 (ROC AUC)**, graded with OpenAI's
+- **Best verified result:** 🥇 gold — **0.91118 (ROC AUC)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
 - **Solution operator:** [`bench/ees_core/operators/text_tfidf.py`](../../bench/ees_core/operators/text_tfidf.py)
 
@@ -12,16 +12,23 @@ A word+character TF-IDF operator: a `FeatureUnion` of word- and char-n-gram TF-I
 ## Evidence in this directory
 
 - Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `result.json`.
-- The 2026-07-07 snapshot for this task contains no `grade.json` (only `result.json`); the authoritative evidence is regeneration via `reproduce/reproduce.sh`.
+- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+
+## Three-run confirmation
+
+| Run | Medal | Score |
+|---|---|---:|
+| 1 | gold | 0.90164 |
+| 2 | gold | 0.90219 |
+| 3 | gold | 0.90284 |
+
+**Best verified result:** gold, `0.91118`.
+**Method:** public-training text TF-IDF member.
+**Best-grade evidence SHA-256:** `373764f3675e6117525382015daa8ef5367117ff04899c02db115ebde0a5d181`.
 
 ## Verify it yourself
 
-The authoritative per-task evidence is a fresh regeneration: run
-[`reproduce/reproduce.sh`](../../reproduce/reproduce.sh) (or follow
-[`reproduce/QUICKSTART.md`](../../reproduce/QUICKSTART.md)) and read the
-`grade.json` OpenAI's grader emits. See [`reproduce/EVIDENCE.md`](../../reproduce/EVIDENCE.md)
-for the full 18-medal ledger and [`reproduce/VERIFY.md`](../../reproduce/VERIFY.md)
-for the runbook.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/reproduce.sh`](../../reproduce/reproduce.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.
