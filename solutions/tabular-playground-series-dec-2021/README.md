@@ -23,7 +23,7 @@ A typed tabular portfolio operator: it detects column types from the data and ru
 | 3 | gold | 0.95887 |
 
 **Best verified result:** gold, `0.95996`.
-**Method:** public-training outer final.
+**Method:** public-train outer final.
 **Best-grade evidence SHA-256:** `bf88bf41114859a33a79af13a92f4a6cb356414c689e00d7e1a964fa1bcf6c23`.
 
 ## Verify it yourself

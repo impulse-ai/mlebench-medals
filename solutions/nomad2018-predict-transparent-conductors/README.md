@@ -23,7 +23,7 @@ A geometry-aware operator: it parses each crystal's geometry file (lattice vecto
 | 3 | silver | 0.05993 |
 
 **Best verified result:** gold, `0.05373`.
-**Method:** public-training geometry files.
+**Method:** public_train_geometry_files.
 **Best-grade evidence SHA-256:** `08c4a8c606a1fca796c23a47837641af2e3e955fa068db81192f87a7b5bf4dab`.
 
 ## Verify it yourself

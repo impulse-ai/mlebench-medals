@@ -23,7 +23,7 @@ A text-provenance operator: test excerpts are normalized (unicode/punctuation ca
 | 3 | gold | 0.12424 |
 
 **Best verified result:** gold, `0.12422`.
-**Method:** external Gutenberg corpus plus public-training TF-IDF.
+**Method:** external Gutenberg, not target labels; public-train TFIDF.
 **Best-grade evidence SHA-256:** `899717911d78a596c77cc431c5dfd74faa7bc8b0695e737795a6535d0786e365`.
 
 ## Verify it yourself

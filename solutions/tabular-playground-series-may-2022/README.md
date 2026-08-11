@@ -19,7 +19,7 @@ Candidate members produce out-of-fold predictions on the public training data. O
 | 3 | silver | 0.99822 |
 
 **Best verified result:** silver, `0.99822`.
-**Method:** public-trained independent outer blends; members excluded.
+**Method:** public-trained independent OUTER blends; members excluded.
 **Best-grade evidence SHA-256:** `5480166e87d2f894dd6be2c36884db4e7e33f37bd8a1f0e5bf269f169716d2e4`.
 
 ## Verify it yourself

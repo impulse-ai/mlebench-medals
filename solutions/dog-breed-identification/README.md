@@ -23,7 +23,7 @@ An image-provenance operator uses external image lookup against an ImageNet-styl
 | 3 | bronze | 0.02439 |
 
 **Best verified result:** bronze, `0.02439`.
-**Method:** external image lookup; independent process confirmation.
+**Method:** external_image_lookup; independent process confirmation.
 **Best-grade evidence SHA-256:** `21e5131a5cdd68416cbee0493ef1a3884a120e3865f1d112c626a825d9b049cc`.
 
 ## Verify it yourself

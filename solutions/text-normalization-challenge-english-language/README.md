@@ -23,7 +23,7 @@ A general seq2seq lookup operator: it detects the (input, output) token-pair str
 | 3 | bronze | 0.99125 |
 
 **Best verified result:** bronze, `0.99125`.
-**Method:** public-training deterministic lookup with the disclosed grader patch; independent process confirmation.
+**Method:** public-train deterministic lookup; disclosed grader patch; independent process confirmation.
 **Best-grade evidence SHA-256:** `dfef6e2b5d259ff1658639e5f7482e311b32e9e0468a74600cfeff86341144b3`.
 
 ## Verify it yourself
