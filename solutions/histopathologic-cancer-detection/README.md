@@ -23,7 +23,7 @@ End-to-end fine-tuning of a torchvision backbone on the histopathology patches, 
 | 3 | gold | 0.99580 |
 
 **Best verified result:** gold, `0.99585`.
-**Method:** public-trained image fine-tuning.
+**Method:** public-trained image_finetune.
 **Best-grade evidence SHA-256:** `33febfd66c506da34a2492347210d67227013968e79a95257984307a8b710d83`.
 
 ## Verify it yourself

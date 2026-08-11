@@ -23,7 +23,7 @@ A 3-config diverse ordinal ensemble: diverse backbone families at different reso
 | 3 | bronze | 0.91930 |
 
 **Best verified result:** silver, `0.92020`.
-**Method:** prepared public images, pinned pretrained checkpoints, and the exact legacy ensemble; independent process confirmation.
+**Method:** public prepared images + pinned pretrained checkpoints; exact legacy ensemble; independent process confirmation.
 **Best-grade evidence SHA-256:** `6aa3c818ede32760bf85f9af02773991e2b6d783c9375e16ce45d0ade087e11f`.
 
 ## Verify it yourself

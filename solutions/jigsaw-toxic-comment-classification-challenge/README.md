@@ -23,7 +23,7 @@ A GPU transformer fine-tune operator: where word/char TF-IDF plateaus (~0.9805 m
 | 3 | silver | 0.98701 |
 
 **Best verified result:** gold, `0.98750`.
-**Method:** public training; provider revision unpinned.
+**Method:** public train; provider revision unpinned.
 **Best-grade evidence SHA-256:** `44afed4c88531ccb48a15295512e27b466d15866a8978d9573103168f4fe3a49`.
 
 ## Verify it yourself

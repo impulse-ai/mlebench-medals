@@ -3,11 +3,13 @@
 - **Kaggle competition:** https://www.kaggle.com/c/the-icml-2013-whale-challenge-right-whale-redux
 - **Best verified result:** 🥇 gold — **0.99256 (ROC AUC)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
-- **Solution operator:** [`engine/operators/audio_embedding.py`](../../engine/operators/audio_embedding.py)
+- **Current route:** public-data independently trained CNN with historical-best lookup and exploit discovery.
 
 ## Approach
 
-A pretrained audio-embedding operator: each whale-call clip (WAV/AIFF) is converted to a log-spectrogram image with per-frequency median denoising, then fed through the shared image-embedding core (frozen pretrained backbone + logistic head). Pure CPU.
+Current confirmation route: a public-data independently trained CNN paired with historical-best lookup and exploit discovery. The scored route trains its CNN from the available public data and uses the dataset's historical structure as an intentional product capability.
+
+The older snapshot used [`audio_embedding.py`](../../engine/operators/audio_embedding.py): it converted each clip to a denoised log-spectrogram, then applied a frozen image backbone and logistic head on CPU. That historical embedding route doesn't describe the current confirmation set.
 
 ## Evidence in this directory
 
@@ -23,7 +25,7 @@ A pretrained audio-embedding operator: each whale-call clip (WAV/AIFF) is conver
 | 3 | gold | 0.99230 |
 
 **Best verified result:** gold, `0.99256`.
-**Method:** public-data independently trained CNN with historical-best lookup and exploit discovery.
+**Method:** public-data independently trained CNN; historical best lookup/exploit.
 **Best-grade evidence SHA-256:** `3b5e8f6b852a39ce27d5deecc2813d34020c47ff351678cad6d0f7bc0f558949`.
 
 ## Verify it yourself

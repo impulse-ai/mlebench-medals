@@ -3,11 +3,13 @@
 - **Kaggle competition:** https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition
 - **Best verified result:** 🥇 gold — **0.00597 (log loss)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
-- **Solution operator:** [`engine/operators/image_embedding.py`](../../engine/operators/image_embedding.py)
+- **Current solution operator:** [`engine/operators/image_finetune.py`](../../engine/operators/image_finetune.py)
 
 ## Approach
 
-A pretrained image-embedding operator: images are embedded with a frozen pretrained backbone, a logistic head is fit on top, and backbone/calibration choices are made using out-of-fold predictions only. The cats-vs-dogs prior in the pretrained features is near-perfect, giving a 0.0098 log loss.
+Current confirmation route: public-training image fine-tuning with three independent GPU seeds. Each run trains the image model on the competition's public training set; the scored confirmations are the three seed runs, while the derived blend stays outside the confirmation set.
+
+The older snapshot used a frozen pretrained embedding backbone with a logistic head and OOF-only backbone/calibration selection. That historical route remains useful reproduction context for the local files below, but it isn't the route represented by the current three-run table.
 
 ## Evidence in this directory
 
@@ -23,7 +25,7 @@ A pretrained image-embedding operator: images are embedded with a frozen pretrai
 | 3 | gold | 0.00974 |
 
 **Best verified result:** gold, `0.00597`.
-**Method:** public-training image fine-tuning with three independent GPU seeds; the derived blend isn't part of the confirmation set.
+**Method:** public train image_finetune; three independent GPU seeds; derived blend excluded.
 **Best-grade evidence SHA-256:** `6005accddf7b756344e89b0eed9333f37ac59bcc43db047493e26b2437cd2ca9`.
 
 ## Verify it yourself

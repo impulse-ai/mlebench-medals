@@ -3,11 +3,13 @@
 - **Kaggle competition:** https://www.kaggle.com/c/mlsp-2013-birds
 - **Best verified result:** 🥈 silver — **0.93170 (ROC AUC)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
-- **Solution operator:** [`engine/operators/audio_multilabel.py`](../../engine/operators/audio_multilabel.py)
+- **Current route:** public deterministic legacy replay.
 
 ## Approach
 
-A general audio multi-label operator: it detects the long-format submission contract (one row per (recording, class) pair with composite integer ids) and the variable-length multi-label annotation file, then fits a multi-label audio classifier on CPU. Re-confirmed autonomously on 2026-07-12; an earlier hand-scripted GPU job (silver, 0.93143) is preserved in `reproduce/gpu/birds/`.
+Current confirmation route: public deterministic legacy replay, verified through independent process confirmation. Three separate processes replayed the established route and produced the same `0.93170` result.
+
+The older [`audio_multilabel.py`](../../engine/operators/audio_multilabel.py) path detected the long-format submission contract and fit a multi-label classifier on CPU. A separate hand-scripted GPU result (`0.93143`) also remains in `reproduce/gpu/birds/`; both are historical context rather than the current confirmation route.
 
 ## Evidence in this directory
 
