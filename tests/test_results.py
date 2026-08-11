@@ -42,6 +42,15 @@ class ResultsContractTests(unittest.TestCase):
         errors = self.verify_mutation(data)
         self.assertIn("confirmation 1 must medal on exactly 19 tasks", errors)
 
+    def test_rejects_short_confirmation_list_without_crashing(self):
+        data = self.load_results()
+        data["tasks"][0]["confirmations"].pop()
+        errors = self.verify_mutation(data)
+        self.assertIn(
+            "aerial-cactus-identification must have exactly 3 confirmations",
+            errors,
+        )
+
     def test_rejects_stale_readme_language(self):
         errors = verify_public_prose("18 medals and one single autonomous run")
         self.assertIn("stale public claim: 18 medals", errors)
