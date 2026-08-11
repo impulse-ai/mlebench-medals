@@ -230,6 +230,17 @@ class ResultsContractTests(unittest.TestCase):
                     f"{relative_path}: stale public claim: {phrase}", errors
                 )
 
+    def test_scans_referenced_public_executable_for_stale_claims(self):
+        def mutate(root):
+            path = root / "reproduce/reproduce.sh"
+            path.write_text(path.read_text() + "\n# 18 medals\n")
+
+        errors = self.verify_mutation(mutate_files=mutate)
+        self.assertIn(
+            "reproduce/reproduce.sh: stale public claim: 18 medals",
+            errors,
+        )
+
     def test_malformed_json_structures_return_errors_instead_of_crashing(self):
         malformed_values = (
             "{",

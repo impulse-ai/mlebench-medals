@@ -1,28 +1,25 @@
 #!/usr/bin/env bash
 # =============================================================================
-# reproduce.sh — one command to independently reproduce our MLE-bench Lite-22
-#                Class-A (autonomous) medals with OpenAI's official grader.
+# reproduce.sh — run the default CPU-oriented MLE-bench Lite-22 reproduction
+#                subset and collect its grades.
 #
 # What this does, per task:
 #   1. prepares the task data via `mlebench prepare` (OpenAI's tooling)
 #   2. runs OUR autonomous agent:  bench.lite22_controller --agent ees:standalone
-#   3. grades the agent's submission with `mlebench grade-sample` (OpenAI's grader)
-#   4. collects a medal table (task, official score, medal)
+#   3. grades the submission with OpenAI's MLE-bench grading logic
+#   4. collects a medal table (task, score, medal)
 #
-# The grader is OpenAI's `mlebench`, UNMODIFIED. We do not compute medals; we
-# only run their grader and read its output. See reproduce/VERIFY.md.
+# Scope: the default array below contains 15 task IDs. It is a CPU-oriented
+# reproduction subset, not the complete 19-task public result. See
+# results/lite22-three-run.json for the full machine-readable result and
+# reproduce/EVIDENCE.md for its public evidence table.
 #
-# HONESTY: this reproduces the CLASS-A set (autonomous, one command). The
-# Class-B GPU/assisted medals (histo, birds, jigsaw, leaf) are NOT run here —
-# their capture + independent-grade evidence lives in reproduce/gpu/. See
-# reproduce/EVIDENCE.md for the full 17-medal A/B ledger.
-#
-# MANUAL GATE (unavoidable, per OpenAI/Kaggle): you must accept each
-# competition's rules on kaggle.com with your own account before `mlebench
-# prepare` can download it. See reproduce/VERIFY.md section (a) for the URLs.
+# Before `mlebench prepare` can download a task, your Kaggle account must accept
+# that competition's rules. reproduce/VERIFY.md explains the setup and grading
+# flow.
 #
 # Usage:
-#   reproduce/reproduce.sh                        # full Class-A set
+#   reproduce/reproduce.sh                        # default 15-task CPU-oriented subset
 #   reproduce/reproduce.sh --tasks "spooky-author-identification nomad2018-predict-transparent-conductors"
 #   reproduce/reproduce.sh --skip-prepare         # data already prepared
 #   reproduce/reproduce.sh --output-root bench/runs/verify-$(date +%s)
@@ -38,21 +35,18 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$REPO_ROOT"
 
 # ---- Defaults ---------------------------------------------------------------
-# Class-A autonomous set (13 medals). See reproduce/EVIDENCE.md for the ledger.
+# Default CPU-oriented reproduction subset (15 task IDs).
 DEFAULT_TASKS=(
-  # --- gold (6) ---
   aerial-cactus-identification
   detecting-insults-in-social-commentary
   nomad2018-predict-transparent-conductors
   dogs-vs-cats-redux-kernels-edition
   plant-pathology-2020-fgvc7
   tabular-playground-series-dec-2021
-  # --- silver (4) ---
   spooky-author-identification
   denoising-dirty-documents
   leaf-classification
   mlsp-2013-birds
-  # --- bronze (5) ---
   the-icml-2013-whale-challenge-right-whale-redux
   text-normalization-challenge-russian-language
   text-normalization-challenge-english-language
@@ -101,7 +95,7 @@ PY
 fi
 
 log "=============================================================="
-log "MLE-bench Lite-22 Class-A reproduction"
+log "MLE-bench Lite-22 default CPU-oriented reproduction subset"
 log "repo root:   $REPO_ROOT"
 log "git commit:  $(git rev-parse HEAD 2>/dev/null || echo '(no git)')"
 log "cache dir:   $CACHE_DIR"
@@ -116,7 +110,7 @@ command -v python3 >/dev/null || fail "python3 not found"
 python3 -c "import bench.lite22_controller" 2>/dev/null \
   || fail "cannot import bench.lite22_controller — run from the repo root with deps installed (pip install -r reproduce/requirements.lock -r bench/requirements.txt)"
 command -v mlebench >/dev/null \
-  || fail "mlebench CLI not found — pip install -r bench/requirements.txt (installs OpenAI's grader from git)"
+  || fail "mlebench CLI not found — pip install -r bench/requirements.txt"
 
 # pandas pin check (load-bearing — see reproduce/requirements.lock)
 PANDAS_V="$(python3 -c 'import pandas; print(pandas.__version__)' 2>/dev/null || echo '?')"
@@ -170,8 +164,8 @@ for task in "${TASKS[@]}"; do
     fi
   fi
 
-  # 2) Run OUR autonomous agent + 3) grade with mlebench (the controller does both).
-  log "  running agent + official grader (timeout ${TIMEOUT_S}s)"
+  # 2) Run OUR autonomous agent + 3) grade with MLE-bench logic.
+  log "  running agent + MLE-bench grading logic (timeout ${TIMEOUT_S}s)"
   force_flag=(); [[ "$FORCE" -eq 1 ]] && force_flag=(--force)
   if python3 -m bench.lite22_controller \
         --agent ees:standalone \
@@ -195,7 +189,7 @@ done
 
 # ---- Medal table ------------------------------------------------------------
 log "=============================================================="
-log "MEDAL TABLE (official mlebench grades)"
+log "MEDAL TABLE (MLE-bench grades)"
 MEDAL_TABLE="$OUTPUT_ROOT/medal_table.tsv"
 python3 - "$OUTPUT_ROOT" "$MEDAL_TABLE" <<'PY' | tee -a "$RUN_LOG"
 import json, sys
