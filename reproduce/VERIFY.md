@@ -1,6 +1,6 @@
 # Verify the MLE-bench Lite-22 result
 
-Impulse AutoML earned medals on **19 of 22 MLE-bench Lite competitions: 86.36%
+Impulse AI earned medals on **19 of 22 MLE-bench Lite competitions: 86.36%
 ± 0.00 across three confirmed runs**. Each confirmation column contains the same
 19 medal tasks. The best verified results are **11 gold / 5 silver / 3 bronze**,
 including a silver best result for

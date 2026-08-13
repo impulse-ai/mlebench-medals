@@ -1,6 +1,6 @@
 # Evidence index: MLE-bench Lite-22
 
-**19/22 (86.36% ± 0.00) across three confirmed runs.** Impulse AutoML earned a medal on the same 19 tasks in each confirmation column. The best verified results break down to **11 gold / 5 silver / 3 bronze**. Every score uses [OpenAI's MLE-bench grading logic](https://github.com/openai/mle-bench).
+**19/22 (86.36% ± 0.00) across three confirmed runs.** Impulse's agent earned a medal on the same 19 tasks in each confirmation column. The best verified results break down to **11 gold / 5 silver / 3 bronze**. Every score uses [OpenAI's MLE-bench grading logic](https://github.com/openai/mle-bench).
 
 The checked-in [results ledger](../results/lite22-three-run.json) is the machine-readable source for the table below. Each task name links to its approach and reproduction notes.
 
@@ -35,7 +35,7 @@ The checked-in [results ledger](../results/lite22-three-run.json) is the machine
 
 ## Capability and scope
 
-Public external data, web research, pretrained models, and exploit discovery are intentional Impulse AutoML capabilities. The method column records where a route used one of them. Pizza uses an external target lookup, and Dog Breed uses an external image lookup.
+Public external data, web research, pretrained models, and exploit discovery are intentional capabilities of Impulse's agent. The method column records where a route used one of them. Pizza uses an external target lookup, and Dog Breed uses an external image lookup.
 
 The claim covers MLE-bench Lite-22. NYC Taxi Fare, RANZCR, and SIIM-ISIC Melanoma had no confirmed medal. This repository publishes hashes, scores, methods, and reproduction notes; it doesn't contain private labels, credentials, raw benchmark datasets, or model blobs.
 
