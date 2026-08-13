@@ -20,7 +20,7 @@ import hashlib
 import sys
 from pathlib import Path
 
-# The official Lite-22 task list (mirrors splits/lite22.py).
+# The official MLE-bench Lite-22 (low-compute split) task list.
 LITE22 = [
     "aerial-cactus-identification",
     "aptos2019-blindness-detection",

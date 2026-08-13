@@ -3,7 +3,7 @@
 - **Kaggle competition:** https://www.kaggle.com/c/denoising-dirty-documents
 - **Best verified result:** 🥈 silver — **0.01919 (RMSE)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
-- **Solution operator:** [`engine/operators/image_denoise.py`](../../engine/operators/image_denoise.py)
+- **Solution operator:** `image_denoise` (Impulse proprietary operator family; source not published)
 
 ## Approach
 
@@ -28,7 +28,7 @@ A CPU image-to-image denoising operator for per-pixel regression: it detects the
 
 ## Verify it yourself
 
-The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/agent-run.sh`](../../reproduce/agent-run.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. Every published submission can be independently re-graded with OpenAI's unmodified `mlebench grade-sample` tooling — no Impulse code required. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.

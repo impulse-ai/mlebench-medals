@@ -2,7 +2,7 @@
 # ============================================================
 # These are the EXACT package versions our Class-A medals were produced and
 # graded under, captured verbatim from the reproducibility bundles emitted by
-# the graded sweep (runs/cloud-harvest-0708/final_runs/*/bundle/environment.json).
+# the graded sweep.
 #
 # Interpreter: CPython 3.11.15  (Linux-6.8.0-gcp x86_64, glibc 2.35)
 #
@@ -11,13 +11,11 @@
 # * pandas==3.0.3 is the single most important pin. pandas 3's string-dtype
 #   inference changed how CSV columns are typed. Under a different pandas, two
 #   failure modes appear:
-#     (a) the agent's feature pipeline splits a column's dtype and crashes or
-#         silently degrades (the "pandas-3 str-dtype" lesson — fixed in-code by
-#         PR #808's dtype-compat shim, which ASSUMES pandas 3 semantics);
+#     (a) the medal-winning feature pipelines assume pandas 3 string-dtype
+#         semantics and can crash or silently degrade on a different major;
 #     (b) mlebench's own grader compares str-vs-float and returns score=None on
-#         text-normalization (our grader.py has a dtype=str coercion fallback,
-#         PR #819, that also assumes this pandas behaviour).
-#   Reproducing on a different pandas major can change scores or medals. Pin it.
+#         text-normalization unless the submission is coerced with dtype=str.
+#   Re-grading on a different pandas major can change scores or medals. Pin it.
 # * numpy/scikit-learn/xgboost/lightgbm affect model fits and therefore scores
 #   at the margin; several medals are thin (nomad gold at 0.05373 vs 0.05589
 #   threshold; text-norm-en bronze at 0.99125 vs 0.99038). Pin them.
@@ -27,7 +25,6 @@
 # INSTALL
 #   python3.11 -m venv .venv && . .venv/bin/activate
 #   pip install -r reproduce/requirements.lock
-#   pip install -r requirements.txt   # pulls mlebench from git (grader)
 
 # --- Core numerical / ML stack (graded versions) ---
 pandas==3.0.3
@@ -46,9 +43,11 @@ lightgbm==4.6.0
 torch==2.12.1
 torchvision==0.27.1
 
-# --- Agent LLM client (the Gemini reasoning loop; needs GEMINI_API_KEY) ---
+# --- LLM client used by the (proprietary) engine during the graded runs ---
+# Historical pin only; re-grading published submissions does not need it.
 google-genai==2.10.0
 
-# --- Grader + harness (installed via requirements.txt) ---
-# mlebench @ git+https://github.com/openai/mle-bench.git   # OpenAI's grader, unmodified
-# pyyaml, requests
+# --- Grader (OpenAI's code, unmodified) ---
+mlebench @ git+https://github.com/openai/mle-bench.git
+pyyaml
+requests

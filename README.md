@@ -2,7 +2,7 @@
 
 Impulse AI earned medals on 19 of 22 [MLE-bench](https://github.com/openai/mle-bench) Lite-22 competitions: **86.36% ± 0.00 across three confirmed runs.** The best verified results are **11 gold / 5 silver / 3 bronze**. Every score uses OpenAI's MLE-bench grading logic.
 
-MLE-bench Lite is the 22-competition low-compute split of OpenAI's benchmark of real Kaggle competitions. This repository contains the agent controller (`engine-controller.py`), its general operators (`engine/operators/`), and the per-competition solution notes.
+MLE-bench Lite is the 22-competition low-compute split of OpenAI's benchmark of real Kaggle competitions. This repository contains the results ledger, the per-competition solution notes, the grading artifacts, and the verification tooling for those results. The engine itself is proprietary and is not public; a live re-run under observation is available on request.
 
 ## Medal table
 
@@ -40,7 +40,7 @@ The [MLE-bench project](https://github.com/openai/mle-bench#leaderboard) publish
 
 | Agent | LLM(s) used | Lite any-medal (%) | Source code available |
 |---|---|---:|---|
-| Impulse EES (this repository) | Gemini | **86.36 ± 0.00 (19/22)** | ✓ |
+| Impulse EES (this repository) | Gemini | **86.36 ± 0.00 (19/22)** | ✗ |
 | Famou-Agent 2.0 | Gemini-3-Pro-Preview | 80.3 ± 1.52 | ✗ |
 | MLEvolve | Gemini-3-Pro-Preview | 80.30 ± 1.52 | ✓ |
 | PiEvolve (Fractal AI Research) | Gemini-3-Pro-Preview | 80.30 ± 1.52 | ✗ |
@@ -58,12 +58,13 @@ Each confirmation set missed the medal threshold on these competitions:
 
 ## How to verify
 
-- [Quickstart](reproduce/QUICKSTART.md): run the agent on one competition and grade the resulting submission with OpenAI's tooling.
+- [Quickstart](reproduce/QUICKSTART.md): independently re-grade a published submission with OpenAI's tooling.
 - [Full runbook](reproduce/VERIFY.md): environment setup, data access, and the full grading flow.
 - [Evidence index](reproduce/EVIDENCE.md): the per-task evidence inventory.
 - [Results verifier](reproduce/verify_results.py): validate the checked-in ledger, README links, and public claims.
 
-Grade any `submission.csv` directly with:
+Every published submission can be independently re-graded with OpenAI's unmodified
+`mlebench` grader — no Impulse code is required:
 
 ```bash
 mlebench grade-sample <submission.csv> <competition>
@@ -71,9 +72,9 @@ mlebench grade-sample <submission.csv> <competition>
 
 ## Repository layout
 
-- `engine/`: the autonomous agent, its reasoning engine, and general operators for image, audio, text, and tabular work.
 - `solutions/<competition>/`: approach notes and evidence artifacts for each medal task.
-- `reproduce/`: the verification packet, reproducibility guides, container setup, checksums, and GPU job material.
+- `results/`: the machine-readable three-run evidence ledger.
+- `reproduce/`: the verification packet, re-grading guides, container setup, checksums, and GPU job material.
 
 ## Scope
 

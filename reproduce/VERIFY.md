@@ -10,6 +10,9 @@ The checked-in [results ledger](../results/lite22-three-run.json) holds the exac
 scores, methods, and SHA-256 evidence anchors. [`EVIDENCE.md`](EVIDENCE.md)
 renders the same records as a readable table.
 
+The engine that produced these results is proprietary and is not part of this
+repository; Impulse offers a live re-run under observation on request.
+
 ## Check the publication without downloading competition data
 
 Start from the public `main` branch:
@@ -45,13 +48,12 @@ Use Python 3.11 and the pinned dependencies:
 python3.11 -m venv .venv
 . .venv/bin/activate
 pip install -r reproduce/requirements.lock
-pip install -r requirements.txt
 ```
 
 MLE-bench downloads Kaggle competition data through your Kaggle account. Save an
 API token as `~/.kaggle/kaggle.json`, visit the rules page for each competition
-you plan to run, and accept its rules while signed in. A missing acceptance
-usually appears as a `403` during preparation.
+you plan to grade against, and accept its rules while signed in. A missing
+acceptance usually appears as a `403` during preparation.
 
 To confirm that prepared data matches the recorded inputs:
 
@@ -59,56 +61,32 @@ To confirm that prepared data matches the recorded inputs:
 python reproduce/generate_checksums.py --verify
 ```
 
-## Run and grade tasks
+## Re-grade published submissions
 
-Run a small selection first:
-
-```bash
-reproduce/agent-run.sh --tasks \
-  "nomad2018-predict-transparent-conductors detecting-insults-in-social-commentary"
-```
-
-Or run the script's full default task set:
+Every published submission can be independently re-graded with OpenAI's
+unmodified MLE-bench grader — no Impulse code is required:
 
 ```bash
-reproduce/agent-run.sh
+mlebench grade-sample solutions/<task>/submission.csv <task>
 ```
 
-If the data already exists locally, add `--skip-prepare`. Use `--timeout` to
-change the per-task limit. The script writes:
-
-```text
-runs/verify-<timestamp>/medal_table.tsv
-runs/verify-<timestamp>/<task>/grade.json
-runs/verify-<timestamp>/<task>/bundle/
-runs/verify-<timestamp>/reproduce.log
-```
-
-The bundle contains the submission, exact run code, environment metadata,
-command, and SHA-256 manifest. Grade any bundled submission directly with:
-
-```bash
-mlebench grade-sample \
-  runs/verify-<timestamp>/<task>/bundle/submission/submission.csv \
-  <task>
-```
-
-These commands use OpenAI's MLE-bench grading logic. The English text-normalization
-route documents its CSV compatibility handling explicitly; the public method text
-appears identically in the JSON ledger, evidence table, and solution page.
+Committed submissions live next to each solution page that carries one, and the
+GPU-lane captures in [`gpu/`](gpu/) include their own `official_grade.json`
+outputs. These commands use OpenAI's MLE-bench grading logic. The English
+text-normalization route documents its CSV compatibility handling explicitly;
+the public method text appears identically in the JSON ledger, evidence table,
+and solution page.
 
 ## Compute and route notes
 
-`agent-run.sh` runs tasks serially and supports CPU execution. Image, audio, and
-neural routes can take substantially longer than the tabular and text tasks on a
-laptop. The checked-in [`gpu/`](gpu/) material covers GPU job reproduction for
-routes that use it, while each solution page states the method behind its current
-confirmation record.
+The checked-in [`gpu/`](gpu/) material captures the hand-run GPU jobs and their
+official grade outputs for the routes that used GPUs, while each solution page
+states the method behind its current confirmation record.
 
 Public external data, pretrained checkpoints, web research, and dataset-structure
 discovery are enabled product capabilities. The ledger names external target or
 image lookups where they occur; it doesn't include private labels, credentials,
 raw benchmark data, or model artifacts.
 
-For a hermetic starting point, build [`Dockerfile`](Dockerfile). For a quick
-single-task check, use [`QUICKSTART.md`](QUICKSTART.md).
+For a hermetic grading environment, build [`Dockerfile`](Dockerfile). For a
+quick single-submission re-grade, use [`QUICKSTART.md`](QUICKSTART.md).

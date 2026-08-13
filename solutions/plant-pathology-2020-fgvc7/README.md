@@ -3,7 +3,7 @@
 - **Kaggle competition:** https://www.kaggle.com/c/plant-pathology-2020-fgvc7
 - **Best verified result:** 🥇 gold — **0.98902 (mean column-wise ROC AUC)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
-- **Solution operator:** [`engine/operators/image_finetune.py`](../../engine/operators/image_finetune.py), [`engine/operators/image_finetune_ensemble.py`](../../engine/operators/image_finetune_ensemble.py)
+- **Solution operator:** `image_finetune`, `image_finetune_ensemble` (Impulse proprietary operator families; source not published)
 
 ## Approach
 
@@ -28,7 +28,7 @@ Full end-to-end fine-tuning of a torchvision backbone — the escalation tier ab
 
 ## Verify it yourself
 
-The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/agent-run.sh`](../../reproduce/agent-run.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. Every published submission can be independently re-graded with OpenAI's unmodified `mlebench grade-sample` tooling — no Impulse code required. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.

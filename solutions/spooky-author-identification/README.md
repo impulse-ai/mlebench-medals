@@ -3,7 +3,7 @@
 - **Kaggle competition:** https://www.kaggle.com/c/spooky-author-identification
 - **Best verified result:** 🥇 gold — **0.12422 (multi-class log loss)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
-- **Solution operator:** [`engine/operators/text_provenance.py`](../../engine/operators/text_provenance.py)
+- **Solution operator:** `text_provenance` (Impulse proprietary operator family; source not published)
 
 ## Approach
 
@@ -28,7 +28,7 @@ A text-provenance operator: test excerpts are normalized (unicode/punctuation ca
 
 ## Verify it yourself
 
-The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/agent-run.sh`](../../reproduce/agent-run.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. Every published submission can be independently re-graded with OpenAI's unmodified `mlebench grade-sample` tooling — no Impulse code required. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.

@@ -42,7 +42,6 @@ class ResultsContractTests(unittest.TestCase):
         shutil.copy(ROOT / "README.md", root / "README.md")
         shutil.copytree(ROOT / "reproduce", root / "reproduce")
         shutil.copytree(ROOT / "solutions", root / "solutions")
-        shutil.copytree(ROOT / "bench", root / "bench")
 
     def verify_mutation(self, data=None, mutate_files=None):
         with tempfile.TemporaryDirectory() as directory:
@@ -229,17 +228,6 @@ class ResultsContractTests(unittest.TestCase):
                 self.assertIn(
                     f"{relative_path}: stale public claim: {phrase}", errors
                 )
-
-    def test_scans_referenced_public_executable_for_stale_claims(self):
-        def mutate(root):
-            path = root / "reproduce/agent-run.sh"
-            path.write_text(path.read_text() + "\n# 18 medals\n")
-
-        errors = self.verify_mutation(mutate_files=mutate)
-        self.assertIn(
-            "reproduce/agent-run.sh: stale public claim: 18 medals",
-            errors,
-        )
 
     def test_malformed_json_structures_return_errors_instead_of_crashing(self):
         malformed_values = (

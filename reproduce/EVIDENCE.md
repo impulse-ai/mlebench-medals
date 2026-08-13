@@ -39,4 +39,4 @@ Public external data, web research, pretrained models, and exploit discovery are
 
 The claim covers MLE-bench Lite-22. NYC Taxi Fare, RANZCR, and SIIM-ISIC Melanoma had no confirmed medal. This repository publishes hashes, scores, methods, and reproduction notes; it doesn't contain private labels, credentials, raw benchmark datasets, or model blobs.
 
-Use the [quickstart](QUICKSTART.md) to reproduce one task, or follow the [full verification runbook](VERIFY.md) for the complete grading flow.
+Use the [quickstart](QUICKSTART.md) to re-grade one published submission, or follow the [full verification runbook](VERIFY.md) for the complete grading flow.

@@ -1,7 +1,7 @@
 # Class-B GPU / assisted medals — capture + independent-grade evidence
 
-These three medals were **NOT** produced by the one-command autonomous agent
-(`agent-run.sh`). They were produced by **manual, hand-scripted Vertex AI GPU
+These three medals were **NOT** produced autonomously by the agent. They were
+produced by **manual, hand-scripted Vertex AI GPU
 jobs** run during the 2026-07-09 campaign. We mark them **Class-B (assisted)**
 and disclose that plainly. The grading is still OpenAI's `mlebench`, unmodified —
 you can re-run the grader yourself against the captured submissions (birds and
@@ -82,5 +82,5 @@ Both require the task's data prepared locally (`mlebench prepare -c <task>`).
   the private test set graded once. See `birds/METRICS_birds.md` and `jigsaw/blend3b.py`.
 - **The fourth Class-B medal, leaf-classification (silver 0.00671), is NOT a GPU
   medal** — it is operator-gate-proven (the #830 validation-reliability blend on
-  the default operator pool) but not yet re-confirmed in a full autonomous sweep,
-  so it is not in `agent-run.sh`'s default set. See reproduce/EVIDENCE.md.
+  the default operator pool) but was not re-confirmed in a full autonomous sweep.
+  See reproduce/EVIDENCE.md.

@@ -3,7 +3,7 @@
 - **Kaggle competition:** https://www.kaggle.com/c/text-normalization-challenge-russian-language
 - **Best verified result:** 🥉 bronze — **0.97915 (token-level accuracy)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
-- **Solution operator:** [`engine/operators/seq2seq_lookup.py`](../../engine/operators/seq2seq_lookup.py)
+- **Solution operator:** `seq2seq_lookup` (Impulse proprietary operator family; source not published)
 
 ## Approach
 
@@ -28,7 +28,7 @@ The same general seq2seq lookup operator as the English task — exact-match / m
 
 ## Verify it yourself
 
-The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/agent-run.sh`](../../reproduce/agent-run.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. Every published submission can be independently re-graded with OpenAI's unmodified `mlebench grade-sample` tooling — no Impulse code required. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.

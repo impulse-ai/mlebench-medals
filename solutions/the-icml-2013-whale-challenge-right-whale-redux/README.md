@@ -9,7 +9,7 @@
 
 Current confirmation route: a public-data independently trained CNN paired with historical-best lookup and exploit discovery. The scored route trains its CNN from the available public data and uses the dataset's historical structure as an intentional product capability.
 
-The older snapshot used [`audio_embedding.py`](../../engine/operators/audio_embedding.py): it converted each clip to a denoised log-spectrogram, then applied a frozen image backbone and logistic head on CPU. That historical embedding route doesn't describe the current confirmation set.
+The older snapshot used the `audio_embedding` operator: it converted each clip to a denoised log-spectrogram, then applied a frozen image backbone and logistic head on CPU. That historical embedding route doesn't describe the current confirmation set.
 
 ## Evidence in this directory
 
@@ -30,7 +30,7 @@ The older snapshot used [`audio_embedding.py`](../../engine/operators/audio_embe
 
 ## Verify it yourself
 
-The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/agent-run.sh`](../../reproduce/agent-run.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. Every published submission can be independently re-graded with OpenAI's unmodified `mlebench grade-sample` tooling — no Impulse code required. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.

@@ -1,20 +1,26 @@
-# Hermetic environment for reproducing MLE-bench Lite-22 Class-A medals.
+# Hermetic environment for independently re-grading the published MLE-bench
+# Lite-22 submissions with OpenAI's unmodified mlebench grader.
 #
 # This pins the interpreter + numerical stack to the versions our medals were
 # graded under (see reproduce/requirements.lock — pandas 3.0.3 is load-bearing).
 # The image does NOT bundle competition data or Kaggle credentials: you supply
 # those at run time (rule-acceptance is a manual, per-account Kaggle step — see
-# reproduce/VERIFY.md).
+# reproduce/VERIFY.md). The engine that produced the submissions is proprietary
+# and is not part of this repository; re-grading needs only OpenAI's grader.
 #
 # Build (from repo root):
 #   docker build -f reproduce/Dockerfile -t mlebench-verify .
 #
-# Run (mount your Kaggle creds + a data cache; GEMINI/web keys optional):
+# Run (mount your Kaggle creds + a data cache):
 #   docker run --rm -it \
 #     -v "$HOME/.kaggle:/root/.kaggle:ro" \
-#     -v "$PWD/runs:/app/runs" \
 #     -v mlebench-data:/root/.cache/mle-bench/data \
-#     mlebench-verify reproduce/agent-run.sh --tasks "nomad2018-predict-transparent-conductors"
+#     mlebench-verify
+#   # then, inside the container:
+#   mlebench prepare -c nomad2018-predict-transparent-conductors
+#   mlebench grade-sample \
+#     solutions/nomad2018-predict-transparent-conductors/submission.csv \
+#     nomad2018-predict-transparent-conductors
 #
 # CPU-only. GPU (Class-B) medals are captured separately in reproduce/gpu/.
 FROM python:3.11-slim
@@ -33,13 +39,11 @@ WORKDIR /app
 # Install the pinned stack first (better layer caching). CPU torch wheels come
 # from the PyTorch CPU index.
 COPY reproduce/requirements.lock reproduce/requirements.lock
-COPY requirements.txt requirements.txt
 RUN pip install --index-url https://download.pytorch.org/whl/cpu \
         --extra-index-url https://pypi.org/simple \
-        -r reproduce/requirements.lock \
- && pip install -r requirements.txt
+        -r reproduce/requirements.lock
 
-# Copy the repo (the agent + harness + grader wrapper).
+# Copy the repo (ledger, solutions, verification tooling).
 COPY . .
 
 ENTRYPOINT ["bash"]

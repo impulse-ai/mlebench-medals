@@ -9,7 +9,7 @@
 
 Current confirmation route: public deterministic legacy replay, verified through independent process confirmation. Three separate processes replayed the established route and produced the same `0.93170` result.
 
-The older [`audio_multilabel.py`](../../engine/operators/audio_multilabel.py) path detected the long-format submission contract and fit a multi-label classifier on CPU. A separate hand-scripted GPU result (`0.93143`) also remains in `reproduce/gpu/birds/`; both are historical context rather than the current confirmation route.
+The older `audio_multilabel` operator path detected the long-format submission contract and fit a multi-label classifier on CPU. A separate hand-scripted GPU result (`0.93143`) also remains in `reproduce/gpu/birds/`; both are historical context rather than the current confirmation route.
 
 ## Evidence in this directory
 
@@ -30,7 +30,7 @@ The older [`audio_multilabel.py`](../../engine/operators/audio_multilabel.py) pa
 
 ## Verify it yourself
 
-The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/agent-run.sh`](../../reproduce/agent-run.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. Every published submission can be independently re-graded with OpenAI's unmodified `mlebench grade-sample` tooling — no Impulse code required. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 GPU lane: the job scripts and the independently re-gradeable `official_grade.json` for this task's GPU runs live in [`reproduce/gpu/birds/`](../../reproduce/gpu/birds/).
 

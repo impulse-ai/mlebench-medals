@@ -3,7 +3,7 @@
 - **Kaggle competition:** https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge
 - **Best verified result:** 🥇 gold — **0.98750 (mean column-wise ROC AUC)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
-- **Solution operator:** [`engine/operators/text_transformer.py`](../../engine/operators/text_transformer.py)
+- **Solution operator:** `text_transformer` (Impulse proprietary operator family; source not published)
 
 ## Approach
 
@@ -28,7 +28,7 @@ A GPU transformer fine-tune operator: where word/char TF-IDF plateaus (~0.9805 m
 
 ## Verify it yourself
 
-The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/agent-run.sh`](../../reproduce/agent-run.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. Every published submission can be independently re-graded with OpenAI's unmodified `mlebench grade-sample` tooling — no Impulse code required. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 GPU lane: the job scripts and the independently re-gradeable `official_grade.json` for this task's GPU runs live in [`reproduce/gpu/jigsaw/`](../../reproduce/gpu/jigsaw/).
 

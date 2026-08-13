@@ -3,7 +3,7 @@
 - **Kaggle competition:** https://www.kaggle.com/c/aptos2019-blindness-detection
 - **Best verified result:** 🥈 silver — **0.92020 (quadratic weighted kappa)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
-- **Solution operator:** [`engine/operators/image_finetune_ensemble.py`](../../engine/operators/image_finetune_ensemble.py)
+- **Solution operator:** `image_finetune_ensemble` (Impulse proprietary operator family; source not published)
 
 ## Approach
 
@@ -28,7 +28,7 @@ A 3-config diverse ordinal ensemble: diverse backbone families at different reso
 
 ## Verify it yourself
 
-The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. To rerun the agent route, use [`reproduce/agent-run.sh`](../../reproduce/agent-run.sh), then grade its submission with OpenAI's tooling. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
+The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. Every published submission can be independently re-graded with OpenAI's unmodified `mlebench grade-sample` tooling — no Impulse code required. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
 ---
 © 2026 Impulse AI. All rights reserved.
