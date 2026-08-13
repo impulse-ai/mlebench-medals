@@ -7,8 +7,7 @@ and disclose that plainly. The grading is still OpenAI's `mlebench`, unmodified 
 you can re-run the grader yourself against the captured submissions (birds and
 jigsaw below; histo needs its private data prepared locally).
 
-**Capability 0** (`docs/superpowers/plans/2026-07-10-capability-0-gpu-lane-productionization.md`,
-tracked as PR #832) wires the `image_finetune` operator to run these GPU jobs
+**Capability 0** (tracked as PR #832) wires the `image_finetune` operator to run these GPU jobs
 *through the agent*, which converts histo/birds from Class-B to Class-A. Until it
 merges, these are honestly assisted.
 
