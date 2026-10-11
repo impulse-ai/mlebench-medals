@@ -8,7 +8,7 @@ from collections import Counter
 from pathlib import Path
 
 
-SCHEMA = "impulse-mlebench-hard15:v1"
+SCHEMA = "impulse-mlebench-high15:v1"
 MEDALS = ("gold", "silver", "bronze")
 MEDAL_EMOJI = {"gold": "🥇", "silver": "🥈", "bronze": "🥉"}
 HIGH_SPLIT = {
@@ -93,10 +93,10 @@ PUBLISHED_HIGH = [
     },
 ]
 REQUIRED_PAGE_CLAIMS = (
-    "11 medals on MLE-bench HARD",
+    "11 medals on MLE-bench High",
     "11 of the 15",
     "7 gold / 2 silver / 2 bronze",
-    "66.67% on HARD",
+    "66.67% on the High split",
     "46.67% for the top entry on the MLE-bench main leaderboard",
     "| **Impulse AI, all verified medals (this repository)** | "
     "GPT-6-Luna (engine runs) | **73.33 (11/15)** | ✗ |",
@@ -106,7 +106,7 @@ REQUIRED_PAGE_CLAIMS = (
     "https://github.com/openai/mle-bench#leaderboard",
 )
 REQUIRED_README_CLAIMS = (
-    "[11 medals on MLE-bench HARD](HARD.md)",
+    "[11 medals on MLE-bench High](HIGH.md)",
     "11 of the 15",
     "7 gold / 2 silver / 2 bronze",
     "18 gold / 7 silver / 5 bronze",
@@ -116,7 +116,7 @@ SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 PAGE_ROW_RE = re.compile(r"^\| \d+ \|")
 EVIDENCE_ROW_RE = re.compile(r"^\| \[")
-CONTEXT_HEADING = "## Published HARD context"
+CONTEXT_HEADING = "## Published High context"
 
 
 def _is_number(value: object) -> bool:
@@ -276,7 +276,7 @@ def _verify_medal_task(
 
     run_id = task.get("run_id")
     if not isinstance(run_id, str) or not re.fullmatch(
-        r"hard15-(engine|pipeline)-\d{2}", run_id
+        r"high15-(engine|pipeline)-\d{2}", run_id
     ):
         errors.append(f"{task_id} has an invalid run id")
     graded_at = task.get("graded_at")
@@ -344,14 +344,14 @@ def _verify_pages(
     context: list[dict[str, object]],
 ) -> list[str]:
     errors: list[str] = []
-    page = _read(root / "HARD.md", "HARD.md", errors)
+    page = _read(root / "HIGH.md", "HIGH.md", errors)
     if page is not None:
         rows = [line for line in page.splitlines() if PAGE_ROW_RE.match(line)]
         if rows != [page_row(i, task) for i, task in enumerate(medal_tasks, 1)]:
-            errors.append("HARD medal table does not match the results ledger")
+            errors.append("High medal table does not match the results ledger")
         for claim in REQUIRED_PAGE_CLAIMS:
             if claim not in page:
-                errors.append(f"HARD.md is missing the public claim: {claim}")
+                errors.append(f"HIGH.md is missing the public claim: {claim}")
         section = _section(page, CONTEXT_HEADING) or ""
         published = [
             line
@@ -360,7 +360,7 @@ def _verify_pages(
         ]
         if published != [context_row(entry) for entry in context]:
             errors.append(
-                "HARD published-context table does not match the results ledger"
+                "High published-context table does not match the results ledger"
             )
         minimize_rows = [
             str(i)
@@ -370,25 +370,30 @@ def _verify_pages(
         if minimize_rows:
             listed = ", ".join(minimize_rows[:-1]) + f" and {minimize_rows[-1]}"
             if f"Lower is better for rows {listed};" not in page:
-                errors.append("HARD.md lower-is-better rows do not match the ledger")
+                errors.append("HIGH.md lower-is-better rows do not match the ledger")
+
+    # HARD.md is the page's former path; it stays as a pointer for old links.
+    moved = _read(root / "HARD.md", "HARD.md", errors)
+    if moved is not None and "[HIGH.md](HIGH.md)" not in moved:
+        errors.append("HARD.md must point to HIGH.md")
 
     readme = _read(root / "README.md", "README.md", errors)
     if readme is not None:
         for claim in REQUIRED_README_CLAIMS:
             if claim not in readme:
-                errors.append(f"README.md is missing the HARD headline: {claim}")
+                errors.append(f"README.md is missing the High headline: {claim}")
 
     evidence = _read(
-        root / "reproduce/EVIDENCE_HARD.md", "reproduce/EVIDENCE_HARD.md", errors
+        root / "reproduce/EVIDENCE_HIGH.md", "reproduce/EVIDENCE_HIGH.md", errors
     )
     if evidence is not None:
         rows = [line for line in evidence.splitlines() if EVIDENCE_ROW_RE.match(line)]
         if rows != [evidence_row(task) for task in medal_tasks]:
-            errors.append("HARD evidence table does not match the results ledger")
+            errors.append("High evidence table does not match the results ledger")
 
     checksums = _read(
-        root / "reproduce/hard15_submission_checksums.txt",
-        "reproduce/hard15_submission_checksums.txt",
+        root / "reproduce/high15_submission_checksums.txt",
+        "reproduce/high15_submission_checksums.txt",
         errors,
     )
     if checksums is not None:
@@ -397,7 +402,7 @@ def _verify_pages(
             for task in medal_tasks
         )
         if checksums != expected:
-            errors.append("HARD checksum file does not match the results ledger")
+            errors.append("High checksum file does not match the results ledger")
 
     for task in medal_tasks:
         task_id = task["task_id"]
@@ -410,22 +415,22 @@ def _verify_pages(
     return errors
 
 
-def verify_hard(root: Path) -> list[str]:
+def verify_high(root: Path) -> list[str]:
     errors: list[str] = []
-    path = root / "results/hard15.json"
+    path = root / "results/high15.json"
     try:
         raw_text = path.read_text()
         data = json.loads(raw_text)
     except (OSError, UnicodeError, json.JSONDecodeError) as exc:
-        return [f"HARD results ledger is not valid JSON: {exc}"]
+        return [f"High results ledger is not valid JSON: {exc}"]
     if not isinstance(data, dict):
-        return ["HARD results ledger root must be an object"]
+        return ["High results ledger root must be an object"]
 
     if data.get("schema") != SCHEMA:
-        errors.append("HARD results ledger schema is invalid")
+        errors.append("High results ledger schema is invalid")
     if data.get("summary") != EXPECTED_SUMMARY:
         errors.append(
-            "HARD summary must equal 11 of 15 (73.33%), 7 gold / 2 silver / "
+            "High summary must equal 11 of 15 (73.33%), 7 gold / 2 silver / "
             "2 bronze, and 10 engine runs (66.67%)"
         )
 
@@ -444,7 +449,7 @@ def verify_hard(root: Path) -> list[str]:
 
     raw_tasks = data.get("tasks")
     if not isinstance(raw_tasks, list):
-        errors.append("HARD tasks must be an array")
+        errors.append("High tasks must be an array")
         return errors
     tasks = [task for task in raw_tasks if isinstance(task, dict)]
     task_ids = [
@@ -455,7 +460,7 @@ def verify_hard(root: Path) -> list[str]:
         or len(task_ids) != 15
         or set(task_ids) != HIGH_SPLIT
     ):
-        errors.append("HARD results must contain the 15 High-split tasks")
+        errors.append("High results must contain the 15 High-split tasks")
         return errors
 
     medal_tasks: list[dict[str, object]] = []
@@ -478,24 +483,24 @@ def verify_hard(root: Path) -> list[str]:
     misses = {task["task_id"] for task in tasks if task.get("medal") is None}
     if misses != EXPECTED_MISSES:
         errors.append(
-            "HARD miss set must equal SIIM COVID-19, Cervical Spine, Vesuvius, "
+            "High miss set must equal SIIM COVID-19, Cervical Spine, Vesuvius, "
             "and BMS"
         )
     medals = Counter(task.get("medal") for task in medal_tasks)
     if medals != Counter(EXPECTED_SUMMARY["medals"]):
-        errors.append("HARD medal breakdown must equal 7 gold, 2 silver, 2 bronze")
+        errors.append("High medal breakdown must equal 7 gold, 2 silver, 2 bronze")
     engine = [task for task in medal_tasks if task.get("method") in ENGINE_METHODS]
     pipeline = [task for task in medal_tasks if task.get("method") == PIPELINE_METHOD]
     if len(engine) != 10 or len(pipeline) != 1:
-        errors.append("HARD results must hold 10 engine runs and 1 pipeline result")
+        errors.append("High results must hold 10 engine runs and 1 pipeline result")
     if (
         round(100 * len(medal_tasks) / 15, 2) != 73.33
         or round(100 * len(engine) / 15, 2) != 66.67
     ):
-        errors.append("HARD rates must equal 73.33% (11/15) and 66.67% (10/15)")
+        errors.append("High rates must equal 73.33% (11/15) and 66.67% (10/15)")
     run_ids = [task.get("run_id") for task in medal_tasks]
     if len(set(run_ids)) != len(run_ids):
-        errors.append("HARD run ids must be unique")
+        errors.append("High run ids must be unique")
 
     if renderable and len(medal_tasks) == 11:
         errors.extend(_verify_pages(root, medal_tasks, context))

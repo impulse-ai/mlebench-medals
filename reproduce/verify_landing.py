@@ -40,14 +40,14 @@ def verify_landing(root: Path) -> list[str]:
     errors: list[str] = []
     try:
         readme = (root / "README.md").read_text()
-        hard_page = (root / "HARD.md").read_text()
+        high_page = (root / "HIGH.md").read_text()
     except (OSError, UnicodeError) as exc:
         return [f"cannot read the landing pages: {exc}"]
 
-    hard = _load(root / "results/hard15.json")
+    high = _load(root / "results/high15.json")
     lite = _load(root / "results/lite22-three-run.json")
     context = _load(root / "results/published-lite-context.json")
-    if hard is None or lite is None or context is None:
+    if high is None or lite is None or context is None:
         return ["landing checks need the three results files as valid JSON"]
 
     try:
@@ -56,18 +56,18 @@ def verify_landing(root: Path) -> list[str]:
         lite_top = max(float(e["lite_any_medal"].split("±")[0]) for e in entries)
         high_top = max(
             float(e["high_any_medal"].split("±")[0])
-            for e in hard["published_context"]["entries"]
+            for e in high["published_context"]["entries"]
         )
-        hard_summary = hard["summary"]
+        high_summary = high["summary"]
         lite_summary = lite["summary"]
-        hard_medals = hard_summary["medals"]
+        high_medals = high_summary["medals"]
         lite_medals = lite_summary["best_medals"]
-        total = hard_summary["medal_tasks"] + lite_summary["medal_tasks"]
-        competitions = hard_summary["tasks"] + lite_summary["tasks"]
+        total = high_summary["medal_tasks"] + lite_summary["medal_tasks"]
+        competitions = high_summary["tasks"] + lite_summary["tasks"]
         tally = " / ".join(
-            f"{hard_medals[m] + lite_medals[m]} {m}" for m in ("gold", "silver", "bronze")
+            f"{high_medals[m] + lite_medals[m]} {m}" for m in ("gold", "silver", "bronze")
         )
-        engine = f"{hard_summary['engine_run_percentage']:.2f}%"
+        engine = f"{high_summary['engine_run_percentage']:.2f}%"
         lite_rate = f"{lite_summary['any_medal_percentage']:.2f}%"
         stale = make_charts.stale(root)
     except (KeyError, TypeError, ValueError, AttributeError) as exc:
@@ -89,7 +89,7 @@ def verify_landing(root: Path) -> list[str]:
     errors.extend(f"chart is out of date with the ledgers: {name}" for name in stale)
 
     at_a_glance = (
-        f"| {total} medals | HARD: {engine} | Lite: {lite_rate} |\n"
+        f"| {total} medals | High: {engine} | Lite: {lite_rate} |\n"
         "|:---:|:---:|:---:|\n"
         f"| on {competitions} competitions | engine runs, against {high_top:.2f}% for "
         "the top entry on the main leaderboard | three confirmed runs, against "
@@ -108,6 +108,6 @@ def verify_landing(root: Path) -> list[str]:
         if claim not in readme:
             errors.append(f"README.md landing section is missing: {claim}")
     for claim in (WALKTHROUGH, *HIGH_IMAGES):
-        if claim not in hard_page:
-            errors.append(f"HARD.md is missing: {claim}")
+        if claim not in high_page:
+            errors.append(f"HIGH.md is missing: {claim}")
     return errors

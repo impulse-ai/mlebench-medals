@@ -95,7 +95,7 @@ def _is_sha256(value: object) -> bool:
 
 
 def _public_markdown_paths(root: Path) -> list[Path]:
-    paths = [root / "README.md", root / "HARD.md"]
+    paths = [root / "README.md", root / "HIGH.md", root / "HARD.md"]
     for directory in (root / "reproduce", root / "solutions"):
         if directory.is_dir():
             paths.extend(directory.rglob("*.md"))
@@ -458,15 +458,15 @@ def verify_results(root: Path) -> list[str]:
 def main() -> int:
     root = Path(__file__).resolve().parents[1]
     sys.path.insert(0, str(Path(__file__).resolve().parent))
-    from verify_hard import verify_hard
+    from verify_high import verify_high
     from verify_landing import verify_landing
 
-    errors = verify_results(root) + verify_hard(root) + verify_landing(root)
+    errors = verify_results(root) + verify_high(root) + verify_landing(root)
     if errors:
         print("\n".join(errors))
         return 1
     print("verified: 22 tasks, 19 medals, 3 confirmation runs")
-    print("verified: HARD 15 tasks, 11 medals (7 gold / 2 silver / 2 bronze), 10 engine runs")
+    print("verified: High 15 tasks, 11 medals (7 gold / 2 silver / 2 bronze), 10 engine runs")
     print("verified: landing section, charts and published Lite context match the ledgers")
     return 0
 

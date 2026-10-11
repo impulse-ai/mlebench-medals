@@ -10,7 +10,7 @@ from reproduce.verify_results import verify_results
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RESULTS = ("hard15.json", "lite22-three-run.json", "published-lite-context.json")
+RESULTS = ("high15.json", "lite22-three-run.json", "published-lite-context.json")
 
 
 class LandingContractTests(unittest.TestCase):
@@ -20,7 +20,7 @@ class LandingContractTests(unittest.TestCase):
             (root / "results").mkdir()
             for name in RESULTS:
                 shutil.copy(ROOT / "results" / name, root / "results" / name)
-            for name in ("README.md", "HARD.md"):
+            for name in ("README.md", "HIGH.md"):
                 shutil.copy(ROOT / name, root / name)
             shutil.copytree(ROOT / "assets", root / "assets")
             mutate(root)
@@ -61,13 +61,13 @@ class LandingContractTests(unittest.TestCase):
             self.assertNotIn("<style", text)
 
     def test_chart_values_come_from_the_ledgers(self):
-        hard = json.loads((ROOT / "results/hard15.json").read_text())
+        high = json.loads((ROOT / "results/high15.json").read_text())
         lite = json.loads((ROOT / "results/published-lite-context.json").read_text())
         high_svg = (ROOT / "assets/high-any-medal-light.svg").read_text()
         lite_svg = (ROOT / "assets/lite-any-medal-light.svg").read_text()
         self.assertIn(">66.67% (10/15)<", high_svg)
         self.assertIn(">86.36% (19/22)<", lite_svg)
-        for entry in hard["published_context"]["entries"]:
+        for entry in high["published_context"]["entries"]:
             self.assertIn(f">{entry['high_any_medal']}<", high_svg)
         for entry in lite["entries"]:
             self.assertIn(f">{entry['lite_any_medal']}<", lite_svg)
@@ -95,7 +95,7 @@ class LandingContractTests(unittest.TestCase):
         def change(data):
             data["published_context"]["entries"][0]["high_any_medal"] = "36.67 ± 0.00"
 
-        errors = self.errors_after(self.edit_json("hard15.json", change))
+        errors = self.errors_after(self.edit_json("high15.json", change))
         self.assertIn(
             "chart is out of date with the ledgers: assets/high-any-medal-light.svg",
             errors,
@@ -121,7 +121,7 @@ class LandingContractTests(unittest.TestCase):
 
     def test_rejects_at_a_glance_drift(self):
         errors = self.errors_after(
-            self.edit("README.md", "| 30 medals | HARD: 66.67% |", "| 31 medals | HARD: 66.67% |")
+            self.edit("README.md", "| 30 medals | High: 66.67% |", "| 31 medals | High: 66.67% |")
         )
         self.assertTrue(
             any("README.md landing section is missing: | 30 medals" in e for e in errors),
@@ -129,7 +129,7 @@ class LandingContractTests(unittest.TestCase):
         )
 
     def test_rejects_missing_walkthrough_link(self):
-        for name in ("README.md", "HARD.md"):
+        for name in ("README.md", "HIGH.md"):
             errors = self.errors_after(
                 self.edit(name, "https://mlebench.impulselabs.ai", "https://example.invalid")
             )
@@ -137,9 +137,9 @@ class LandingContractTests(unittest.TestCase):
 
     def test_rejects_missing_chart_image(self):
         errors = self.errors_after(
-            self.edit("HARD.md", "high-any-medal-dark.svg#gh-dark-mode-only", "x.svg")
+            self.edit("HIGH.md", "high-any-medal-dark.svg#gh-dark-mode-only", "x.svg")
         )
-        self.assertTrue(any(e.startswith("HARD.md is missing") for e in errors), errors)
+        self.assertTrue(any(e.startswith("HIGH.md is missing") for e in errors), errors)
 
     def test_link_check_covers_chart_images(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -147,7 +147,7 @@ class LandingContractTests(unittest.TestCase):
             (root / "results").mkdir()
             for name in RESULTS:
                 shutil.copy(ROOT / "results" / name, root / "results" / name)
-            for name in ("README.md", "HARD.md"):
+            for name in ("README.md", "HIGH.md"):
                 shutil.copy(ROOT / name, root / name)
             shutil.copytree(ROOT / "assets", root / "assets")
             shutil.copytree(ROOT / "reproduce", root / "reproduce")
@@ -159,7 +159,7 @@ class LandingContractTests(unittest.TestCase):
             errors,
         )
         self.assertTrue(
-            any(e.startswith("HARD.md:") and "high-any-medal-dark.svg" in e for e in broken),
+            any(e.startswith("HIGH.md:") and "high-any-medal-dark.svg" in e for e in broken),
             errors,
         )
 
