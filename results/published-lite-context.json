@@ -1,0 +1,14 @@
+{
+ "schema": "impulse-mlebench-published-context:v1",
+ "source": "https://github.com/openai/mle-bench#leaderboard",
+ "retrieved": "2026-10-11",
+ "column": "Low == Lite (%)",
+ "entries": [
+  {"agent": "Famou-Agent 2.0", "llm": "Gemini-3-Pro-Preview", "lite_any_medal": "80.3 ± 1.52", "source_code_available": false},
+  {"agent": "MLEvolve", "llm": "Gemini-3-Pro-Preview", "lite_any_medal": "80.30 ± 1.52", "source_code_available": true},
+  {"agent": "PiEvolve (Fractal AI Research)", "llm": "Gemini-3-Pro-Preview", "lite_any_medal": "80.30 ± 1.52", "source_code_available": false},
+  {"agent": "CAIR MARS+", "llm": "Gemini-3-Pro-Preview", "lite_any_medal": "78.79 ± 1.52", "source_code_available": false},
+  {"agent": "AIBuildAI", "llm": "Claude-Opus-4.6", "lite_any_medal": "77.27 ± 0.00", "source_code_available": false},
+  {"agent": "AIDE (OpenAI's reference agent)", "llm": "o1-preview", "lite_any_medal": "35.91 ± 1.86", "source_code_available": true}
+ ]
+}

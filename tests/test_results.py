@@ -42,6 +42,7 @@ class ResultsContractTests(unittest.TestCase):
         shutil.copy(ROOT / "README.md", root / "README.md")
         shutil.copy(ROOT / "HARD.md", root / "HARD.md")
         shutil.copy(ROOT / "results/hard15.json", root / "results/hard15.json")
+        shutil.copytree(ROOT / "assets", root / "assets")
         shutil.copytree(ROOT / "reproduce", root / "reproduce")
         shutil.copytree(ROOT / "solutions", root / "solutions")
 
