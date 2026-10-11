@@ -1,0 +1,18 @@
+{
+  "above_median": true,
+  "any_medal": true,
+  "bronze_medal": true,
+  "bronze_threshold": 0.69652,
+  "competition_id": "nfl-player-contact-detection",
+  "created_at": "2026-10-08T15:20:22.573348",
+  "gold_medal": false,
+  "gold_threshold": 0.78167,
+  "graded_via": "python_api",
+  "is_lower_better": false,
+  "median_threshold": 0.69139,
+  "score": 0.71956,
+  "silver_medal": false,
+  "silver_threshold": 0.72203,
+  "submission_exists": true,
+  "valid_submission": true
+}

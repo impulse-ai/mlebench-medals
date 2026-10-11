@@ -1,0 +1,18 @@
+{
+  "above_median": true,
+  "any_medal": true,
+  "bronze_medal": false,
+  "bronze_threshold": 0.243,
+  "competition_id": "vinbigdata-chest-xray-abnormalities-detection",
+  "created_at": "2026-10-09T09:36:55.323273",
+  "gold_medal": true,
+  "gold_threshold": 0.289,
+  "graded_via": "python_api",
+  "is_lower_better": false,
+  "median_threshold": 0.223,
+  "score": 0.4256,
+  "silver_medal": false,
+  "silver_threshold": 0.257,
+  "submission_exists": true,
+  "valid_submission": true
+}

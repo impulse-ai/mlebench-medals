@@ -1,0 +1,18 @@
+{
+  "above_median": true,
+  "any_medal": true,
+  "bronze_medal": false,
+  "bronze_threshold": 0.114,
+  "competition_id": "iwildcam-2019-fgvc6",
+  "created_at": "2026-10-09T00:27:56.261791",
+  "gold_medal": true,
+  "gold_threshold": 0.212,
+  "graded_via": "python_api",
+  "is_lower_better": false,
+  "median_threshold": 0.108,
+  "score": 0.48326,
+  "silver_medal": false,
+  "silver_threshold": 0.129,
+  "submission_exists": true,
+  "valid_submission": true
+}
