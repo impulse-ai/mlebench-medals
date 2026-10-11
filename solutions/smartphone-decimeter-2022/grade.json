@@ -1,0 +1,18 @@
+{
+  "above_median": true,
+  "any_medal": true,
+  "bronze_medal": false,
+  "bronze_threshold": 3.068,
+  "competition_id": "smartphone-decimeter-2022",
+  "created_at": "2026-10-08T21:34:51.647062",
+  "gold_medal": true,
+  "gold_threshold": 1.768,
+  "graded_via": "python_api",
+  "is_lower_better": true,
+  "median_threshold": 3.3280000000000003,
+  "score": 0.0,
+  "silver_medal": false,
+  "silver_threshold": 2.119,
+  "submission_exists": true,
+  "valid_submission": true
+}

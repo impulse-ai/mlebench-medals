@@ -95,7 +95,7 @@ def _is_sha256(value: object) -> bool:
 
 
 def _public_markdown_paths(root: Path) -> list[Path]:
-    paths = [root / "README.md"]
+    paths = [root / "README.md", root / "HARD.md"]
     for directory in (root / "reproduce", root / "solutions"):
         if directory.is_dir():
             paths.extend(directory.rglob("*.md"))
@@ -457,11 +457,15 @@ def verify_results(root: Path) -> list[str]:
 
 def main() -> int:
     root = Path(__file__).resolve().parents[1]
-    errors = verify_results(root)
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from verify_hard import verify_hard
+
+    errors = verify_results(root) + verify_hard(root)
     if errors:
         print("\n".join(errors))
         return 1
     print("verified: 22 tasks, 19 medals, 3 confirmation runs")
+    print("verified: HARD 15 tasks, 11 medals (7 gold / 1 silver / 3 bronze), 9 engine runs")
     return 0
 
 

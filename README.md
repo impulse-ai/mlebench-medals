@@ -2,6 +2,8 @@
 
 Impulse AI earned medals on 19 of 22 [MLE-bench](https://github.com/openai/mle-bench) Lite-22 competitions: **86.36% ± 0.00 across three confirmed runs.** The best verified results are **11 gold / 5 silver / 3 bronze**. Every score uses OpenAI's MLE-bench grading logic.
 
+**New: [11 medals on MLE-bench HARD](HARD.md)** — medals on 11 of the 15 competitions in the benchmark's High split, 7 gold / 1 silver / 3 bronze, with graded submissions and evidence.
+
 MLE-bench Lite is the 22-competition low-compute split of OpenAI's benchmark of real Kaggle competitions. This repository contains the results ledger, the per-competition solution notes, the grading artifacts, and the verification tooling for those results. The engine itself is proprietary and is not public; a live re-run under observation is available on request.
 
 ## Medal table
@@ -73,12 +75,13 @@ mlebench grade-sample <submission.csv> <competition>
 ## Repository layout
 
 - `solutions/<competition>/`: approach notes and evidence artifacts for each medal task.
-- `results/`: the machine-readable three-run evidence ledger.
+- `results/`: the machine-readable three-run evidence ledger, and the HARD ledger (`hard15.json`).
+- `HARD.md`: the MLE-bench HARD results page.
 - `reproduce/`: the verification packet, re-grading guides, container setup, checksums, and GPU job material.
 
 ## Scope
 
-MLE-bench Lite is the low-compute, 22-competition subset of the full benchmark. The claim on this page covers Lite-22 only.
+MLE-bench Lite is the low-compute, 22-competition subset of the full benchmark. The claim on this page covers Lite-22 only. The HARD (High) split results are on the [HARD page](HARD.md).
 
 ---
 

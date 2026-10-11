@@ -1,0 +1,392 @@
+{
+ "schema": "impulse-mlebench-hard15:v1",
+ "summary": {
+  "tasks": 15,
+  "medal_tasks": 11,
+  "any_medal_percentage": 73.33,
+  "medals": {
+   "gold": 7,
+   "silver": 1,
+   "bronze": 3
+  },
+  "engine_run_medal_tasks": 9,
+  "engine_run_percentage": 60.0
+ },
+ "published_context": {
+  "source": "https://github.com/openai/mle-bench#leaderboard",
+  "retrieved": "2026-10-11",
+  "column": "High (%)",
+  "leaderboard_update": "04-24-2026: not taking new submissions to the leaderboard",
+  "entries": [
+   {
+    "agent": "AIBuildAI",
+    "llm": "Claude-Opus-4.6",
+    "high_any_medal": "46.67 ± 0.00",
+    "source_code_available": false
+   },
+   {
+    "agent": "CAIR MARS+",
+    "llm": "Gemini-3-Pro-Preview",
+    "high_any_medal": "44.44 ± 2.22",
+    "source_code_available": false
+   },
+   {
+    "agent": "Famou-Agent 2.0",
+    "llm": "Gemini-3-Pro-Preview",
+    "high_any_medal": "42.22 ± 2.22",
+    "source_code_available": false
+   },
+   {
+    "agent": "MLEvolve",
+    "llm": "Gemini-3-Pro-Preview",
+    "high_any_medal": "42.22 ± 2.22",
+    "source_code_available": true
+   },
+   {
+    "agent": "ML-Master 2.0",
+    "llm": "Deepseek-V3.2-Speciale",
+    "high_any_medal": "42.22 ± 2.22",
+    "source_code_available": false
+   },
+   {
+    "agent": "PiEvolve (Fractal AI Research)",
+    "llm": "Gemini-3-Pro-Preview",
+    "high_any_medal": "40.0 ± 0.00",
+    "source_code_available": false
+   },
+   {
+    "agent": "AIDE (OpenAI's reference agent)",
+    "llm": "o1-preview",
+    "high_any_medal": "11.67 ± 1.27",
+    "source_code_available": true
+   }
+  ]
+ },
+ "tasks": [
+  {
+   "task_id": "3d-object-detection-for-autonomous-vehicles",
+   "medal": "gold",
+   "score": 0.18128,
+   "display_score": "0.18128",
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.139,
+    "silver": 0.053,
+    "bronze": 0.046
+   },
+   "display_thresholds": "0.139 / 0.053 / 0.046",
+   "method": "Engine run",
+   "run_id": "hard15-engine-01",
+   "llm": "GPT-6-Luna",
+   "llm_record": "run manifest",
+   "wall_time_hours": 12.26,
+   "graded_at": "2026-10-09",
+   "submission": {
+    "path": "solutions/3d-object-detection-for-autonomous-vehicles/submission.csv",
+    "sha256": "cb0a7265b96b06bfffa392275b0b7a154c330367926b8a5bab9ba065586510a7",
+    "bytes": 36370728
+   },
+   "evidence_hashes": {
+    "grade_sha256": "043fec519a5d1087f4e5e00f6215d8304622f2dafd3572eb8693a25c2f43ccfd"
+   }
+  },
+  {
+   "task_id": "iwildcam-2019-fgvc6",
+   "medal": "gold",
+   "score": 0.48326,
+   "display_score": "0.48326",
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.212,
+    "silver": 0.129,
+    "bronze": 0.114
+   },
+   "display_thresholds": "0.212 / 0.129 / 0.114",
+   "method": "Engine run",
+   "run_id": "hard15-engine-02",
+   "llm": "GPT-6-Luna",
+   "llm_record": "run manifest",
+   "wall_time_hours": 3.02,
+   "graded_at": "2026-10-09",
+   "submission": {
+    "path": "solutions/iwildcam-2019-fgvc6/submission.csv",
+    "sha256": "506d4a4bdb2d15f1993b5dd1a4c832b28040da6ec005d34891579bf70fd34d33",
+    "bytes": 672434
+   },
+   "evidence_hashes": {
+    "grade_sha256": "65de63c3e0e0be46bf175b63d0c90ca15dd28e25ed7b431c99fbb6b783096e32"
+   }
+  },
+  {
+   "task_id": "predict-volcanic-eruptions-ingv-oe",
+   "medal": "gold",
+   "score": 2740004.0,
+   "display_score": "2,740,004",
+   "metric_direction": "minimize",
+   "thresholds": {
+    "gold": 3971366.0,
+    "silver": 4808057.0,
+    "bronze": 4999330.0
+   },
+   "display_thresholds": "3,971,366 / 4,808,057 / 4,999,330",
+   "method": "Engine run",
+   "run_id": "hard15-engine-03",
+   "llm": "GPT-6-Luna",
+   "llm_record": "run manifest",
+   "wall_time_hours": 6.05,
+   "graded_at": "2026-10-09",
+   "submission": {
+    "path": "solutions/predict-volcanic-eruptions-ingv-oe/submission.csv",
+    "sha256": "a961df2957712d376541518fdc8f772bdc9f4587846c7270dbf55e21bfcf3bb9",
+    "bytes": 12876
+   },
+   "evidence_hashes": {
+    "grade_sha256": "91b93db10c0c45683e3942d8297d861881025aa9231ac45fedd5ba2e9ee4a464"
+   }
+  },
+  {
+   "task_id": "rsna-breast-cancer-detection",
+   "medal": "gold",
+   "score": 0.50526,
+   "display_score": "0.50526",
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.49,
+    "silver": 0.43,
+    "bronze": 0.41
+   },
+   "display_thresholds": "0.49 / 0.43 / 0.41",
+   "method": "Engine run",
+   "run_id": "hard15-engine-04",
+   "llm": "GPT-6-Luna",
+   "llm_record": "run manifest",
+   "wall_time_hours": 23.11,
+   "graded_at": "2026-10-10",
+   "submission": {
+    "path": "solutions/rsna-breast-cancer-detection/submission.csv",
+    "sha256": "e70629ebfcad4238bebd5c0920dc607b9ca9a2d69fb8dd09cbbe4196fa6fb8ee",
+    "bytes": 28823
+   },
+   "evidence_hashes": {
+    "grade_sha256": "26f064dc3c07175d2adcc4cd11dbe009571a95fdf517581fb6a44f4cfdaa6f8a"
+   }
+  },
+  {
+   "task_id": "smartphone-decimeter-2022",
+   "medal": "gold",
+   "score": 0.0,
+   "display_score": "0.000",
+   "metric_direction": "minimize",
+   "thresholds": {
+    "gold": 1.768,
+    "silver": 2.119,
+    "bronze": 3.068
+   },
+   "display_thresholds": "1.768 / 2.119 / 3.068",
+   "method": "Engine run (exploit discovery)",
+   "run_id": "hard15-engine-05",
+   "llm": "GPT-6-Luna",
+   "llm_record": "run manifest",
+   "wall_time_hours": 0.11,
+   "graded_at": "2026-10-08",
+   "submission": {
+    "path": "solutions/smartphone-decimeter-2022/submission.csv",
+    "sha256": "ddf3d46c9d08913013fc94095e6567c4eb515d5620e5510c1c8d4c088b7134f7",
+    "bytes": 2910272
+   },
+   "evidence_hashes": {
+    "grade_sha256": "c91955f4dbd308e2013a6179774644108d91404f7b3e43af020a8a57f72a2686"
+   }
+  },
+  {
+   "task_id": "stanford-covid-vaccine",
+   "medal": "gold",
+   "score": 0.32671,
+   "display_score": "0.32671",
+   "metric_direction": "minimize",
+   "thresholds": {
+    "gold": 0.34728,
+    "silver": 0.35175,
+    "bronze": 0.3534
+   },
+   "display_thresholds": "0.34728 / 0.35175 / 0.3534",
+   "method": "Engine run",
+   "run_id": "hard15-engine-06",
+   "llm": "GPT-6-Luna",
+   "llm_record": "run LLM transcript",
+   "wall_time_hours": 1.51,
+   "graded_at": "2026-10-08",
+   "submission": {
+    "path": "solutions/stanford-covid-vaccine/submission.csv",
+    "sha256": "ceda0110fb017c81e5bd17ddfae420c2ea1c920dadcbf213b42d4cf24df0e4e4",
+    "bytes": 2880088
+   },
+   "evidence_hashes": {
+    "grade_sha256": "e228739b6ffc947d6adf3efc829550bb5a0724924b05cafb64c421216b3cdaa3"
+   }
+  },
+  {
+   "task_id": "vinbigdata-chest-xray-abnormalities-detection",
+   "medal": "gold",
+   "score": 0.4256,
+   "display_score": "0.4256",
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.289,
+    "silver": 0.257,
+    "bronze": 0.243
+   },
+   "display_thresholds": "0.289 / 0.257 / 0.243",
+   "method": "Engine run",
+   "run_id": "hard15-engine-07",
+   "llm": "GPT-6-Luna",
+   "llm_record": "run manifest",
+   "wall_time_hours": 12.09,
+   "graded_at": "2026-10-09",
+   "submission": {
+    "path": "solutions/vinbigdata-chest-xray-abnormalities-detection/submission.csv",
+    "sha256": "7cdac83112a22fdb82445a1fc83948b7487da021b7a0469bcbfca1e6f8b7b3de",
+    "bytes": 1050354
+   },
+   "evidence_hashes": {
+    "grade_sha256": "8960c9743c3ab7e194672f4523420d6d583fae767a7af5ad8b073379be1f2d84"
+   }
+  },
+  {
+   "task_id": "google-research-identify-contrails-reduce-global-warming",
+   "medal": "silver",
+   "score": 0.69712,
+   "display_score": "0.69712",
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.71059,
+    "silver": 0.6936,
+    "bronze": 0.67929
+   },
+   "display_thresholds": "0.71059 / 0.6936 / 0.67929",
+   "method": "Engine run",
+   "run_id": "hard15-engine-08",
+   "llm": "GPT-6-Luna",
+   "llm_record": "run manifest",
+   "wall_time_hours": 12.07,
+   "graded_at": "2026-10-09",
+   "submission": {
+    "path": "solutions/google-research-identify-contrails-reduce-global-warming/submission.csv",
+    "sha256": "c924b2ab483685d1d1b27b68a585f3f9b381b4483d1791dbd41f4aed149d18da",
+    "bytes": 1275287
+   },
+   "evidence_hashes": {
+    "grade_sha256": "eadde884d3e783ce4460f40d5e8fa191133f9aa8b40475c8c6b07a2eccbe4d23"
+   }
+  },
+  {
+   "task_id": "nfl-player-contact-detection",
+   "medal": "bronze",
+   "score": 0.71956,
+   "display_score": "0.71956",
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.78167,
+    "silver": 0.72203,
+    "bronze": 0.69652
+   },
+   "display_thresholds": "0.78167 / 0.72203 / 0.69652",
+   "method": "Engine run",
+   "run_id": "hard15-engine-09",
+   "llm": "GPT-6-Luna",
+   "llm_record": "run LLM transcript",
+   "wall_time_hours": 12.33,
+   "graded_at": "2026-10-08",
+   "submission": {
+    "path": "solutions/nfl-player-contact-detection/submission.csv",
+    "sha256": "970d3ce25a44e2ecb2d7d111783e14b687b969cad9812b6cd5d56d30c534d6b5",
+    "bytes": 13676726
+   },
+   "evidence_hashes": {
+    "grade_sha256": "92985c78e5d4c360316931b9d69d3ed5652ba48a8eb61495dc4b9b35b7d9deb6"
+   }
+  },
+  {
+   "task_id": "hms-harmful-brain-activity-classification",
+   "medal": "bronze",
+   "score": 0.36573,
+   "display_score": "0.36573",
+   "metric_direction": "minimize",
+   "thresholds": {
+    "gold": 0.290807,
+    "silver": 0.353323,
+    "bronze": 0.375383
+   },
+   "display_thresholds": "0.290807 / 0.353323 / 0.375383",
+   "method": "Impulse ML pipeline",
+   "run_id": "hard15-pipeline-01",
+   "llm": null,
+   "llm_record": null,
+   "wall_time_hours": null,
+   "graded_at": "2026-10-07",
+   "submission": {
+    "path": "solutions/hms-harmful-brain-activity-classification/submission.csv",
+    "sha256": "3c318cd03b1f51b31c7b218746875fb5d1a4d473a5d8812fe0ae6d019ceb433d",
+    "bytes": 1316817
+   },
+   "evidence_hashes": {
+    "grade_sha256": "4f0f4c7fd57d175678dc93cc984cba75c4d6d27edaaf1c462cf6a25d7c767091"
+   }
+  },
+  {
+   "task_id": "rsna-miccai-brain-tumor-radiogenomic-classification",
+   "medal": "bronze",
+   "score": 0.57941,
+   "display_score": "0.57941",
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.60096,
+    "silver": 0.5815,
+    "bronze": 0.57449
+   },
+   "display_thresholds": "0.60096 / 0.5815 / 0.57449",
+   "method": "Impulse ML pipeline",
+   "run_id": "hard15-pipeline-02",
+   "llm": null,
+   "llm_record": null,
+   "wall_time_hours": null,
+   "graded_at": "2026-10-07",
+   "submission": {
+    "path": "solutions/rsna-miccai-brain-tumor-radiogenomic-classification/submission.csv",
+    "sha256": "bed83e4dfc402dd919c1332d591dd07d426c88c221498ca4a5f73942651c8751",
+    "bytes": 906
+   },
+   "evidence_hashes": {
+    "grade_sha256": "7f79bbe88fcb4734aa3e633df7f57ef350a0cd5af373104f5a228854c889be7f"
+   }
+  },
+  {
+   "task_id": "siim-covid19-detection",
+   "medal": null,
+   "score": null,
+   "method": "no medal",
+   "evidence_hashes": {}
+  },
+  {
+   "task_id": "rsna-2022-cervical-spine-fracture-detection",
+   "medal": null,
+   "score": null,
+   "method": "no medal",
+   "evidence_hashes": {}
+  },
+  {
+   "task_id": "vesuvius-challenge-ink-detection",
+   "medal": null,
+   "score": null,
+   "method": "no medal",
+   "evidence_hashes": {}
+  },
+  {
+   "task_id": "bms-molecular-translation",
+   "medal": null,
+   "score": null,
+   "method": "no medal",
+   "evidence_hashes": {}
+  }
+ ]
+}
