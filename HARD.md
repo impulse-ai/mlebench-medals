@@ -1,5 +1,7 @@
 # Impulse AI: 11 medals on MLE-bench HARD
 
+**[Interactive walkthrough: ten problems, the data, the model the engine built, and the result](https://mlebench.impulselabs.ai)**
+
 Impulse AI holds medals on 11 of the 15 competitions in the HARD split of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions: **7 gold / 2 silver / 2 bronze**. Ten of them come from single end-to-end runs of the Impulse engine: **66.67% on HARD, against 46.67% for the top entry on the MLE-bench main leaderboard.** Every score uses OpenAI's MLE-bench grading logic.
 
 HARD is the 15-competition high-complexity split: 3D detection from LiDAR, chest X-ray localisation, satellite contrail segmentation, screening mammography, mRNA degradation, EEG, game video with wearable tracking. This repository contains the results ledger, per-competition solution notes, graded submissions, grading artifacts and verification tooling. The engine itself is proprietary and is not public; a live re-run under observation is available on request.
@@ -37,6 +39,9 @@ The [MLE-bench project](https://github.com/openai/mle-bench#leaderboard) publish
 | ML-Master 2.0 | Deepseek-V3.2-Speciale | 42.22 ± 2.22 | ✗ |
 | PiEvolve (Fractal AI Research) | Gemini-3-Pro-Preview | 40.0 ± 0.00 | ✗ |
 | AIDE (OpenAI's reference agent) | o1-preview | 11.67 ± 1.27 | ✓ |
+
+![MLE-bench High split, any-medal rate. Impulse engine runs: 66.67% (10/15). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-light.svg#gh-light-mode-only)
+![MLE-bench High split, any-medal rate. Impulse engine runs: 66.67% (10/15). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-dark.svg#gh-dark-mode-only)
 
 The project also lists additional submissions that it marks as not directly comparable to the main leaderboard; the highest High figure there is 71.11 ± 2.22. They are not included in this table.
 

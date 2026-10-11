@@ -1,17 +1,26 @@
 # Impulse AI on MLE-bench: 30 medals across the Lite and HARD splits
 
-Impulse AI holds **30 medals on 37 competitions** of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions: **18 gold / 7 silver / 5 bronze**. On both splits reported here, Impulse is ahead of every entry on the MLE-bench main leaderboard. Every score uses OpenAI's MLE-bench grading logic, and the evidence is in this repository.
+**[Interactive walkthrough: ten problems, the data, the model the engine built, and the result](https://mlebench.impulselabs.ai)**
+
+Impulse AI holds **30 medals on 37 competitions** of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions: **18 gold / 7 silver / 5 bronze**. On both splits reported here, Impulse is ahead of every entry on the MLE-bench main leaderboard. Every score uses OpenAI's MLE-bench grading logic. The evidence is in this repository.
+
+| 30 medals | HARD: 66.67% | Lite: 86.36% |
+|:---:|:---:|:---:|
+| on 37 competitions | engine runs, against 46.67% for the top entry on the main leaderboard | three confirmed runs, against 80.30% for the top entry on the main leaderboard |
 
 | Split | Competitions | Impulse medals | Impulse any-medal | Top entry, MLE-bench main leaderboard |
 |---|---:|---|---:|---:|
 | **HARD (High)**: the 15 highest-complexity competitions | 15 | **11** (7 gold / 2 silver / 2 bronze) | **73.33%** all verified medals · **66.67%** engine runs | 46.67% |
 | **Lite**: the 22-competition low-compute split | 22 | **19** (11 gold / 5 silver / 3 bronze) | **86.36% ± 0.00** across three confirmed runs | 80.30% |
 
-- **[11 medals on MLE-bench HARD](HARD.md)**: medals on 11 of the 15 competitions in the High split. 3D detection from LiDAR, chest X-ray localisation, screening mammography, satellite contrail segmentation, mRNA degradation, wildlife camera traps, and more.
-- **[Lite results](#impulse-ai-19-medals-on-mle-bench-lite-22)**: below on this page.
+![MLE-bench High split, any-medal rate. Impulse engine runs: 66.67% (10/15). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-light.svg#gh-light-mode-only)
+![MLE-bench High split, any-medal rate. Impulse engine runs: 66.67% (10/15). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-dark.svg#gh-dark-mode-only)
+
+- **[11 medals on MLE-bench HARD](HARD.md)**: medals on 11 of the 15 competitions in the High split. They cover 3D detection from LiDAR, chest X-ray localisation, screening mammography, satellite contrail segmentation, mRNA degradation, wildlife camera traps, and more.
+- **[Lite results](#impulse-ai-19-medals-on-mle-bench-lite-22)**: 19 medals on 22 competitions, below on this page.
 - **Medium (38 competitions)** is the next split to be published here.
 
-MLE-bench's 2026-04-24 update states that its leaderboard is not taking new submissions, so these results are published here with their evidence: the results ledgers, graded submission files with checksums, per-competition solution notes, and a verifier. The engine itself is proprietary and is not public; a live re-run under observation is available on request.
+MLE-bench's 2026-04-24 update states that its leaderboard is not taking new submissions. These results are therefore published here with their evidence: the results ledgers, the graded submission files with checksums, per-competition solution notes, and a verifier. The engine is proprietary and is not public. A live re-run under observation is available on request.
 
 ## What the engine handles
 
@@ -83,6 +92,9 @@ The [MLE-bench project](https://github.com/openai/mle-bench#leaderboard) publish
 | AIBuildAI | Claude-Opus-4.6 | 77.27 ± 0.00 | ✗ |
 | AIDE (OpenAI's reference agent) | o1-preview | 35.91 ± 1.86 | ✓ |
 
+![MLE-bench Lite split, any-medal rate. Impulse: 86.36% (19/22). Top entry on the MLE-bench main leaderboard: 80.30%.](assets/lite-any-medal-light.svg#gh-light-mode-only)
+![MLE-bench Lite split, any-medal rate. Impulse: 86.36% (19/22). Top entry on the MLE-bench main leaderboard: 80.30%.](assets/lite-any-medal-dark.svg#gh-dark-mode-only)
+
 ## The three Lite tasks without a medal
 
 Each confirmation set missed the medal threshold on these competitions:
@@ -110,6 +122,7 @@ mlebench grade-sample <submission.csv> <competition>
 - `solutions/<competition>/`: approach notes and evidence artifacts for each medal task.
 - `results/`: the machine-readable three-run evidence ledger, and the HARD ledger (`hard15.json`).
 - `HARD.md`: the MLE-bench HARD results page.
+- `assets/`: the comparison charts, built from the ledgers by `reproduce/make_charts.py`.
 - `reproduce/`: the verification packet, re-grading guides, container setup, checksums, and GPU job material.
 
 ## Scope
