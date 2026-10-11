@@ -9,7 +9,7 @@
 
 Exploit discovery. The run audited the public files and found that the supplemental NMEA track logs shipped with each trip reproduce the ground-truth positions. It decoded the logs, matched them to the label timestamps, and confirmed exact agreement on all 151 training trips (maximum error under 0.00000001 m) before using the same reconstruction for all 37,087 test rows.
 
-No positioning model is trained. This result is listed as exploit discovery in the results ledger and on the HARD page.
+No positioning model is trained. This result is listed as exploit discovery in the results ledger and on the High page.
 
 ## Evidence in this directory
 
@@ -29,7 +29,7 @@ No positioning model is trained. This result is listed as exploit discovery in t
 
 ## Verify it yourself
 
-The checked-in [results ledger](../../results/hard15.json) carries this record and its hashes. The submission can be independently re-graded with OpenAI's unmodified `mlebench grade-sample` tooling — no Impulse code required. The [HARD evidence index](../../reproduce/EVIDENCE_HARD.md) lists every HARD result.
+The checked-in [results ledger](../../results/high15.json) carries this record and its hashes. The submission can be independently re-graded with OpenAI's unmodified `mlebench grade-sample` tooling — no Impulse code required. The [High evidence index](../../reproduce/EVIDENCE_HIGH.md) lists every High result.
 
 ---
 © 2026 Impulse AI. All rights reserved.

@@ -5,20 +5,20 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from reproduce.verify_hard import (
+from reproduce.verify_high import (
     HIGH_SPLIT,
     PUBLISHED_HIGH,
     medal_for,
-    verify_hard,
+    verify_high,
 )
 from reproduce.verify_results import verify_results
 
 
 ROOT = Path(__file__).resolve().parents[1]
-LEDGER = "results/hard15.json"
+LEDGER = "results/high15.json"
 
 
-class HardResultsContractTests(unittest.TestCase):
+class HighResultsContractTests(unittest.TestCase):
     def load(self):
         return json.loads((ROOT / LEDGER).read_text())
 
@@ -26,9 +26,10 @@ class HardResultsContractTests(unittest.TestCase):
         (root / "results").mkdir()
         shutil.copy(ROOT / LEDGER, root / LEDGER)
         shutil.copy(ROOT / "README.md", root / "README.md")
+        shutil.copy(ROOT / "HIGH.md", root / "HIGH.md")
         shutil.copy(ROOT / "HARD.md", root / "HARD.md")
         (root / "reproduce").mkdir()
-        for name in ("EVIDENCE_HARD.md", "hard15_submission_checksums.txt"):
+        for name in ("EVIDENCE_HIGH.md", "high15_submission_checksums.txt"):
             shutil.copy(ROOT / "reproduce" / name, root / "reproduce" / name)
         for task_id in sorted(HIGH_SPLIT):
             source = ROOT / "solutions" / task_id
@@ -52,13 +53,13 @@ class HardResultsContractTests(unittest.TestCase):
                 (root / LEDGER).write_text(json.dumps(data, ensure_ascii=False))
             if mutate_files is not None:
                 mutate_files(root)
-            return verify_hard(root)
+            return verify_high(root)
 
     def task(self, data, task_id):
         return next(task for task in data["tasks"] if task["task_id"] == task_id)
 
     def test_repository_passes(self):
-        self.assertEqual([], verify_hard(ROOT))
+        self.assertEqual([], verify_high(ROOT))
         self.assertEqual([], verify_results(ROOT))
 
     def test_copied_tree_passes(self):
@@ -103,15 +104,15 @@ class HardResultsContractTests(unittest.TestCase):
             )
 
     def test_page_carries_the_public_claims(self):
-        text = (ROOT / "HARD.md").read_text()
-        self.assertIn("11 medals on MLE-bench HARD", text)
+        text = (ROOT / "HIGH.md").read_text()
+        self.assertIn("11 medals on MLE-bench High", text)
         self.assertIn("11 of the 15", text)
         self.assertIn("7 gold / 2 silver / 2 bronze", text)
         self.assertIn("**66.67 (10/15)**", text)
         self.assertIn("**73.33 (11/15)**", text)
         self.assertIn("| AIBuildAI | Claude-Opus-4.6 | 46.67 ± 0.00 | ✗ |", text)
         readme = (ROOT / "README.md").read_text()
-        self.assertIn("[11 medals on MLE-bench HARD](HARD.md)", readme)
+        self.assertIn("[11 medals on MLE-bench High](HIGH.md)", readme)
         self.assertIn("19 medals on MLE-bench Lite-22", readme)
         self.assertIn("86.36% ± 0.00", readme)
 
@@ -132,7 +133,7 @@ class HardResultsContractTests(unittest.TestCase):
         for mutate in cases:
             errors = self.errors_after(mutate)
             self.assertTrue(
-                any(error.startswith("HARD summary must equal") for error in errors),
+                any(error.startswith("High summary must equal") for error in errors),
                 errors,
             )
 
@@ -220,7 +221,7 @@ class HardResultsContractTests(unittest.TestCase):
 
         errors = self.errors_after(mutate)
         self.assertIn(
-            "HARD results must hold 10 engine runs and 1 pipeline result", errors
+            "High results must hold 10 engine runs and 1 pipeline result", errors
         )
 
     def test_rejects_non_null_miss(self):
@@ -237,7 +238,7 @@ class HardResultsContractTests(unittest.TestCase):
             data["tasks"][-1]["task_id"] = "not-a-high-split-task"
 
         self.assertIn(
-            "HARD results must contain the 15 High-split tasks",
+            "High results must contain the 15 High-split tasks",
             self.errors_after(mutate),
         )
 
@@ -252,55 +253,61 @@ class HardResultsContractTests(unittest.TestCase):
 
     def test_rejects_page_table_mutation(self):
         def mutate(root):
-            path = root / "HARD.md"
+            path = root / "HIGH.md"
             path.write_text(path.read_text().replace("0.18128", "0.18129", 1))
 
         self.assertIn(
-            "HARD medal table does not match the results ledger",
+            "High medal table does not match the results ledger",
             self.errors_after(mutate_files=mutate),
         )
 
     def test_rejects_page_context_mutation(self):
         def mutate(root):
-            path = root / "HARD.md"
+            path = root / "HIGH.md"
             path.write_text(path.read_text().replace("44.44 ± 2.22", "34.44 ± 2.22"))
 
         self.assertIn(
-            "HARD published-context table does not match the results ledger",
+            "High published-context table does not match the results ledger",
             self.errors_after(mutate_files=mutate),
         )
 
     def test_rejects_missing_page_claim(self):
         def mutate(root):
-            path = root / "HARD.md"
+            path = root / "HIGH.md"
             path.write_text(path.read_text().replace("**66.67 (10/15)**", "**60.00 (9/15)**"))
 
         errors = self.errors_after(mutate_files=mutate)
         self.assertTrue(
-            any("HARD.md is missing the public claim" in error for error in errors),
+            any("HIGH.md is missing the public claim" in error for error in errors),
             errors,
         )
 
     def test_rejects_missing_readme_headline(self):
         def mutate(root):
             path = root / "README.md"
-            path.write_text(path.read_text().replace("(HARD.md)", "(OTHER.md)"))
+            path.write_text(path.read_text().replace("(HIGH.md)", "(OTHER.md)"))
 
         errors = self.errors_after(mutate_files=mutate)
         self.assertTrue(
-            any("README.md is missing the HARD headline" in error for error in errors),
+            any("README.md is missing the High headline" in error for error in errors),
             errors,
         )
 
+    def test_former_page_path_points_to_the_new_page(self):
+        def mutate(root):
+            (root / "HARD.md").write_text("# This page has moved\n")
+
+        self.assertIn("HARD.md must point to HIGH.md", self.errors_after(mutate_files=mutate))
+
     def test_rejects_evidence_and_checksum_mutation(self):
         def mutate(root):
-            for name in ("EVIDENCE_HARD.md", "hard15_submission_checksums.txt"):
+            for name in ("EVIDENCE_HIGH.md", "high15_submission_checksums.txt"):
                 path = root / "reproduce" / name
                 path.write_text(path.read_text().replace("cb0a7265", "cb0a7266"))
 
         errors = self.errors_after(mutate_files=mutate)
-        self.assertIn("HARD evidence table does not match the results ledger", errors)
-        self.assertIn("HARD checksum file does not match the results ledger", errors)
+        self.assertIn("High evidence table does not match the results ledger", errors)
+        self.assertIn("High checksum file does not match the results ledger", errors)
 
     def test_rejects_solution_block_mutation(self):
         def mutate(root):
@@ -317,8 +324,8 @@ class HardResultsContractTests(unittest.TestCase):
             self.errors_after(mutate_files=mutate),
         )
 
-    def test_public_hard_files_use_neutral_run_ids(self):
-        paths = [ROOT / "HARD.md", ROOT / LEDGER, ROOT / "reproduce/EVIDENCE_HARD.md"]
+    def test_public_high_files_use_neutral_run_ids(self):
+        paths = [ROOT / "HIGH.md", ROOT / LEDGER, ROOT / "reproduce/EVIDENCE_HIGH.md"]
         for task_id in HIGH_SPLIT:
             directory = ROOT / "solutions" / task_id
             if directory.is_dir():
@@ -334,7 +341,7 @@ class HardResultsContractTests(unittest.TestCase):
                 root = Path(directory)
                 self.copy_tree(root)
                 (root / LEDGER).write_text(value)
-                self.assertTrue(verify_hard(root))
+                self.assertTrue(verify_high(root))
 
 
 if __name__ == "__main__":

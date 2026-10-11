@@ -1,10 +1,10 @@
-# Evidence index: MLE-bench HARD
+# Evidence index: MLE-bench High
 
 **11/15 (73.33%) with 7 gold / 2 silver / 2 bronze; ten engine runs: 10/15 (66.67%).** Every score uses [OpenAI's MLE-bench grading logic](https://github.com/openai/mle-bench).
 
-The checked-in [results ledger](../results/hard15.json) is the machine-readable source for the table below. Each task name links to its approach notes, graded submission and grade report.
+The checked-in [results ledger](../results/high15.json) is the machine-readable source for the table below. Each task name links to its approach notes, graded submission and grade report.
 
-## HARD medal ledger
+## High medal ledger
 
 | Task | Result | Method | LLM | Wall time (h) | Graded | Submission SHA-256 | Grade report SHA-256 |
 |---|---:|---|---|---:|---|---|---|
@@ -25,14 +25,14 @@ The checked-in [results ledger](../results/hard15.json) is the machine-readable 
 Each graded submission is committed as `solutions/<competition>/submission.csv`. Check all eleven against the published hashes from the repository root:
 
 ```bash
-shasum -a 256 -c reproduce/hard15_submission_checksums.txt
+shasum -a 256 -c reproduce/high15_submission_checksums.txt
 ```
 
-The results verifier checks the HARD ledger, every graded-submission and grade-report hash, the HARD page tables and the public claims:
+The results verifier checks the High ledger, every graded-submission and grade-report hash, the High page tables and the public claims:
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python reproduce/verify_results.py
-PYTHONDONTWRITEBYTECODE=1 python -m unittest -v tests.test_hard_results
+PYTHONDONTWRITEBYTECODE=1 python -m unittest -v tests.test_high_results
 ```
 
 `grade.json` in each solution directory is the `mlebench` grade report for that submission, with the grader host's file path omitted. To reproduce a grade, prepare the competition with `mlebench prepare -c <competition>` and run `mlebench grade-sample solutions/<competition>/submission.csv <competition>`.
@@ -41,4 +41,4 @@ PYTHONDONTWRITEBYTECODE=1 python -m unittest -v tests.test_hard_results
 
 Public external data, web research, pretrained models, and exploit discovery are intentional capabilities of Impulse's agent. The method column records the route used for each result. The Smartphone Decimeter result is an exploit-discovery result: the run reconstructed the target positions from logs shipped in the public data.
 
-The claim covers the 15-competition HARD (High) split. SIIM-FISABIO-RSNA COVID-19 Detection, RSNA 2022 Cervical Spine Fracture Detection, Vesuvius Challenge Ink Detection, and BMS Molecular Translation have no medal. This repository publishes hashes, scores, methods, graded submissions and notes; it doesn't contain private labels, credentials, raw benchmark datasets, or model blobs.
+The claim covers the 15-competition High split. SIIM-FISABIO-RSNA COVID-19 Detection, RSNA 2022 Cervical Spine Fracture Detection, Vesuvius Challenge Ink Detection, and BMS Molecular Translation have no medal. This repository publishes hashes, scores, methods, graded submissions and notes; it doesn't contain private labels, credentials, raw benchmark datasets, or model blobs.

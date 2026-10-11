@@ -1,22 +1,22 @@
-# Impulse AI on MLE-bench: 30 medals across the Lite and HARD splits
+# Impulse AI on MLE-bench: 30 medals across the Lite and High splits
 
 **[Interactive walkthrough: ten problems, the data, the model the engine built, and the result](https://mlebench.impulselabs.ai)**
 
 Impulse AI holds **30 medals on 37 competitions** of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions: **18 gold / 7 silver / 5 bronze**. On both splits reported here, Impulse is ahead of every entry on the MLE-bench main leaderboard. Every score uses OpenAI's MLE-bench grading logic. The evidence is in this repository.
 
-| 30 medals | HARD: 66.67% | Lite: 86.36% |
+| 30 medals | High: 66.67% | Lite: 86.36% |
 |:---:|:---:|:---:|
 | on 37 competitions | engine runs, against 46.67% for the top entry on the main leaderboard | three confirmed runs, against 80.30% for the top entry on the main leaderboard |
 
 | Split | Competitions | Impulse medals | Impulse any-medal | Top entry, MLE-bench main leaderboard |
 |---|---:|---|---:|---:|
-| **HARD (High)**: the 15 highest-complexity competitions | 15 | **11** (7 gold / 2 silver / 2 bronze) | **73.33%** all verified medals · **66.67%** engine runs | 46.67% |
+| **High**: the 15 highest-complexity competitions | 15 | **11** (7 gold / 2 silver / 2 bronze) | **73.33%** all verified medals · **66.67%** engine runs | 46.67% |
 | **Lite**: the 22-competition low-compute split | 22 | **19** (11 gold / 5 silver / 3 bronze) | **86.36% ± 0.00** across three confirmed runs | 80.30% |
 
 ![MLE-bench High split, any-medal rate. Impulse engine runs: 66.67% (10/15). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-light.svg#gh-light-mode-only)
 ![MLE-bench High split, any-medal rate. Impulse engine runs: 66.67% (10/15). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-dark.svg#gh-dark-mode-only)
 
-- **[11 medals on MLE-bench HARD](HARD.md)**: medals on 11 of the 15 competitions in the High split. They cover 3D detection from LiDAR, chest X-ray localisation, screening mammography, satellite contrail segmentation, mRNA degradation, wildlife camera traps, and more.
+- **[11 medals on MLE-bench High](HIGH.md)**: medals on 11 of the 15 competitions in the High split. They cover 3D detection from LiDAR, chest X-ray localisation, screening mammography, satellite contrail segmentation, mRNA degradation, wildlife camera traps, and more.
 - **[Lite results](#impulse-ai-19-medals-on-mle-bench-lite-22)**: 19 medals on 22 competitions, below on this page.
 - **Medium (38 competitions)** is the next split to be published here.
 
@@ -38,7 +38,7 @@ One system, very different problems:
 | Brain-tumour MRI radiogenomics | Multi-sequence MRI volumes | 🥈 silver |
 | NFL player contact | Game video with wearable tracking | 🥉 bronze |
 
-Full tables, scores and medal lines: [HARD.md](HARD.md) and the Lite section below.
+Full tables, scores and medal lines: [HIGH.md](HIGH.md) and the Lite section below.
 
 ---
 
@@ -120,14 +120,14 @@ mlebench grade-sample <submission.csv> <competition>
 ## Repository layout
 
 - `solutions/<competition>/`: approach notes and evidence artifacts for each medal task.
-- `results/`: the machine-readable three-run evidence ledger, and the HARD ledger (`hard15.json`).
-- `HARD.md`: the MLE-bench HARD results page.
+- `results/`: the machine-readable three-run evidence ledger, and the High ledger (`high15.json`).
+- `HIGH.md`: the MLE-bench High results page.
 - `assets/`: the comparison charts, built from the ledgers by `reproduce/make_charts.py`.
 - `reproduce/`: the verification packet, re-grading guides, container setup, checksums, and GPU job material.
 
 ## Scope
 
-MLE-bench Lite is the low-compute, 22-competition subset of the full benchmark. The Lite section of this page covers Lite-22. The HARD (High) split results are on the [HARD page](HARD.md).
+MLE-bench Lite is the low-compute, 22-competition subset of the full benchmark. The Lite section of this page covers Lite-22. The High split results are on the [High page](HIGH.md).
 
 ---
 

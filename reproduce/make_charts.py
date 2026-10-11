@@ -6,7 +6,7 @@ Run from the repository root:
     python reproduce/make_charts.py --check    # fail if assets/ is out of date
 
 Each chart is written twice, for light and dark page backgrounds. Every value
-comes from results/hard15.json, results/lite22-three-run.json and
+comes from results/high15.json, results/lite22-three-run.json and
 results/published-lite-context.json; nothing is typed into this file.
 """
 from __future__ import annotations
@@ -39,7 +39,7 @@ def _rate(text: str) -> float:
 
 
 def high_chart(root: Path) -> dict[str, object]:
-    data = json.loads((root / "results/hard15.json").read_text())
+    data = json.loads((root / "results/high15.json").read_text())
     summary = data["summary"]
     runs = summary["engine_run_medal_tasks"]
     rows = [{
