@@ -1,6 +1,6 @@
 # Impulse AI: 11 medals on MLE-bench HARD
 
-Impulse AI holds medals on 11 of the 15 competitions in the HARD split of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions: **7 gold / 1 silver / 3 bronze**. Nine of them come from single end-to-end runs of the Impulse engine: **60.00% on HARD, against 46.67% for the top entry on the MLE-bench main leaderboard.** Every score uses OpenAI's MLE-bench grading logic.
+Impulse AI holds medals on 11 of the 15 competitions in the HARD split of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions: **7 gold / 2 silver / 2 bronze**. Ten of them come from single end-to-end runs of the Impulse engine: **66.67% on HARD, against 46.67% for the top entry on the MLE-bench main leaderboard.** Every score uses OpenAI's MLE-bench grading logic.
 
 HARD is the 15-competition high-complexity split: 3D detection from LiDAR, chest X-ray localisation, satellite contrail segmentation, screening mammography, mRNA degradation, EEG, game video with wearable tracking. This repository contains the results ledger, per-competition solution notes, graded submissions, grading artifacts and verification tooling. The engine itself is proprietary and is not public; a live re-run under observation is available on request.
 
@@ -16,11 +16,11 @@ HARD is the 15-competition high-complexity split: 3D detection from LiDAR, chest
 | 6 | stanford-covid-vaccine | 🥇 gold | 0.32671 | 0.34728 / 0.35175 / 0.3534 | Engine run | [solution](solutions/stanford-covid-vaccine/) |
 | 7 | vinbigdata-chest-xray-abnormalities-detection | 🥇 gold | 0.4256 | 0.289 / 0.257 / 0.243 | Engine run | [solution](solutions/vinbigdata-chest-xray-abnormalities-detection/) |
 | 8 | google-research-identify-contrails-reduce-global-warming | 🥈 silver | 0.69712 | 0.71059 / 0.6936 / 0.67929 | Engine run | [solution](solutions/google-research-identify-contrails-reduce-global-warming/) |
-| 9 | nfl-player-contact-detection | 🥉 bronze | 0.71956 | 0.78167 / 0.72203 / 0.69652 | Engine run | [solution](solutions/nfl-player-contact-detection/) |
-| 10 | hms-harmful-brain-activity-classification | 🥉 bronze | 0.36573 | 0.290807 / 0.353323 / 0.375383 | Impulse ML pipeline | [solution](solutions/hms-harmful-brain-activity-classification/) |
-| 11 | rsna-miccai-brain-tumor-radiogenomic-classification | 🥉 bronze | 0.57941 | 0.60096 / 0.5815 / 0.57449 | Impulse ML pipeline | [solution](solutions/rsna-miccai-brain-tumor-radiogenomic-classification/) |
+| 9 | rsna-miccai-brain-tumor-radiogenomic-classification | 🥈 silver | 0.59 | 0.60096 / 0.5815 / 0.57449 | Engine run | [solution](solutions/rsna-miccai-brain-tumor-radiogenomic-classification/) |
+| 10 | nfl-player-contact-detection | 🥉 bronze | 0.71956 | 0.78167 / 0.72203 / 0.69652 | Engine run | [solution](solutions/nfl-player-contact-detection/) |
+| 11 | hms-harmful-brain-activity-classification | 🥉 bronze | 0.36573 | 0.290807 / 0.353323 / 0.375383 | Impulse ML pipeline | [solution](solutions/hms-harmful-brain-activity-classification/) |
 
-Lower is better for rows 3, 5, 6 and 10; higher is better elsewhere. Engine runs are single end-to-end runs inside the benchmark's 24-hour limit, each scored once. Scores and medals come from the evidence ledger in [results/hard15.json](results/hard15.json).
+Lower is better for rows 3, 5, 6 and 11; higher is better elsewhere. Engine runs are single end-to-end runs inside the benchmark's 24-hour limit, each scored once. Scores and medals come from the evidence ledger in [results/hard15.json](results/hard15.json).
 
 ## Published HARD context
 
@@ -29,7 +29,7 @@ The [MLE-bench project](https://github.com/openai/mle-bench#leaderboard) publish
 | Agent | LLM(s) used | High any-medal (%) | Source code available |
 |---|---|---:|---|
 | **Impulse AI, all verified medals (this repository)** | GPT-6-Luna (engine runs) | **73.33 (11/15)** | ✗ |
-| **Impulse EES, engine runs (this repository)** | GPT-6-Luna | **60.00 (9/15)** | ✗ |
+| **Impulse EES, engine runs (this repository)** | GPT-6-Luna | **66.67 (10/15)** | ✗ |
 | AIBuildAI | Claude-Opus-4.6 | 46.67 ± 0.00 | ✗ |
 | CAIR MARS+ | Gemini-3-Pro-Preview | 44.44 ± 2.22 | ✗ |
 | Famou-Agent 2.0 | Gemini-3-Pro-Preview | 42.22 ± 2.22 | ✗ |
@@ -51,7 +51,7 @@ The project also lists additional submissions that it marks as not directly comp
 - **Chest X-ray abnormalities (VinBig):** COCO-pretrained two-stage detector fine-tuned at 800 px.
 - **Contrails:** false-colour composite from infrared bands, six-member U-Net ensemble with offset-corrected mirroring in three members.
 - **NFL player contact:** pairwise tracking features with a temporal second stage along each player pair's timeline.
-- **Brain-tumour MRI (MICCAI radiogenomics):** a family of six EfficientNet-B2 classifiers, each over a different construction of the MRI sequences, trained without augmentation and selected by repeated patient-level cross-validation with bootstrap intervals; rank-averaged across members.
+- **Brain-tumour MRI (MICCAI radiogenomics):** a family of six EfficientNet-B2 classifiers, each over a different view of the four MRI sequences, trained without augmentation under repeated patient-level cross-validation with bootstrap intervals; rank-averaged across members.
 - **EEG harmful brain activity (HMS):** CNNs over EEG-window and spectrogram images, with a cross-fitted second stage built on the recording-level structure of the data index.
 
 ## Product capabilities used in these runs

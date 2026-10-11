@@ -70,11 +70,11 @@ class HardResultsContractTests(unittest.TestCase):
         engine = [task for task in medal_tasks if task["method"].startswith("Engine run")]
         self.assertEqual(15, len(data["tasks"]))
         self.assertEqual(11, len(medal_tasks))
-        self.assertEqual(9, len(engine))
-        self.assertEqual("60.00", f"{100 * len(engine) / 15:.2f}")
+        self.assertEqual(10, len(engine))
+        self.assertEqual("66.67", f"{100 * len(engine) / 15:.2f}")
         self.assertEqual("73.33", f"{100 * len(medal_tasks) / 15:.2f}")
         self.assertEqual(
-            {"gold": 7, "silver": 1, "bronze": 3},
+            {"gold": 7, "silver": 2, "bronze": 2},
             {
                 medal: sum(task["medal"] == medal for task in medal_tasks)
                 for medal in ("gold", "silver", "bronze")
@@ -106,8 +106,8 @@ class HardResultsContractTests(unittest.TestCase):
         text = (ROOT / "HARD.md").read_text()
         self.assertIn("11 medals on MLE-bench HARD", text)
         self.assertIn("11 of the 15", text)
-        self.assertIn("7 gold / 1 silver / 3 bronze", text)
-        self.assertIn("**60.00 (9/15)**", text)
+        self.assertIn("7 gold / 2 silver / 2 bronze", text)
+        self.assertIn("**66.67 (10/15)**", text)
         self.assertIn("**73.33 (11/15)**", text)
         self.assertIn("| AIBuildAI | Claude-Opus-4.6 | 46.67 ± 0.00 | ✗ |", text)
         readme = (ROOT / "README.md").read_text()
@@ -127,7 +127,7 @@ class HardResultsContractTests(unittest.TestCase):
         cases = (
             lambda data: data["summary"].__setitem__("medal_tasks", 12),
             lambda data: data["summary"]["medals"].__setitem__("gold", 8),
-            lambda data: data["summary"].__setitem__("engine_run_percentage", 66.67),
+            lambda data: data["summary"].__setitem__("engine_run_percentage", 60.0),
         )
         for mutate in cases:
             errors = self.errors_after(mutate)
@@ -220,7 +220,7 @@ class HardResultsContractTests(unittest.TestCase):
 
         errors = self.errors_after(mutate)
         self.assertIn(
-            "HARD results must hold 9 engine runs and 2 pipeline results", errors
+            "HARD results must hold 10 engine runs and 1 pipeline result", errors
         )
 
     def test_rejects_non_null_miss(self):
@@ -273,7 +273,7 @@ class HardResultsContractTests(unittest.TestCase):
     def test_rejects_missing_page_claim(self):
         def mutate(root):
             path = root / "HARD.md"
-            path.write_text(path.read_text().replace("**60.00 (9/15)**", "**66.67 (10/15)**"))
+            path.write_text(path.read_text().replace("**66.67 (10/15)**", "**60.00 (9/15)**"))
 
         errors = self.errors_after(mutate_files=mutate)
         self.assertTrue(

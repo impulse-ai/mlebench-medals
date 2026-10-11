@@ -38,9 +38,9 @@ EXPECTED_SUMMARY = {
     "tasks": 15,
     "medal_tasks": 11,
     "any_medal_percentage": 73.33,
-    "medals": {"gold": 7, "silver": 1, "bronze": 3},
-    "engine_run_medal_tasks": 9,
-    "engine_run_percentage": 60.0,
+    "medals": {"gold": 7, "silver": 2, "bronze": 2},
+    "engine_run_medal_tasks": 10,
+    "engine_run_percentage": 66.67,
 }
 ENGINE_METHODS = {"Engine run", "Engine run (exploit discovery)"}
 PIPELINE_METHOD = "Impulse ML pipeline"
@@ -95,20 +95,22 @@ PUBLISHED_HIGH = [
 REQUIRED_PAGE_CLAIMS = (
     "11 medals on MLE-bench HARD",
     "11 of the 15",
-    "7 gold / 1 silver / 3 bronze",
-    "60.00% on HARD",
+    "7 gold / 2 silver / 2 bronze",
+    "66.67% on HARD",
     "46.67% for the top entry on the MLE-bench main leaderboard",
     "| **Impulse AI, all verified medals (this repository)** | "
     "GPT-6-Luna (engine runs) | **73.33 (11/15)** | ✗ |",
     "| **Impulse EES, engine runs (this repository)** | GPT-6-Luna | "
-    "**60.00 (9/15)** | ✗ |",
+    "**66.67 (10/15)** | ✗ |",
     "2026-04-24 update states that the leaderboard is not taking new submissions",
     "https://github.com/openai/mle-bench#leaderboard",
 )
 REQUIRED_README_CLAIMS = (
     "[11 medals on MLE-bench HARD](HARD.md)",
     "11 of the 15",
-    "7 gold / 1 silver / 3 bronze",
+    "7 gold / 2 silver / 2 bronze",
+    "18 gold / 7 silver / 5 bronze",
+    "**73.33%** all verified medals · **66.67%** engine runs",
 )
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -423,8 +425,8 @@ def verify_hard(root: Path) -> list[str]:
         errors.append("HARD results ledger schema is invalid")
     if data.get("summary") != EXPECTED_SUMMARY:
         errors.append(
-            "HARD summary must equal 11 of 15 (73.33%), 7 gold / 1 silver / "
-            "3 bronze, and 9 engine runs (60.00%)"
+            "HARD summary must equal 11 of 15 (73.33%), 7 gold / 2 silver / "
+            "2 bronze, and 10 engine runs (66.67%)"
         )
 
     context_block = data.get("published_context")
@@ -481,16 +483,16 @@ def verify_hard(root: Path) -> list[str]:
         )
     medals = Counter(task.get("medal") for task in medal_tasks)
     if medals != Counter(EXPECTED_SUMMARY["medals"]):
-        errors.append("HARD medal breakdown must equal 7 gold, 1 silver, 3 bronze")
+        errors.append("HARD medal breakdown must equal 7 gold, 2 silver, 2 bronze")
     engine = [task for task in medal_tasks if task.get("method") in ENGINE_METHODS]
     pipeline = [task for task in medal_tasks if task.get("method") == PIPELINE_METHOD]
-    if len(engine) != 9 or len(pipeline) != 2:
-        errors.append("HARD results must hold 9 engine runs and 2 pipeline results")
+    if len(engine) != 10 or len(pipeline) != 1:
+        errors.append("HARD results must hold 10 engine runs and 1 pipeline result")
     if (
         round(100 * len(medal_tasks) / 15, 2) != 73.33
-        or round(100 * len(engine) / 15, 2) != 60.0
+        or round(100 * len(engine) / 15, 2) != 66.67
     ):
-        errors.append("HARD rates must equal 73.33% (11/15) and 60.00% (9/15)")
+        errors.append("HARD rates must equal 73.33% (11/15) and 66.67% (10/15)")
     run_ids = [task.get("run_id") for task in medal_tasks]
     if len(set(run_ids)) != len(run_ids):
         errors.append("HARD run ids must be unique")

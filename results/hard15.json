@@ -6,11 +6,11 @@
   "any_medal_percentage": 73.33,
   "medals": {
    "gold": 7,
-   "silver": 1,
-   "bronze": 3
+   "silver": 2,
+   "bronze": 2
   },
-  "engine_run_medal_tasks": 9,
-  "engine_run_percentage": 60.0
+  "engine_run_medal_tasks": 10,
+  "engine_run_percentage": 66.67
  },
  "published_context": {
   "source": "https://github.com/openai/mle-bench#leaderboard",
@@ -280,6 +280,33 @@
    }
   },
   {
+   "task_id": "rsna-miccai-brain-tumor-radiogenomic-classification",
+   "medal": "silver",
+   "score": 0.59,
+   "display_score": "0.59",
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.60096,
+    "silver": 0.5815,
+    "bronze": 0.57449
+   },
+   "display_thresholds": "0.60096 / 0.5815 / 0.57449",
+   "method": "Engine run",
+   "run_id": "hard15-engine-10",
+   "llm": "GPT-6-Luna",
+   "llm_record": "run manifest",
+   "wall_time_hours": 2.94,
+   "graded_at": "2026-10-11",
+   "submission": {
+    "path": "solutions/rsna-miccai-brain-tumor-radiogenomic-classification/submission.csv",
+    "sha256": "140e4068cd8e4d9c3a659122c8d58daa003a7e08563caa53db392e5a070d39ed",
+    "bytes": 897
+   },
+   "evidence_hashes": {
+    "grade_sha256": "5edef3b64d36dcfe85693cb282b76997d2841df46fce44d782283b0e9cd7d94d"
+   }
+  },
+  {
    "task_id": "nfl-player-contact-detection",
    "medal": "bronze",
    "score": 0.71956,
@@ -331,33 +358,6 @@
    },
    "evidence_hashes": {
     "grade_sha256": "4f0f4c7fd57d175678dc93cc984cba75c4d6d27edaaf1c462cf6a25d7c767091"
-   }
-  },
-  {
-   "task_id": "rsna-miccai-brain-tumor-radiogenomic-classification",
-   "medal": "bronze",
-   "score": 0.57941,
-   "display_score": "0.57941",
-   "metric_direction": "maximize",
-   "thresholds": {
-    "gold": 0.60096,
-    "silver": 0.5815,
-    "bronze": 0.57449
-   },
-   "display_thresholds": "0.60096 / 0.5815 / 0.57449",
-   "method": "Impulse ML pipeline",
-   "run_id": "hard15-pipeline-02",
-   "llm": null,
-   "llm_record": null,
-   "wall_time_hours": null,
-   "graded_at": "2026-10-07",
-   "submission": {
-    "path": "solutions/rsna-miccai-brain-tumor-radiogenomic-classification/submission.csv",
-    "sha256": "bed83e4dfc402dd919c1332d591dd07d426c88c221498ca4a5f73942651c8751",
-    "bytes": 906
-   },
-   "evidence_hashes": {
-    "grade_sha256": "7f79bbe88fcb4734aa3e633df7f57ef350a0cd5af373104f5a228854c889be7f"
    }
   },
   {

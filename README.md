@@ -1,10 +1,10 @@
 # Impulse AI on MLE-bench: 30 medals across the Lite and HARD splits
 
-Impulse AI holds **30 medals on 37 competitions** of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions: **18 gold / 6 silver / 6 bronze**. On both splits reported here, Impulse is ahead of every entry on the MLE-bench main leaderboard. Every score uses OpenAI's MLE-bench grading logic, and the evidence is in this repository.
+Impulse AI holds **30 medals on 37 competitions** of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions: **18 gold / 7 silver / 5 bronze**. On both splits reported here, Impulse is ahead of every entry on the MLE-bench main leaderboard. Every score uses OpenAI's MLE-bench grading logic, and the evidence is in this repository.
 
 | Split | Competitions | Impulse medals | Impulse any-medal | Top entry, MLE-bench main leaderboard |
 |---|---:|---|---:|---:|
-| **HARD (High)**: the 15 highest-complexity competitions | 15 | **11** (7 gold / 1 silver / 3 bronze) | **73.33%** all verified medals · **60.00%** engine runs | 46.67% |
+| **HARD (High)**: the 15 highest-complexity competitions | 15 | **11** (7 gold / 2 silver / 2 bronze) | **73.33%** all verified medals · **66.67%** engine runs | 46.67% |
 | **Lite**: the 22-competition low-compute split | 22 | **19** (11 gold / 5 silver / 3 bronze) | **86.36% ± 0.00** across three confirmed runs | 80.30% |
 
 - **[11 medals on MLE-bench HARD](HARD.md)**: medals on 11 of the 15 competitions in the High split. 3D detection from LiDAR, chest X-ray localisation, screening mammography, satellite contrail segmentation, mRNA degradation, wildlife camera traps, and more.
@@ -26,6 +26,7 @@ One system, very different problems:
 | mRNA vaccine degradation | RNA sequence graphs | 🥇 gold |
 | Volcanic eruption timing | Multi-sensor seismic segments | 🥇 gold |
 | Contrail detection | Infrared satellite bands | 🥈 silver |
+| Brain-tumour MRI radiogenomics | Multi-sequence MRI volumes | 🥈 silver |
 | NFL player contact | Game video with wearable tracking | 🥉 bronze |
 
 Full tables, scores and medal lines: [HARD.md](HARD.md) and the Lite section below.

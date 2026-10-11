@@ -465,7 +465,7 @@ def main() -> int:
         print("\n".join(errors))
         return 1
     print("verified: 22 tasks, 19 medals, 3 confirmation runs")
-    print("verified: HARD 15 tasks, 11 medals (7 gold / 1 silver / 3 bronze), 9 engine runs")
+    print("verified: HARD 15 tasks, 11 medals (7 gold / 2 silver / 2 bronze), 10 engine runs")
     return 0
 
 
