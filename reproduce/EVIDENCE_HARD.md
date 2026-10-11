@@ -1,6 +1,6 @@
 # Evidence index: MLE-bench HARD
 
-**11/15 (73.33%) with 7 gold / 1 silver / 3 bronze; nine engine runs: 9/15 (60.00%).** Every score uses [OpenAI's MLE-bench grading logic](https://github.com/openai/mle-bench).
+**11/15 (73.33%) with 7 gold / 2 silver / 2 bronze; ten engine runs: 10/15 (66.67%).** Every score uses [OpenAI's MLE-bench grading logic](https://github.com/openai/mle-bench).
 
 The checked-in [results ledger](../results/hard15.json) is the machine-readable source for the table below. Each task name links to its approach notes, graded submission and grade report.
 
@@ -16,9 +16,9 @@ The checked-in [results ledger](../results/hard15.json) is the machine-readable 
 | [stanford-covid-vaccine](../solutions/stanford-covid-vaccine/) | gold, 0.32671 | Engine run | GPT-6-Luna | 1.51 | 2026-10-08 | `ceda0110fb017c81e5bd17ddfae420c2ea1c920dadcbf213b42d4cf24df0e4e4` | `e228739b6ffc947d6adf3efc829550bb5a0724924b05cafb64c421216b3cdaa3` |
 | [vinbigdata-chest-xray-abnormalities-detection](../solutions/vinbigdata-chest-xray-abnormalities-detection/) | gold, 0.4256 | Engine run | GPT-6-Luna | 12.09 | 2026-10-09 | `7cdac83112a22fdb82445a1fc83948b7487da021b7a0469bcbfca1e6f8b7b3de` | `8960c9743c3ab7e194672f4523420d6d583fae767a7af5ad8b073379be1f2d84` |
 | [google-research-identify-contrails-reduce-global-warming](../solutions/google-research-identify-contrails-reduce-global-warming/) | silver, 0.69712 | Engine run | GPT-6-Luna | 12.07 | 2026-10-09 | `c924b2ab483685d1d1b27b68a585f3f9b381b4483d1791dbd41f4aed149d18da` | `eadde884d3e783ce4460f40d5e8fa191133f9aa8b40475c8c6b07a2eccbe4d23` |
+| [rsna-miccai-brain-tumor-radiogenomic-classification](../solutions/rsna-miccai-brain-tumor-radiogenomic-classification/) | silver, 0.59 | Engine run | GPT-6-Luna | 2.94 | 2026-10-11 | `140e4068cd8e4d9c3a659122c8d58daa003a7e08563caa53db392e5a070d39ed` | `5edef3b64d36dcfe85693cb282b76997d2841df46fce44d782283b0e9cd7d94d` |
 | [nfl-player-contact-detection](../solutions/nfl-player-contact-detection/) | bronze, 0.71956 | Engine run | GPT-6-Luna | 12.33 | 2026-10-08 | `970d3ce25a44e2ecb2d7d111783e14b687b969cad9812b6cd5d56d30c534d6b5` | `92985c78e5d4c360316931b9d69d3ed5652ba48a8eb61495dc4b9b35b7d9deb6` |
 | [hms-harmful-brain-activity-classification](../solutions/hms-harmful-brain-activity-classification/) | bronze, 0.36573 | Impulse ML pipeline | n/a | n/a | 2026-10-07 | `3c318cd03b1f51b31c7b218746875fb5d1a4d473a5d8812fe0ae6d019ceb433d` | `4f0f4c7fd57d175678dc93cc984cba75c4d6d27edaaf1c462cf6a25d7c767091` |
-| [rsna-miccai-brain-tumor-radiogenomic-classification](../solutions/rsna-miccai-brain-tumor-radiogenomic-classification/) | bronze, 0.57941 | Impulse ML pipeline | n/a | n/a | 2026-10-07 | `bed83e4dfc402dd919c1332d591dd07d426c88c221498ca4a5f73942651c8751` | `7f79bbe88fcb4734aa3e633df7f57ef350a0cd5af373104f5a228854c889be7f` |
 
 ## Checking the files
 

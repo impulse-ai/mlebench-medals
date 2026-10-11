@@ -1,17 +1,19 @@
-# rsna-miccai-brain-tumor-radiogenomic-classification — 🥉 bronze — 0.57941
+# rsna-miccai-brain-tumor-radiogenomic-classification — 🥈 silver — 0.59
 
 - **Kaggle competition:** https://www.kaggle.com/c/rsna-miccai-brain-tumor-radiogenomic-classification
-- **Result:** 🥉 bronze — **0.57941**, graded with OpenAI's
+- **Result:** 🥈 silver — **0.59**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
-- **Method:** Impulse ML pipeline: a six-member classifier family with a pre-registered selection rule
+- **Solution operator:** `volume_cohort_classification` (Impulse proprietary operator family; source not published)
 
 ## Approach
 
-A family of six classifiers built on EfficientNet-B2. Each member sees a different construction of the MRI input — slice montages, a single middle slice, evenly spaced slices through the volume, max-intensity slabs of the contrast sequence, an attention-pooled stack across the four sequences, and a FLAIR crop centred on the bright region. All six are trained without augmentation (AdamW, 10 fixed epochs) and predict with horizontal-flip test-time augmentation.
+The engine ran its volume-classification operator once and submitted its result. The run first built a compact view from the public file tree: the 348,641 slice files of the 526 training and 59 test patients were reduced to 2,340 arrays, one per patient and MRI sequence (FLAIR, T1w, T1wCE, T2w), holding the largest-area slices, the middle slice, sixteen evenly spaced slices over the central 10–90% of each series and, for the contrast sequence, twelve maximum-intensity slabs.
 
-Selection used cross-validation on the 526 training patients only: three repeats of stratified five-fold patient-level CV with five seeds per fold, and paired patient bootstrap intervals (2,000 resamples). The adoption rule and a 0.59 out-of-fold AUC bar were written down before the models were trained. The family reached out-of-fold AUC 0.596, a gain of 0.021 (95% interval 0.009 to 0.033) over the augmented family.
+On that view it trained a family of six classifiers on an ImageNet-pretrained EfficientNet-B2 trunk, each over a different input: (A) the three largest-area slices of every sequence, (B) the middle slice of three sequences, (C) sixteen sampled slices of every sequence, (D) a montage of maximum-intensity slabs of the contrast sequence, (E) six sampled slices of all sequences with attention pooling over slices, and (F) a bright-region-centred crop of the FLAIR sequence. Members train without augmentation for 10 epochs at 224 px and predict with horizontal-flip averaging.
 
-Each member's test prediction is the mean over its 75 cross-validation models; the submission is the equal-weight average of the six members' rank-scaled predictions. This is the third submission graded on this 59-patient test set; the two earlier ones scored 0.51882 and 0.56941.
+Validation is three repeats of five-fold cross-validation with one row per patient, stratified by the target, and five seeds per fold: 75 models per member. The cross-validation statistic of the family was AUC 0.5932 (95% patient-bootstrap interval 0.5455 to 0.6391, 2,000 resamples), and the AUC of the written out-of-fold predictions was 0.5974. All six members passed the inclusion rule. Each member's test prediction is the mean over its 75 models, rank-scaled; the submission is the equal-weight average of the six members.
+
+This is the fourth submission graded on this 59-patient test set; the three earlier ones scored 0.51882, 0.56941 and 0.57941.
 
 ## Evidence in this directory
 
@@ -20,14 +22,14 @@ Each member's test prediction is the mean over its 75 cross-validation models; t
 
 ## Result
 
-**Result:** bronze, `0.57941`.
+**Result:** silver, `0.59`.
 **Medal lines (gold / silver / bronze):** 0.60096 / 0.5815 / 0.57449; higher is better.
-**Method:** Impulse ML pipeline.
-**LLM:** not applicable.
-**Run wall time:** not applicable.
-**Graded:** 2026-10-07.
-**Submission SHA-256:** `bed83e4dfc402dd919c1332d591dd07d426c88c221498ca4a5f73942651c8751`.
-**Grade report SHA-256:** `7f79bbe88fcb4734aa3e633df7f57ef350a0cd5af373104f5a228854c889be7f`.
+**Method:** Engine run.
+**LLM:** GPT-6-Luna.
+**Run wall time:** 2.94 hours.
+**Graded:** 2026-10-11.
+**Submission SHA-256:** `140e4068cd8e4d9c3a659122c8d58daa003a7e08563caa53db392e5a070d39ed`.
+**Grade report SHA-256:** `5edef3b64d36dcfe85693cb282b76997d2841df46fce44d782283b0e9cd7d94d`.
 
 ## Verify it yourself
 
