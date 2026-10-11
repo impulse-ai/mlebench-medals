@@ -1,8 +1,40 @@
+# Impulse AI on MLE-bench: 30 medals across the Lite and HARD splits
+
+Impulse AI holds **30 medals on 37 competitions** of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions: **18 gold / 6 silver / 6 bronze**. On both splits reported here, Impulse is ahead of every entry on the MLE-bench main leaderboard. Every score uses OpenAI's MLE-bench grading logic, and the evidence is in this repository.
+
+| Split | Competitions | Impulse medals | Impulse any-medal | Top entry, MLE-bench main leaderboard |
+|---|---:|---|---:|---:|
+| **HARD (High)**: the 15 highest-complexity competitions | 15 | **11** (7 gold / 1 silver / 3 bronze) | **73.33%** all verified medals · **60.00%** engine runs | 46.67% |
+| **Lite**: the 22-competition low-compute split | 22 | **19** (11 gold / 5 silver / 3 bronze) | **86.36% ± 0.00** across three confirmed runs | 80.30% |
+
+- **[11 medals on MLE-bench HARD](HARD.md)**: medals on 11 of the 15 competitions in the High split. 3D detection from LiDAR, chest X-ray localisation, screening mammography, satellite contrail segmentation, mRNA degradation, wildlife camera traps, and more.
+- **[Lite results](#impulse-ai-19-medals-on-mle-bench-lite-22)**: below on this page.
+- **Medium (38 competitions)** is the next split to be published here.
+
+MLE-bench's 2026-04-24 update states that its leaderboard is not taking new submissions, so these results are published here with their evidence: the results ledgers, graded submission files with checksums, per-competition solution notes, and a verifier. The engine itself is proprietary and is not public; a live re-run under observation is available on request.
+
+## What the engine handles
+
+One system, very different problems:
+
+| Problem | Data | Result |
+|---|---|---|
+| 3D object detection for autonomous vehicles | LiDAR point clouds | 🥇 gold |
+| Chest X-ray abnormality localisation | DICOM radiographs, multiple annotators | 🥇 gold |
+| Screening mammography | 54,700 high-resolution DICOM images | 🥇 gold |
+| Wildlife camera traps | Long-tailed image classification | 🥇 gold |
+| mRNA vaccine degradation | RNA sequence graphs | 🥇 gold |
+| Volcanic eruption timing | Multi-sensor seismic segments | 🥇 gold |
+| Contrail detection | Infrared satellite bands | 🥈 silver |
+| NFL player contact | Game video with wearable tracking | 🥉 bronze |
+
+Full tables, scores and medal lines: [HARD.md](HARD.md) and the Lite section below.
+
+---
+
 # Impulse AI: 19 medals on MLE-bench Lite-22
 
 Impulse AI earned medals on 19 of 22 [MLE-bench](https://github.com/openai/mle-bench) Lite-22 competitions: **86.36% ± 0.00 across three confirmed runs.** The best verified results are **11 gold / 5 silver / 3 bronze**. Every score uses OpenAI's MLE-bench grading logic.
-
-**New: [11 medals on MLE-bench HARD](HARD.md)** — medals on 11 of the 15 competitions in the benchmark's High split, 7 gold / 1 silver / 3 bronze, with graded submissions and evidence.
 
 MLE-bench Lite is the 22-competition low-compute split of OpenAI's benchmark of real Kaggle competitions. This repository contains the results ledger, the per-competition solution notes, the grading artifacts, and the verification tooling for those results. The engine itself is proprietary and is not public; a live re-run under observation is available on request.
 
@@ -81,7 +113,7 @@ mlebench grade-sample <submission.csv> <competition>
 
 ## Scope
 
-MLE-bench Lite is the low-compute, 22-competition subset of the full benchmark. The claim on this page covers Lite-22 only. The HARD (High) split results are on the [HARD page](HARD.md).
+MLE-bench Lite is the low-compute, 22-competition subset of the full benchmark. The Lite section of this page covers Lite-22. The HARD (High) split results are on the [HARD page](HARD.md).
 
 ---
 
