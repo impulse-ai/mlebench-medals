@@ -33,7 +33,7 @@ Seeds 101, 202 and 303, run from code tag `eval-high-20261013` with GPT-6-Luna a
 
 30 of the 33 task-seed runs medaled, nine competitions medaled in every seed, and each of the eleven competitions that were run medaled in at least one seed. Lower is better for volcanic eruptions, OpenVaccine, smartphone GNSS and HMS. The four competitions that were not run in this evaluation (SIIM COVID-19, cervical spine, Vesuvius and BMS) count as misses in every seed, so the 66.67% counts them against Impulse.
 
-The machine-readable record is [results/high15-eval-three-seed.json](results/high15-eval-three-seed.json): the run rule, the tag and commit, and for every task-seed its campaign id, score, medal, single grade, wall time, submission SHA-256 and flags. The ledger also marks the runs that the engine finalised through its built-in salvage or recovery step. Three points recorded there are stated here:
+The machine-readable record is [results/high15-eval-three-seed.json](results/high15-eval-three-seed.json): the run rule, the tag and commit, and for every task-seed its campaign id, score, medal, single grade, wall time, submission SHA-256 and flags. Three points recorded there are stated here:
 
 - **Contrails, seed 101** was relaunched once under the run's pre-registered rule: the first attempt's download of the public input archive from S3 broke before any training, so no score existed. The relaunch is the seed-101 result.
 - **Smartphone GNSS** is an exploit-discovery result: the engine reconstructs the positions from logs shipped in the public data.
