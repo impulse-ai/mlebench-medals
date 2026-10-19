@@ -9,6 +9,27 @@ from pathlib import Path
 
 
 SCHEMA = "impulse-mlebench-high15:v1"
+EVAL_SCHEMA = "impulse-mlebench-high15-eval:v1"
+EVAL_LEDGER = "results/high15-eval-three-seed.json"
+EVAL_TAG = "eval-high-20261013"
+EVAL_COMMIT = "926abe7d0c17c767b564ee303fb7924b412f2133"
+EVAL_SEEDS = [101, 202, 303]
+EVAL_FLAGS = ("relaunched", "salvage", "recovery")
+# What the three-seed evaluation must show (results/high15-eval-three-seed.json).
+EXPECTED_EVAL_SUMMARY = {
+    "tasks": 15,
+    "tasks_run": 11,
+    "per_seed_medal_tasks": [10, 10, 10],
+    "any_medal_percentage_mean": 66.67,
+    "any_medal_percentage_standard_error": 0.0,
+    "display": "66.67 ± 0.00",
+    "seed_runs": 33,
+    "medal_seed_runs": 30,
+    "tasks_with_a_medal_in_every_seed": 9,
+    "tasks_with_a_medal_in_any_seed": 11,
+    "any_seed_percentage": 73.33,
+    "best_medals": {"gold": 7, "silver": 2, "bronze": 2},
+}
 MEDALS = ("gold", "silver", "bronze")
 MEDAL_EMOJI = {"gold": "🥇", "silver": "🥈", "bronze": "🥉"}
 HIGH_SPLIT = {
@@ -39,11 +60,18 @@ EXPECTED_SUMMARY = {
     "medal_tasks": 11,
     "any_medal_percentage": 73.33,
     "medals": {"gold": 7, "silver": 2, "bronze": 2},
-    "engine_run_medal_tasks": 10,
-    "engine_run_percentage": 66.67,
+    "engine_run_medal_tasks": 11,
+    "three_seed_evaluation": {
+        "ledger": "results/high15-eval-three-seed.json",
+        "seeds": [101, 202, 303],
+        "medal_tasks_per_seed": [10, 10, 10],
+        "any_medal_percentage": 66.67,
+        "standard_error": 0.0,
+        "display": "66.67 ± 0.00",
+    },
 }
 ENGINE_METHODS = {"Engine run", "Engine run (exploit discovery)"}
-PIPELINE_METHOD = "Impulse ML pipeline"
+EVAL_METHOD_RE = re.compile(r"^Engine run \(three-seed evaluation, seed (\d+)\)$")
 ENGINE_LLM = "GPT-6-Luna"
 WALL_TIME_LIMIT_HOURS = 24.0
 # High-split figures published on the MLE-bench main leaderboard
@@ -92,31 +120,39 @@ PUBLISHED_HIGH = [
         "source_code_available": True,
     },
 ]
+IMPULSE_CONTEXT_ROWS = (
+    "| **Impulse EES, three-seed evaluation (this repository)** | GPT-6-Luna | "
+    "**66.67 ± 0.00 (10/15 per seed)** | ✗ |",
+    "| **Impulse EES, tasks medaled across the three seeds (this repository)** | "
+    "GPT-6-Luna | **73.33 (11/15)** | ✗ |",
+)
 REQUIRED_PAGE_CLAIMS = (
-    "11 medals on MLE-bench High",
+    "# Impulse AI on MLE-bench High: 66.67% ± 0.00 across three independent seeds",
+    "**66.67% ± 0.00 across three independent seeds, against 46.67% for the top "
+    "entry on the MLE-bench main leaderboard.**",
     "11 of the 15",
     "7 gold / 2 silver / 2 bronze",
-    "66.67% on the High split",
-    "46.67% for the top entry on the MLE-bench main leaderboard",
-    "| **Impulse AI, all verified medals (this repository)** | "
-    "GPT-6-Luna (engine runs) | **73.33 (11/15)** | ✗ |",
-    "| **Impulse EES, engine runs (this repository)** | GPT-6-Luna | "
-    "**66.67 (10/15)** | ✗ |",
+    "30 of the 33 task-seed runs",
+    *IMPULSE_CONTEXT_ROWS,
     "2026-04-24 update states that the leaderboard is not taking new submissions",
     "https://github.com/openai/mle-bench#leaderboard",
 )
 REQUIRED_README_CLAIMS = (
-    "[11 medals on MLE-bench High](HIGH.md)",
+    "[MLE-bench High: 66.67% ± 0.00 across three independent seeds](HIGH.md)",
+    "**66.67% ± 0.00 across three independent seeds**",
     "11 of the 15",
     "7 gold / 2 silver / 2 bronze",
     "18 gold / 7 silver / 5 bronze",
-    "**73.33%** all verified medals · **66.67%** engine runs",
+    "**66.67% ± 0.00** across three independent seeds · **73.33%** tasks medaled "
+    "across the seeds",
 )
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 PAGE_ROW_RE = re.compile(r"^\| \d+ \|")
 EVIDENCE_ROW_RE = re.compile(r"^\| \[")
 CONTEXT_HEADING = "## Published High context"
+SEED_HEADING = "## Three-seed evaluation"
+SEED_ROW_RE = re.compile(r"^\| (\*\*Medals per seed\*\*|[a-z0-9])")
 
 
 def _is_number(value: object) -> bool:
@@ -222,7 +258,10 @@ def _read(path: Path, label: str, errors: list[str]) -> str | None:
 
 
 def _verify_medal_task(
-    root: Path, task: dict[str, object], errors: list[str]
+    root: Path,
+    task: dict[str, object],
+    errors: list[str],
+    eval_seeds: dict[str, dict[int, dict[str, object]]] | None = None,
 ) -> bool:
     """Validate one medal record and its files. True when it can be rendered."""
     task_id = task["task_id"]
@@ -256,7 +295,8 @@ def _verify_medal_task(
     ]:
         errors.append(f"{task_id} displayed medal lines do not match the ledger")
 
-    if method in ENGINE_METHODS:
+    eval_match = EVAL_METHOD_RE.fullmatch(method) if isinstance(method, str) else None
+    if method in ENGINE_METHODS or eval_match:
         if task.get("llm") != ENGINE_LLM or task.get("llm_record") not in (
             "run manifest",
             "run LLM transcript",
@@ -265,20 +305,36 @@ def _verify_medal_task(
         hours = task.get("wall_time_hours")
         if not _is_number(hours) or not 0 < hours < WALL_TIME_LIMIT_HOURS:
             errors.append(f"{task_id} engine run must finish inside 24 hours")
-    elif method == PIPELINE_METHOD:
-        if any(
-            task.get(field) is not None
-            for field in ("llm", "llm_record", "wall_time_hours")
-        ):
-            errors.append(f"{task_id} pipeline result must not record run fields")
     else:
         errors.append(f"{task_id} has an invalid method")
 
     run_id = task.get("run_id")
-    if not isinstance(run_id, str) or not re.fullmatch(
-        r"high15-(engine|pipeline)-\d{2}", run_id
-    ):
+    pattern = r"high15-eval-\d{2}" if eval_match else r"high15-engine-\d{2}"
+    if not isinstance(run_id, str) or not re.fullmatch(pattern, run_id):
         errors.append(f"{task_id} has an invalid run id")
+    evaluation = task.get("evaluation")
+    if eval_match:
+        seed = int(eval_match.group(1))
+        record = (eval_seeds or {}).get(task_id, {}).get(seed)
+        submission = task.get("submission")
+        if (
+            not isinstance(evaluation, dict)
+            or evaluation.get("ledger") != EVAL_LEDGER
+            or evaluation.get("seed") != seed
+            or record is None
+            or evaluation.get("campaign_id") != record.get("campaign_id")
+            or record.get("score") != score
+            or record.get("medal") != medal
+            or record.get("wall_time_hours") != task.get("wall_time_hours")
+            or record.get("graded_at") != task.get("graded_at")
+            or not isinstance(submission, dict)
+            or record.get("submission_sha256") != submission.get("sha256")
+        ):
+            errors.append(
+                f"{task_id} evaluation row does not match the three-seed ledger"
+            )
+    elif evaluation is not None:
+        errors.append(f"{task_id} records an evaluation seed without saying so")
     graded_at = task.get("graded_at")
     if not isinstance(graded_at, str) or not DATE_RE.fullmatch(graded_at):
         errors.append(f"{task_id} has an invalid grading date")
@@ -338,13 +394,43 @@ def _verify_medal_task(
     return len(errors) == before
 
 
+def seed_cell(record: dict[str, object], task_run: bool) -> str:
+    if not task_run:
+        return "not run (miss)"
+    medal = record["medal"]
+    if medal is None:
+        return f"{record['display_score']} (no medal)"
+    return f"{MEDAL_EMOJI[medal]} {record['display_score']}"
+
+
+def seed_rows(evaluation: dict[str, object]) -> list[str]:
+    """The per-seed table rows of HIGH.md, in ledger order, then the totals row."""
+    rows = []
+    for task in evaluation["tasks"]:
+        seeds = task["seeds"]
+        cells = " | ".join(seed_cell(record, task["run"]) for record in seeds)
+        medaled = sum(record["medal"] is not None for record in seeds)
+        rows.append(f"| {task['task_id']} | {cells} | {medaled}/{len(seeds)} |")
+    per_seed = " | ".join(
+        f"**{item['medal_tasks']}/15**" for item in evaluation["summary"]["per_seed"]
+    )
+    rows.append(f"| **Medals per seed** | {per_seed} | |")
+    return rows
+
+
 def _verify_pages(
     root: Path,
     medal_tasks: list[dict[str, object]],
     context: list[dict[str, object]],
+    evaluation: dict[str, object] | None = None,
 ) -> list[str]:
     errors: list[str] = []
     page = _read(root / "HIGH.md", "HIGH.md", errors)
+    if page is not None and evaluation is not None:
+        section = _section(page, SEED_HEADING) or ""
+        rows = [line for line in section.splitlines() if SEED_ROW_RE.match(line)]
+        if rows != seed_rows(evaluation):
+            errors.append("High per-seed table does not match the three-seed ledger")
     if page is not None:
         rows = [line for line in page.splitlines() if PAGE_ROW_RE.match(line)]
         if rows != [page_row(i, task) for i, task in enumerate(medal_tasks, 1)]:
@@ -356,7 +442,7 @@ def _verify_pages(
         published = [
             line
             for line in section.splitlines()
-            if line.startswith("| ") and "±" in line
+            if line.startswith("| ") and "±" in line and "Impulse" not in line
         ]
         if published != [context_row(entry) for entry in context]:
             errors.append(
@@ -415,6 +501,179 @@ def _verify_pages(
     return errors
 
 
+def _seed_flags_ok(record: dict[str, object], seed: int) -> bool:
+    flags = record.get("flags")
+    campaign = record.get("campaign_id")
+    if not isinstance(flags, list) or not set(flags) <= set(EVAL_FLAGS):
+        return False
+    if len(set(flags)) != len(flags) or not isinstance(campaign, str):
+        return False
+    relaunched = "relaunched" in flags
+    suffix = f"-s{seed}-relaunch1" if relaunched else f"-s{seed}"
+    cause = record.get("relaunch_cause")
+    return (
+        campaign.endswith(suffix)
+        and EVAL_TAG in campaign
+        and (isinstance(cause, str) and cause.strip() != "") == relaunched
+    )
+
+
+def verify_evaluation(
+    root: Path, high_tasks: dict[str, dict[str, object]]
+) -> tuple[list[str], dict[str, object] | None]:
+    """Check the three-seed ledger. Returns errors and the ledger when usable."""
+    errors: list[str] = []
+    try:
+        data = json.loads((root / EVAL_LEDGER).read_text())
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        return [f"three-seed ledger is not valid JSON: {exc}"], None
+    if not isinstance(data, dict):
+        return ["three-seed ledger root must be an object"], None
+    if (
+        data.get("schema") != EVAL_SCHEMA
+        or data.get("code_tag") != EVAL_TAG
+        or data.get("code_commit") != EVAL_COMMIT
+        or data.get("seeds") != EVAL_SEEDS
+        or data.get("llm") != ENGINE_LLM
+        or data.get("time_limit_hours") != WALL_TIME_LIMIT_HOURS
+        or not isinstance(data.get("rule"), str)
+        or "No relaunch after a score exists" not in data["rule"]
+        or not isinstance(data.get("flag_definitions"), dict)
+        or set(data["flag_definitions"]) != set(EVAL_FLAGS)
+    ):
+        errors.append("three-seed ledger header (schema, tag, commit, seeds, rule) is invalid")
+
+    tasks = data.get("tasks")
+    if not isinstance(tasks, list) or not all(isinstance(t, dict) for t in tasks):
+        return errors + ["three-seed tasks must be an array of objects"], None
+    ids = [task.get("task_id") for task in tasks]
+    if len(ids) != 15 or set(ids) != HIGH_SPLIT:
+        return errors + ["three-seed ledger must contain the 15 High-split tasks"], None
+
+    usable = True
+    for task in tasks:
+        task_id = task["task_id"]
+        seeds = task.get("seeds")
+        if not isinstance(seeds, list) or [
+            r.get("seed") if isinstance(r, dict) else None for r in seeds
+        ] != EVAL_SEEDS:
+            errors.append(f"{task_id} must list seeds 101, 202 and 303 once each")
+            usable = False
+            continue
+        if task_id in EXPECTED_MISSES:
+            if task.get("run") is not False or any(
+                r != {"seed": r["seed"], "campaign_id": None, "score": None,
+                      "medal": None, "grade_count": 0}
+                for r in seeds
+            ):
+                errors.append(f"{task_id} must be recorded as not run, a miss in every seed")
+            continue
+        if task.get("run") is not True:
+            errors.append(f"{task_id} must be recorded as run in the evaluation")
+            usable = False
+            continue
+        high = high_tasks.get(task_id, {})
+        thresholds = task.get("thresholds")
+        direction = task.get("metric_direction")
+        if (
+            thresholds != high.get("thresholds")
+            or direction != high.get("metric_direction")
+            or task.get("display_thresholds") != high.get("display_thresholds")
+        ):
+            errors.append(f"{task_id} medal lines differ from the High ledger")
+            usable = False
+            continue
+        for record in seeds:
+            seed = record["seed"]
+            score = record.get("score")
+            medal = record.get("medal")
+            hours = record.get("wall_time_hours")
+            if (
+                not _is_number(score)
+                or medal not in (*MEDALS, None)
+                or medal_for(score, thresholds, direction) != medal
+                or _display_number(record.get("display_score")) != score
+            ):
+                errors.append(
+                    f"{task_id} seed {seed} medal does not follow from its score and lines"
+                )
+                usable = False
+            if record.get("grade_count") != 1:
+                errors.append(f"{task_id} seed {seed} must be graded exactly once")
+            if not _is_number(hours) or not 0 < hours < WALL_TIME_LIMIT_HOURS:
+                errors.append(f"{task_id} seed {seed} must finish inside 24 hours")
+            if not _is_sha256(record.get("submission_sha256")):
+                errors.append(f"{task_id} seed {seed} has an invalid submission hash")
+            graded = record.get("graded_at")
+            if not isinstance(graded, str) or not DATE_RE.fullmatch(graded):
+                errors.append(f"{task_id} seed {seed} has an invalid grading date")
+            if not _seed_flags_ok(record, seed):
+                errors.append(f"{task_id} seed {seed} has invalid flags or campaign id")
+
+    campaigns = [r.get("campaign_id") for t in tasks if t.get("run") for r in t["seeds"]]
+    if len(set(campaigns)) != len(campaigns):
+        errors.append("three-seed campaign ids must be unique")
+
+    summary = data.get("summary")
+    if not usable or not isinstance(summary, dict):
+        return errors + (["three-seed summary is missing"] if usable else []), None
+
+    order = {name: rank for rank, name in enumerate(MEDALS)}
+    per_seed = [
+        sum(t["seeds"][i]["medal"] is not None for t in tasks) for i in range(3)
+    ]
+    rates = [100 * count / 15 for count in per_seed]
+    mean = sum(rates) / 3
+    sem = math.sqrt(sum((rate - mean) ** 2 for rate in rates) / 2) / math.sqrt(3)
+    best = {
+        t["task_id"]: min((r["medal"] for r in t["seeds"] if r["medal"]), key=order.get)
+        for t in tasks
+        if any(r["medal"] for r in t["seeds"])
+    }
+    every = [t for t in tasks if all(r["medal"] for r in t["seeds"])]
+    computed = {
+        "tasks": 15,
+        "tasks_run": sum(t["run"] for t in tasks),
+        "per_seed_medal_tasks": per_seed,
+        "any_medal_percentage_mean": round(mean, 2),
+        "any_medal_percentage_standard_error": round(sem, 2),
+        "display": f"{mean:.2f} ± {sem:.2f}",
+        "seed_runs": len(campaigns),
+        "medal_seed_runs": sum(per_seed),
+        "tasks_with_a_medal_in_every_seed": len(every),
+        "tasks_with_a_medal_in_any_seed": len(best),
+        "any_seed_percentage": round(100 * len(best) / 15, 2),
+        "best_medals": {name: list(best.values()).count(name) for name in MEDALS},
+    }
+    if computed != EXPECTED_EVAL_SUMMARY:
+        errors.append(
+            "three-seed results must equal 10/15 in every seed (66.67 ± 0.00), "
+            "30 of 33 task-seed runs, and 11/15 across the seeds (7 / 2 / 2)"
+        )
+    listed = summary.get("per_seed")
+    listed = listed if isinstance(listed, list) else []
+    stated = {
+        **{key: summary.get(key) for key in computed if key != "per_seed_medal_tasks"},
+        "per_seed_medal_tasks": [
+            item.get("medal_tasks") if isinstance(item, dict) else None
+            for item in listed
+        ],
+    }
+    seeds_listed = [item.get("seed") if isinstance(item, dict) else None for item in listed]
+    if stated != computed or seeds_listed != EVAL_SEEDS:
+        errors.append("three-seed summary does not match its task-seed records")
+    if summary.get("tasks_not_run") != [
+        t["task_id"] for t in tasks if not t["run"]
+    ]:
+        errors.append("three-seed summary must list the tasks that were not run")
+    for task_id, medal in best.items():
+        if high_tasks.get(task_id, {}).get("medal") != medal:
+            errors.append(
+                f"{task_id} High medal differs from its best three-seed medal"
+            )
+    return errors, data
+
+
 def verify_high(root: Path) -> list[str]:
     errors: list[str] = []
     path = root / "results/high15.json"
@@ -431,7 +690,7 @@ def verify_high(root: Path) -> list[str]:
     if data.get("summary") != EXPECTED_SUMMARY:
         errors.append(
             "High summary must equal 11 of 15 (73.33%), 7 gold / 2 silver / "
-            "2 bronze, and 10 engine runs (66.67%)"
+            "2 bronze, all engine runs, and 66.67 ± 0.00 across three seeds"
         )
 
     context_block = data.get("published_context")
@@ -463,6 +722,19 @@ def verify_high(root: Path) -> list[str]:
         errors.append("High results must contain the 15 High-split tasks")
         return errors
 
+    eval_errors, evaluation = verify_evaluation(
+        root, {task["task_id"]: task for task in tasks}
+    )
+    errors.extend(eval_errors)
+    eval_seeds = (
+        {
+            task["task_id"]: {record["seed"]: record for record in task["seeds"]}
+            for task in evaluation["tasks"]
+        }
+        if evaluation is not None
+        else None
+    )
+
     medal_tasks: list[dict[str, object]] = []
     renderable = True
     for task in tasks:
@@ -478,7 +750,7 @@ def verify_high(root: Path) -> list[str]:
                 errors.append(f"{task_id} must be an all-null miss record")
             continue
         medal_tasks.append(task)
-        renderable = _verify_medal_task(root, task, errors) and renderable
+        renderable = _verify_medal_task(root, task, errors, eval_seeds) and renderable
 
     misses = {task["task_id"] for task in tasks if task.get("medal") is None}
     if misses != EXPECTED_MISSES:
@@ -489,19 +761,20 @@ def verify_high(root: Path) -> list[str]:
     medals = Counter(task.get("medal") for task in medal_tasks)
     if medals != Counter(EXPECTED_SUMMARY["medals"]):
         errors.append("High medal breakdown must equal 7 gold, 2 silver, 2 bronze")
-    engine = [task for task in medal_tasks if task.get("method") in ENGINE_METHODS]
-    pipeline = [task for task in medal_tasks if task.get("method") == PIPELINE_METHOD]
-    if len(engine) != 10 or len(pipeline) != 1:
-        errors.append("High results must hold 10 engine runs and 1 pipeline result")
-    if (
-        round(100 * len(medal_tasks) / 15, 2) != 73.33
-        or round(100 * len(engine) / 15, 2) != 66.67
-    ):
-        errors.append("High rates must equal 73.33% (11/15) and 66.67% (10/15)")
+    engine = [
+        task
+        for task in medal_tasks
+        if task.get("method") in ENGINE_METHODS
+        or EVAL_METHOD_RE.fullmatch(str(task.get("method")))
+    ]
+    if len(engine) != 11:
+        errors.append("High results must hold 11 engine runs")
+    if round(100 * len(medal_tasks) / 15, 2) != 73.33:
+        errors.append("High rate must equal 73.33% (11/15)")
     run_ids = [task.get("run_id") for task in medal_tasks]
     if len(set(run_ids)) != len(run_ids):
         errors.append("High run ids must be unique")
 
     if renderable and len(medal_tasks) == 11:
-        errors.extend(_verify_pages(root, medal_tasks, context))
+        errors.extend(_verify_pages(root, medal_tasks, context, evaluation))
     return errors

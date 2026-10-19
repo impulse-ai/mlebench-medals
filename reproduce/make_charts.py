@@ -6,8 +6,9 @@ Run from the repository root:
     python reproduce/make_charts.py --check    # fail if assets/ is out of date
 
 Each chart is written twice, for light and dark page backgrounds. Every value
-comes from results/high15.json, results/lite22-three-run.json and
-results/published-lite-context.json; nothing is typed into this file.
+comes from results/high15.json, results/high15-eval-three-seed.json,
+results/lite22-three-run.json and results/published-lite-context.json; nothing
+is typed into this file.
 """
 from __future__ import annotations
 
@@ -40,12 +41,16 @@ def _rate(text: str) -> float:
 
 def high_chart(root: Path) -> dict[str, object]:
     data = json.loads((root / "results/high15.json").read_text())
-    summary = data["summary"]
-    runs = summary["engine_run_medal_tasks"]
+    evaluation = json.loads(
+        (root / data["summary"]["three_seed_evaluation"]["ledger"]).read_text()
+    )["summary"]
+    counts = sorted({item["medal_tasks"] for item in evaluation["per_seed"]})
+    per_seed = "–".join(str(count) for count in counts)
+    seeds = RUN_WORDS[len(evaluation["per_seed"])]
     rows = [{
-        "label": "Impulse (engine runs)",
-        "value": summary["engine_run_percentage"],
-        "text": f"{summary['engine_run_percentage']:.2f}% ({runs}/{summary['tasks']})",
+        "label": f"Impulse ({seeds} seeds)",
+        "value": evaluation["any_medal_percentage_mean"],
+        "text": f"{evaluation['display']} ({per_seed}/{evaluation['tasks']} per seed)",
         "impulse": True,
     }]
     for entry in data["published_context"]["entries"]:
@@ -54,8 +59,8 @@ def high_chart(root: Path) -> dict[str, object]:
     return {
         "name": "high-any-medal",
         "title": "MLE-bench High split, any-medal rate (%)",
-        "caption": ("Impulse: single runs, each scored once. Others: MLE-bench "
-                    "main leaderboard, means over seeds."),
+        "caption": (f"Impulse: {seeds} independent seeds, mean ± standard error. "
+                    "Others: MLE-bench main leaderboard, means over seeds."),
         "rows": rows,
     }
 

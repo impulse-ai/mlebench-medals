@@ -67,7 +67,8 @@ def verify_landing(root: Path) -> list[str]:
         tally = " / ".join(
             f"{high_medals[m] + lite_medals[m]} {m}" for m in ("gold", "silver", "bronze")
         )
-        engine = f"{high_summary['engine_run_percentage']:.2f}%"
+        mean, sem = high_summary["three_seed_evaluation"]["display"].split(" ± ")
+        engine = f"{mean}% ± {sem}"
         lite_rate = f"{lite_summary['any_medal_percentage']:.2f}%"
         stale = make_charts.stale(root)
     except (KeyError, TypeError, ValueError, AttributeError) as exc:
@@ -91,7 +92,7 @@ def verify_landing(root: Path) -> list[str]:
     at_a_glance = (
         f"| {total} medals | High: {engine} | Lite: {lite_rate} |\n"
         "|:---:|:---:|:---:|\n"
-        f"| on {competitions} competitions | engine runs, against {high_top:.2f}% for "
+        f"| on {competitions} competitions | three independent seeds, against {high_top:.2f}% for "
         "the top entry on the main leaderboard | three confirmed runs, against "
         f"{lite_top:.2f}% for the top entry on the main leaderboard |"
     )

@@ -2,21 +2,23 @@
 
 **[Interactive walkthrough: ten problems, the data, the model the engine built, and the result](https://mlebench.impulselabs.ai)**
 
-Impulse AI holds **30 medals on 37 competitions** of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions: **18 gold / 7 silver / 5 bronze**. On both splits reported here, Impulse is ahead of every entry on the MLE-bench main leaderboard. Every score uses OpenAI's MLE-bench grading logic. The evidence is in this repository.
+On MLE-bench High, the 15-competition high-complexity split of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions, the Impulse engine scores **66.67% ± 0.00 across three independent seeds**, against 46.67% for the top entry on the MLE-bench main leaderboard. Across those seeds it medaled on 11 of the 15 High competitions, with a best medal per competition of 7 gold / 2 silver / 2 bronze.
 
-| 30 medals | High: 66.67% | Lite: 86.36% |
+In total, Impulse AI holds **30 medals on 37 competitions** across the High and Lite splits: **18 gold / 7 silver / 5 bronze**. On both splits, Impulse is ahead of every entry on the MLE-bench main leaderboard. Every score uses OpenAI's MLE-bench grading logic. The evidence is in this repository.
+
+| 30 medals | High: 66.67% ± 0.00 | Lite: 86.36% |
 |:---:|:---:|:---:|
-| on 37 competitions | engine runs, against 46.67% for the top entry on the main leaderboard | three confirmed runs, against 80.30% for the top entry on the main leaderboard |
+| on 37 competitions | three independent seeds, against 46.67% for the top entry on the main leaderboard | three confirmed runs, against 80.30% for the top entry on the main leaderboard |
 
 | Split | Competitions | Impulse medals | Impulse any-medal | Top entry, MLE-bench main leaderboard |
 |---|---:|---|---:|---:|
-| **High**: the 15 highest-complexity competitions | 15 | **11** (7 gold / 2 silver / 2 bronze) | **73.33%** all verified medals · **66.67%** engine runs | 46.67% |
+| **High**: the 15 highest-complexity competitions | 15 | **11** (7 gold / 2 silver / 2 bronze) | **66.67% ± 0.00** across three independent seeds · **73.33%** tasks medaled across the seeds | 46.67% |
 | **Lite**: the 22-competition low-compute split | 22 | **19** (11 gold / 5 silver / 3 bronze) | **86.36% ± 0.00** across three confirmed runs | 80.30% |
 
-![MLE-bench High split, any-medal rate. Impulse engine runs: 66.67% (10/15). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-light.svg#gh-light-mode-only)
-![MLE-bench High split, any-medal rate. Impulse engine runs: 66.67% (10/15). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-dark.svg#gh-dark-mode-only)
+![MLE-bench High split, any-medal rate. Impulse, three independent seeds: 66.67% ± 0.00 (10/15 per seed). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-light.svg#gh-light-mode-only)
+![MLE-bench High split, any-medal rate. Impulse, three independent seeds: 66.67% ± 0.00 (10/15 per seed). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-dark.svg#gh-dark-mode-only)
 
-- **[11 medals on MLE-bench High](HIGH.md)**: medals on 11 of the 15 competitions in the High split. They cover 3D detection from LiDAR, chest X-ray localisation, screening mammography, satellite contrail segmentation, mRNA degradation, wildlife camera traps, and more.
+- **[MLE-bench High: 66.67% ± 0.00 across three independent seeds](HIGH.md)**: every seed medaled on 10 of the 15 competitions in the High split, and the seeds together on 11 of the 15. The medals cover 3D detection from LiDAR, chest X-ray localisation, screening mammography, satellite contrail segmentation, mRNA degradation, wildlife camera traps, and more.
 - **[Lite results](#impulse-ai-19-medals-on-mle-bench-lite-22)**: 19 medals on 22 competitions, below on this page.
 - **Medium (38 competitions)** is the next split to be published here.
 
@@ -120,7 +122,7 @@ mlebench grade-sample <submission.csv> <competition>
 ## Repository layout
 
 - `solutions/<competition>/`: approach notes and evidence artifacts for each medal task.
-- `results/`: the machine-readable three-run evidence ledger, and the High ledger (`high15.json`).
+- `results/`: the machine-readable three-run Lite evidence ledger, the High ledger (`high15.json`), and the High three-seed evaluation ledger (`high15-eval-three-seed.json`).
 - `HIGH.md`: the MLE-bench High results page.
 - `assets/`: the comparison charts, built from the ledgers by `reproduce/make_charts.py`.
 - `reproduce/`: the verification packet, re-grading guides, container setup, checksums, and GPU job material.

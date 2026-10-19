@@ -466,7 +466,8 @@ def main() -> int:
         print("\n".join(errors))
         return 1
     print("verified: 22 tasks, 19 medals, 3 confirmation runs")
-    print("verified: High 15 tasks, 11 medals (7 gold / 2 silver / 2 bronze), 10 engine runs")
+    print("verified: High 15 tasks, 11 medals (7 gold / 2 silver / 2 bronze), all engine runs")
+    print("verified: High three-seed evaluation, 66.67 ± 0.00 (10/15 in every seed), 30 of 33 task-seed runs")
     print("verified: landing section, charts and published Lite context match the ledgers")
     return 0
 
