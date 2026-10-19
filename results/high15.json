@@ -9,8 +9,23 @@
    "silver": 2,
    "bronze": 2
   },
-  "engine_run_medal_tasks": 10,
-  "engine_run_percentage": 66.67
+  "engine_run_medal_tasks": 11,
+  "three_seed_evaluation": {
+   "ledger": "results/high15-eval-three-seed.json",
+   "seeds": [
+    101,
+    202,
+    303
+   ],
+   "medal_tasks_per_seed": [
+    10,
+    10,
+    10
+   ],
+   "any_medal_percentage": 66.67,
+   "standard_error": 0.0,
+   "display": "66.67 ± 0.00"
+  }
  },
  "published_context": {
   "source": "https://github.com/openai/mle-bench#leaderboard",
@@ -147,8 +162,8 @@
   {
    "task_id": "rsna-breast-cancer-detection",
    "medal": "gold",
-   "score": 0.50526,
-   "display_score": "0.50526",
+   "score": 0.54737,
+   "display_score": "0.54737",
    "metric_direction": "maximize",
    "thresholds": {
     "gold": 0.49,
@@ -156,19 +171,24 @@
     "bronze": 0.41
    },
    "display_thresholds": "0.49 / 0.43 / 0.41",
-   "method": "Engine run",
-   "run_id": "high15-engine-04",
+   "method": "Engine run (three-seed evaluation, seed 303)",
+   "run_id": "high15-eval-01",
    "llm": "GPT-6-Luna",
    "llm_record": "run manifest",
-   "wall_time_hours": 23.11,
-   "graded_at": "2026-10-10",
+   "wall_time_hours": 23.08,
+   "graded_at": "2026-10-16",
    "submission": {
     "path": "solutions/rsna-breast-cancer-detection/submission.csv",
-    "sha256": "e70629ebfcad4238bebd5c0920dc607b9ca9a2d69fb8dd09cbbe4196fa6fb8ee",
-    "bytes": 28823
+    "sha256": "cb33ac46b23a5f8bd0e5c88088db721faa01254693723b61e733ac3db2a6b641",
+    "bytes": 28253
    },
    "evidence_hashes": {
-    "grade_sha256": "26f064dc3c07175d2adcc4cd11dbe009571a95fdf517581fb6a44f4cfdaa6f8a"
+    "grade_sha256": "d0cddca5de575346d70e522fc99028db5d97f7d4b671ce982bd4af0e0af4deb3"
+   },
+   "evaluation": {
+    "ledger": "results/high15-eval-three-seed.json",
+    "seed": 303,
+    "campaign_id": "imgscr-sm-eval-eval-high-20261013-s303"
    }
   },
   {
@@ -336,8 +356,8 @@
   {
    "task_id": "hms-harmful-brain-activity-classification",
    "medal": "bronze",
-   "score": 0.36573,
-   "display_score": "0.36573",
+   "score": 0.37228,
+   "display_score": "0.37228",
    "metric_direction": "minimize",
    "thresholds": {
     "gold": 0.290807,
@@ -345,19 +365,24 @@
     "bronze": 0.375383
    },
    "display_thresholds": "0.290807 / 0.353323 / 0.375383",
-   "method": "Impulse ML pipeline",
-   "run_id": "high15-pipeline-01",
-   "llm": null,
-   "llm_record": null,
-   "wall_time_hours": null,
-   "graded_at": "2026-10-07",
+   "method": "Engine run (three-seed evaluation, seed 202)",
+   "run_id": "high15-eval-02",
+   "llm": "GPT-6-Luna",
+   "llm_record": "run manifest",
+   "wall_time_hours": 11.95,
+   "graded_at": "2026-10-16",
    "submission": {
     "path": "solutions/hms-harmful-brain-activity-classification/submission.csv",
-    "sha256": "3c318cd03b1f51b31c7b218746875fb5d1a4d473a5d8812fe0ae6d019ceb433d",
-    "bytes": 1316817
+    "sha256": "8fd1e38d16451d1d37d81ae212479c5bdbf78a3a6e354511ab148f6215af939b",
+    "bytes": 1316756
    },
    "evidence_hashes": {
-    "grade_sha256": "4f0f4c7fd57d175678dc93cc984cba75c4d6d27edaaf1c462cf6a25d7c767091"
+    "grade_sha256": "e7564630193a14bbe05c86ade32a3563e6de5738a737ea227029d8199f049243"
+   },
+   "evaluation": {
+    "ledger": "results/high15-eval-three-seed.json",
+    "seed": 202,
+    "campaign_id": "signal-sm-eval-eval-high-20261013-s202"
    }
   },
   {

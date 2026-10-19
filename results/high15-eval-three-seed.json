@@ -1,0 +1,769 @@
+{
+ "schema": "impulse-mlebench-high15-eval:v1",
+ "evaluation": "three-seed evaluation of the Impulse engine on the 15-competition MLE-bench High split",
+ "code_tag": "eval-high-20261013",
+ "code_commit": "926abe7d0c17c767b564ee303fb7924b412f2133",
+ "llm": "GPT-6-Luna",
+ "seeds": [
+  101,
+  202,
+  303
+ ],
+ "time_limit_hours": 24.0,
+ "grading": "OpenAI's MLE-bench grading logic; each task-seed graded once",
+ "rule": "Three seeds per task, launched once each from the frozen tag; every one of them is reported, whatever it scores, and a task that ends without a score counts as a miss for that seed. No relaunch after a score exists. A campaign that died of an infrastructure cause (capacity, quota, disk, credentials, a cloud outage) before any score was taken may be relaunched once, under a new campaign id, with the cause recorded before the relaunch; the first attempt's evidence is kept. Nothing is salvaged, re-finalised or scored by hand. No score is read before every campaign of the seed is terminal. Results labelled as a data property are reported in their own row and are not added to the model-driven count.",
+ "standard_error": "standard error of the any-medal rate across the three seeds (sample standard deviation / sqrt(3)), the convention of the MLE-bench leaderboard",
+ "flag_definitions": {
+  "relaunched": "the first attempt died of an infrastructure cause before any score existed and was relaunched once under the rule, with the cause recorded before the relaunch",
+  "salvage": "the run ended without a handed-over deliverable; the engine controller's built-in terminal salvage finalised the run's best verified attempt by its recorded validation score (no held-out signal) before the single grade",
+  "recovery": "the controller failed before its handoff; the engine's built-in recovery finalised the deliverable from the run's own reviewed attempts before the single grade"
+ },
+ "summary": {
+  "tasks": 15,
+  "tasks_run": 11,
+  "tasks_not_run": [
+   "siim-covid19-detection",
+   "rsna-2022-cervical-spine-fracture-detection",
+   "vesuvius-challenge-ink-detection",
+   "bms-molecular-translation"
+  ],
+  "per_seed": [
+   {
+    "seed": 101,
+    "medal_tasks": 10,
+    "any_medal_percentage": 66.67
+   },
+   {
+    "seed": 202,
+    "medal_tasks": 10,
+    "any_medal_percentage": 66.67
+   },
+   {
+    "seed": 303,
+    "medal_tasks": 10,
+    "any_medal_percentage": 66.67
+   }
+  ],
+  "any_medal_percentage_mean": 66.67,
+  "any_medal_percentage_standard_error": 0.0,
+  "display": "66.67 ± 0.00",
+  "seed_runs": 33,
+  "medal_seed_runs": 30,
+  "tasks_with_a_medal_in_every_seed": 9,
+  "tasks_with_a_medal_in_any_seed": 11,
+  "any_seed_percentage": 73.33,
+  "best_medals": {
+   "gold": 7,
+   "silver": 2,
+   "bronze": 2
+  },
+  "data_property_tasks": [
+   "smartphone-decimeter-2022",
+   "hms-harmful-brain-activity-classification"
+  ],
+  "model_driven_tasks_with_a_medal_in_every_seed": 8
+ },
+ "tasks": [
+  {
+   "task_id": "3d-object-detection-for-autonomous-vehicles",
+   "run": true,
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.139,
+    "silver": 0.053,
+    "bronze": 0.046
+   },
+   "display_thresholds": "0.139 / 0.053 / 0.046",
+   "data_property": null,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": "points-sm-eval-eval-high-20261013-s101",
+     "score": 0.17869,
+     "display_score": "0.17869",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-14",
+     "wall_time_hours": 12.22,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "f46d21fe45371ad9b903bee212dd823a9869b268485b12da8c044bb061abfb18"
+    },
+    {
+     "seed": 202,
+     "campaign_id": "points-sm-eval-eval-high-20261013-s202",
+     "score": 0.18186,
+     "display_score": "0.18186",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-15",
+     "wall_time_hours": 12.08,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "207fc893762741ede50c5700d0ec68285ff19a6a63675b56067c6828394aacf0"
+    },
+    {
+     "seed": 303,
+     "campaign_id": "points-sm-eval-eval-high-20261013-s303",
+     "score": 0.18165,
+     "display_score": "0.18165",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-16",
+     "wall_time_hours": 12.25,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "7674e0160917be1ae1ed45af7d153e3fd05101fee2d1a0654355ca1e7f865640"
+    }
+   ]
+  },
+  {
+   "task_id": "vinbigdata-chest-xray-abnormalities-detection",
+   "run": true,
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.289,
+    "silver": 0.257,
+    "bronze": 0.243
+   },
+   "display_thresholds": "0.289 / 0.257 / 0.243",
+   "data_property": null,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": "imgdet-sm-eval-eval-high-20261013-s101",
+     "score": 0.43555,
+     "display_score": "0.43555",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-14",
+     "wall_time_hours": 12.07,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "f0920d0ab1ed1b2c3e1d76ffe04144517470fb32ca9503b851773228a6655dad"
+    },
+    {
+     "seed": 202,
+     "campaign_id": "imgdet-sm-eval-eval-high-20261013-s202",
+     "score": 0.43099,
+     "display_score": "0.43099",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-16",
+     "wall_time_hours": 11.95,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "20ff08301477d637f6e8a33b5591ae79b0dd49be1c0c06f4d3cafc0aef09d55c"
+    },
+    {
+     "seed": 303,
+     "campaign_id": "imgdet-sm-eval-eval-high-20261013-s303",
+     "score": 0.41884,
+     "display_score": "0.41884",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-17",
+     "wall_time_hours": 11.55,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "0f8e1bdb71fb325f9d148bd079aa6e96bb1c469ee7daebc8b99ceb64a1389baa"
+    }
+   ]
+  },
+  {
+   "task_id": "iwildcam-2019-fgvc6",
+   "run": true,
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.212,
+    "silver": 0.129,
+    "bronze": 0.114
+   },
+   "display_thresholds": "0.212 / 0.129 / 0.114",
+   "data_property": null,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": "longtail-sm-eval-eval-high-20261013-s101",
+     "score": 0.36575,
+     "display_score": "0.36575",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-13",
+     "wall_time_hours": 3.03,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "1ff6118f83d7bd3aa99d14dce18cced5635d0200be545fd6ed63ec451f6167cc"
+    },
+    {
+     "seed": 202,
+     "campaign_id": "longtail-sm-eval-eval-high-20261013-s202",
+     "score": 0.45765,
+     "display_score": "0.45765",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-15",
+     "wall_time_hours": 3.06,
+     "stop_reason": "salvage_finalized",
+     "flags": [
+      "salvage"
+     ],
+     "submission_sha256": "0b17c4aa5e3e1bc75e5d35b61cc9b8acabf18659d5bd381ba16733b2b9f26693"
+    },
+    {
+     "seed": 303,
+     "campaign_id": "longtail-sm-eval-eval-high-20261013-s303",
+     "score": 0.41101,
+     "display_score": "0.41101",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-15",
+     "wall_time_hours": 3.06,
+     "stop_reason": "salvage_finalized",
+     "flags": [
+      "salvage"
+     ],
+     "submission_sha256": "5c816fc0f7d618e32427b2bbd0e141bd0bae42e4f0b47575a023c301498929be"
+    }
+   ]
+  },
+  {
+   "task_id": "predict-volcanic-eruptions-ingv-oe",
+   "run": true,
+   "metric_direction": "minimize",
+   "thresholds": {
+    "gold": 3971366.0,
+    "silver": 4808057.0,
+    "bronze": 4999330.0
+   },
+   "display_thresholds": "3,971,366 / 4,808,057 / 4,999,330",
+   "data_property": null,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": "segments-sm-eval-eval-high-20261013-s101",
+     "score": 2626042.0,
+     "display_score": "2,626,042",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-13",
+     "wall_time_hours": 6.05,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "93b2d380c56e03cef68de14c4bb639a9756a85ec1123f91e48d2c02fe82b13f8"
+    },
+    {
+     "seed": 202,
+     "campaign_id": "segments-sm-eval-eval-high-20261013-s202",
+     "score": 2613825.0,
+     "display_score": "2,613,825",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-15",
+     "wall_time_hours": 6.05,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "d103b17f78544bbdc261b5f8fcf16d8070f1307f47c075dff2d5ae02a0440875"
+    },
+    {
+     "seed": 303,
+     "campaign_id": "segments-sm-eval-eval-high-20261013-s303",
+     "score": 2715601.0,
+     "display_score": "2,715,601",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-15",
+     "wall_time_hours": 6.06,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "460eb95749c511d3258c4a8d297491fbb29982c3b96ae18df70d3659201a8167"
+    }
+   ]
+  },
+  {
+   "task_id": "stanford-covid-vaccine",
+   "run": true,
+   "metric_direction": "minimize",
+   "thresholds": {
+    "gold": 0.34728,
+    "silver": 0.35175,
+    "bronze": 0.3534
+   },
+   "display_thresholds": "0.34728 / 0.35175 / 0.3534",
+   "data_property": null,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": "seqgraph-sm-eval-eval-high-20261013-s101",
+     "score": 0.32728,
+     "display_score": "0.32728",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-13",
+     "wall_time_hours": 1.53,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "6275b3f82850f710abbc9f510ac2374f30a790af6f45ea565f1fbb1e16472dd1"
+    },
+    {
+     "seed": 202,
+     "campaign_id": "seqgraph-sm-eval-eval-high-20261013-s202",
+     "score": 0.33214,
+     "display_score": "0.33214",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-13",
+     "wall_time_hours": 1.53,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "4330ef9c9ee6dcfbff743ac729dd6aa7b18b9b3300ccdea827d188118971b82c"
+    },
+    {
+     "seed": 303,
+     "campaign_id": "seqgraph-sm-eval-eval-high-20261013-s303",
+     "score": 0.32809,
+     "display_score": "0.32809",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-14",
+     "wall_time_hours": 1.54,
+     "stop_reason": "controller_failure_finalized",
+     "flags": [
+      "recovery"
+     ],
+     "submission_sha256": "e9be68afe466a8b4a36c325a3e9c9670dd121f5a0e50d838c0e051ecb096f0e1"
+    }
+   ]
+  },
+  {
+   "task_id": "smartphone-decimeter-2022",
+   "run": true,
+   "metric_direction": "minimize",
+   "thresholds": {
+    "gold": 1.768,
+    "silver": 2.119,
+    "bronze": 3.068
+   },
+   "display_thresholds": "1.768 / 2.119 / 3.068",
+   "data_property": "data property: the answers are reconstructible from raw files shipped in the public data; not a learned model",
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": "tracklogs-sm-eval-eval-high-20261013-s101",
+     "score": 0.0,
+     "display_score": "0.000",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-13",
+     "wall_time_hours": 0.09,
+     "stop_reason": "no_admissible_route",
+     "flags": [],
+     "submission_sha256": "ddf3d46c9d08913013fc94095e6567c4eb515d5620e5510c1c8d4c088b7134f7"
+    },
+    {
+     "seed": 202,
+     "campaign_id": "tracklogs-sm-eval-eval-high-20261013-s202",
+     "score": 0.0,
+     "display_score": "0.000",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-13",
+     "wall_time_hours": 0.08,
+     "stop_reason": "no_admissible_route",
+     "flags": [],
+     "submission_sha256": "ddf3d46c9d08913013fc94095e6567c4eb515d5620e5510c1c8d4c088b7134f7"
+    },
+    {
+     "seed": 303,
+     "campaign_id": "tracklogs-sm-eval-eval-high-20261013-s303",
+     "score": 0.0,
+     "display_score": "0.000",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-13",
+     "wall_time_hours": 0.07,
+     "stop_reason": "no_admissible_route",
+     "flags": [],
+     "submission_sha256": "ddf3d46c9d08913013fc94095e6567c4eb515d5620e5510c1c8d4c088b7134f7"
+    }
+   ]
+  },
+  {
+   "task_id": "rsna-breast-cancer-detection",
+   "run": true,
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.49,
+    "silver": 0.43,
+    "bronze": 0.41
+   },
+   "display_thresholds": "0.49 / 0.43 / 0.41",
+   "data_property": null,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": "imgscr-sm-eval-eval-high-20261013-s101",
+     "score": 0.47312,
+     "display_score": "0.47312",
+     "medal": "silver",
+     "grade_count": 1,
+     "graded_at": "2026-10-14",
+     "wall_time_hours": 23.09,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "876f6d02d26c3016a527f153a5c7060aae51b785cb2a3349ae6b22cd8dd9a47a"
+    },
+    {
+     "seed": 202,
+     "campaign_id": "imgscr-sm-eval-eval-high-20261013-s202",
+     "score": 0.47312,
+     "display_score": "0.47312",
+     "medal": "silver",
+     "grade_count": 1,
+     "graded_at": "2026-10-15",
+     "wall_time_hours": 22.87,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "25363c30bded398aa431bbfe8b22c6e16af8df49cc6f4f28d1957fd7626c1e1b"
+    },
+    {
+     "seed": 303,
+     "campaign_id": "imgscr-sm-eval-eval-high-20261013-s303",
+     "score": 0.54737,
+     "display_score": "0.54737",
+     "medal": "gold",
+     "grade_count": 1,
+     "graded_at": "2026-10-16",
+     "wall_time_hours": 23.08,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "cb33ac46b23a5f8bd0e5c88088db721faa01254693723b61e733ac3db2a6b641"
+    }
+   ]
+  },
+  {
+   "task_id": "google-research-identify-contrails-reduce-global-warming",
+   "run": true,
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.71059,
+    "silver": 0.6936,
+    "bronze": 0.67929
+   },
+   "display_thresholds": "0.71059 / 0.6936 / 0.67929",
+   "data_property": null,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": "bandseg-sm-eval-eval-high-20261013-s101-relaunch1",
+     "score": 0.69648,
+     "display_score": "0.69648",
+     "medal": "silver",
+     "grade_count": 1,
+     "graded_at": "2026-10-15",
+     "wall_time_hours": 12.25,
+     "stop_reason": "salvage_finalized",
+     "flags": [
+      "relaunched",
+      "salvage"
+     ],
+     "submission_sha256": "5f76f4738705716dde9af0c40a450cc3b46e7111e8a0af087e8e543bd13ba6b2",
+     "relaunch_cause": "The coordinator died at 2026-10-13T17:44Z while downloading the 323 GB public input archive from S3, before any training or score: the S3 response stream broke (botocore ResponseStreamingError, IncompleteRead after 314,179,946,390 of 322,952,451,595 bytes) and the downloader does not resume a broken stream."
+    },
+    {
+     "seed": 202,
+     "campaign_id": "bandseg-sm-eval-eval-high-20261013-s202",
+     "score": 0.43955,
+     "display_score": "0.43955",
+     "medal": null,
+     "grade_count": 1,
+     "graded_at": "2026-10-16",
+     "wall_time_hours": 12.07,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "db3d6a9ea25eaef0f0ee865bdeb8d2fbe72b62893bbb3aa89e65fa0a51a6c428"
+    },
+    {
+     "seed": 303,
+     "campaign_id": "bandseg-sm-eval-eval-high-20261013-s303",
+     "score": 0.64167,
+     "display_score": "0.64167",
+     "medal": null,
+     "grade_count": 1,
+     "graded_at": "2026-10-16",
+     "wall_time_hours": 11.61,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "1f8ae871d962201735f92e8fadceed056d5ff4262de7ac887a8216b992abf0d5"
+    }
+   ]
+  },
+  {
+   "task_id": "rsna-miccai-brain-tumor-radiogenomic-classification",
+   "run": true,
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.60096,
+    "silver": 0.5815,
+    "bronze": 0.57449
+   },
+   "display_thresholds": "0.60096 / 0.5815 / 0.57449",
+   "data_property": null,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": "imgvol-sm-eval-eval-high-20261013-s101",
+     "score": 0.59,
+     "display_score": "0.59",
+     "medal": "silver",
+     "grade_count": 1,
+     "graded_at": "2026-10-13",
+     "wall_time_hours": 3.87,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "140e4068cd8e4d9c3a659122c8d58daa003a7e08563caa53db392e5a070d39ed"
+    },
+    {
+     "seed": 202,
+     "campaign_id": "imgvol-sm-eval-eval-high-20261013-s202",
+     "score": 0.59,
+     "display_score": "0.59",
+     "medal": "silver",
+     "grade_count": 1,
+     "graded_at": "2026-10-15",
+     "wall_time_hours": 3.4,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "140e4068cd8e4d9c3a659122c8d58daa003a7e08563caa53db392e5a070d39ed"
+    },
+    {
+     "seed": 303,
+     "campaign_id": "imgvol-sm-eval-eval-high-20261013-s303",
+     "score": 0.59,
+     "display_score": "0.59",
+     "medal": "silver",
+     "grade_count": 1,
+     "graded_at": "2026-10-15",
+     "wall_time_hours": 2.83,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "140e4068cd8e4d9c3a659122c8d58daa003a7e08563caa53db392e5a070d39ed"
+    }
+   ]
+  },
+  {
+   "task_id": "nfl-player-contact-detection",
+   "run": true,
+   "metric_direction": "maximize",
+   "thresholds": {
+    "gold": 0.78167,
+    "silver": 0.72203,
+    "bronze": 0.69652
+   },
+   "display_thresholds": "0.78167 / 0.72203 / 0.69652",
+   "data_property": null,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": "pairs-sm-eval-eval-high-20261013-s101",
+     "score": 0.71042,
+     "display_score": "0.71042",
+     "medal": "bronze",
+     "grade_count": 1,
+     "graded_at": "2026-10-14",
+     "wall_time_hours": 12.48,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "d7fbb15f16f837591e60b915efbd544b91b09488b062ffb522c79dd0932fb2d0"
+    },
+    {
+     "seed": 202,
+     "campaign_id": "pairs-sm-eval-eval-high-20261013-s202",
+     "score": 0.71495,
+     "display_score": "0.71495",
+     "medal": "bronze",
+     "grade_count": 1,
+     "graded_at": "2026-10-15",
+     "wall_time_hours": 12.53,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "26ccd87204b9473ee7c9b5a9861e8d4f8e210b4d6569fa9f0cf53d2e25f5ccbb"
+    },
+    {
+     "seed": 303,
+     "campaign_id": "pairs-sm-eval-eval-high-20261013-s303",
+     "score": 0.71533,
+     "display_score": "0.71533",
+     "medal": "bronze",
+     "grade_count": 1,
+     "graded_at": "2026-10-16",
+     "wall_time_hours": 12.51,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "b4a5f2c6b7bbea818948ad5c33525cbc04c282486a2b7ab2f451a45d49f7f23c"
+    }
+   ]
+  },
+  {
+   "task_id": "hms-harmful-brain-activity-classification",
+   "run": true,
+   "metric_direction": "minimize",
+   "thresholds": {
+    "gold": 0.290807,
+    "silver": 0.353323,
+    "bronze": 0.375383
+   },
+   "display_thresholds": "0.290807 / 0.353323 / 0.375383",
+   "data_property": "data property: the gain over the signal model comes from the layout of the public test index (rows per recording, order, length), not from a better model",
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": "signal-sm-eval-eval-high-20261013-s101",
+     "score": 0.41207,
+     "display_score": "0.41207",
+     "medal": null,
+     "grade_count": 1,
+     "graded_at": "2026-10-15",
+     "wall_time_hours": 11.6,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "0de9946c1244228ecb7c8eae45b68ba96d591af48c219dd3b821142c05a353a9"
+    },
+    {
+     "seed": 202,
+     "campaign_id": "signal-sm-eval-eval-high-20261013-s202",
+     "score": 0.37228,
+     "display_score": "0.37228",
+     "medal": "bronze",
+     "grade_count": 1,
+     "graded_at": "2026-10-16",
+     "wall_time_hours": 11.95,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "8fd1e38d16451d1d37d81ae212479c5bdbf78a3a6e354511ab148f6215af939b"
+    },
+    {
+     "seed": 303,
+     "campaign_id": "signal-sm-eval-eval-high-20261013-s303",
+     "score": 0.37511,
+     "display_score": "0.37511",
+     "medal": "bronze",
+     "grade_count": 1,
+     "graded_at": "2026-10-17",
+     "wall_time_hours": 11.85,
+     "stop_reason": "exploration_exhausted",
+     "flags": [],
+     "submission_sha256": "8283c220743e6489eb5fc481f7907d8f7d131e322296ac52fc5ec0ddfc1fffde"
+    }
+   ]
+  },
+  {
+   "task_id": "siim-covid19-detection",
+   "run": false,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": null,
+     "score": null,
+     "medal": null,
+     "grade_count": 0
+    },
+    {
+     "seed": 202,
+     "campaign_id": null,
+     "score": null,
+     "medal": null,
+     "grade_count": 0
+    },
+    {
+     "seed": 303,
+     "campaign_id": null,
+     "score": null,
+     "medal": null,
+     "grade_count": 0
+    }
+   ]
+  },
+  {
+   "task_id": "rsna-2022-cervical-spine-fracture-detection",
+   "run": false,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": null,
+     "score": null,
+     "medal": null,
+     "grade_count": 0
+    },
+    {
+     "seed": 202,
+     "campaign_id": null,
+     "score": null,
+     "medal": null,
+     "grade_count": 0
+    },
+    {
+     "seed": 303,
+     "campaign_id": null,
+     "score": null,
+     "medal": null,
+     "grade_count": 0
+    }
+   ]
+  },
+  {
+   "task_id": "vesuvius-challenge-ink-detection",
+   "run": false,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": null,
+     "score": null,
+     "medal": null,
+     "grade_count": 0
+    },
+    {
+     "seed": 202,
+     "campaign_id": null,
+     "score": null,
+     "medal": null,
+     "grade_count": 0
+    },
+    {
+     "seed": 303,
+     "campaign_id": null,
+     "score": null,
+     "medal": null,
+     "grade_count": 0
+    }
+   ]
+  },
+  {
+   "task_id": "bms-molecular-translation",
+   "run": false,
+   "seeds": [
+    {
+     "seed": 101,
+     "campaign_id": null,
+     "score": null,
+     "medal": null,
+     "grade_count": 0
+    },
+    {
+     "seed": 202,
+     "campaign_id": null,
+     "score": null,
+     "medal": null,
+     "grade_count": 0
+    },
+    {
+     "seed": 303,
+     "campaign_id": null,
+     "score": null,
+     "medal": null,
+     "grade_count": 0
+    }
+   ]
+  }
+ ]
+}

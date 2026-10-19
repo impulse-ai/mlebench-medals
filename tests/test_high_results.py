@@ -16,6 +16,7 @@ from reproduce.verify_results import verify_results
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER = "results/high15.json"
+EVAL = "results/high15-eval-three-seed.json"
 
 
 class HighResultsContractTests(unittest.TestCase):
@@ -25,6 +26,7 @@ class HighResultsContractTests(unittest.TestCase):
     def copy_tree(self, root):
         (root / "results").mkdir()
         shutil.copy(ROOT / LEDGER, root / LEDGER)
+        shutil.copy(ROOT / EVAL, root / EVAL)
         shutil.copy(ROOT / "README.md", root / "README.md")
         shutil.copy(ROOT / "HIGH.md", root / "HIGH.md")
         shutil.copy(ROOT / "HARD.md", root / "HARD.md")
@@ -43,7 +45,10 @@ class HighResultsContractTests(unittest.TestCase):
                 else:
                     shutil.copy(item, target / item.name)
 
-    def errors_after(self, mutate_data=None, mutate_files=None):
+    def load_eval(self):
+        return json.loads((ROOT / EVAL).read_text())
+
+    def errors_after(self, mutate_data=None, mutate_files=None, mutate_eval=None):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self.copy_tree(root)
@@ -51,6 +56,10 @@ class HighResultsContractTests(unittest.TestCase):
                 data = self.load()
                 mutate_data(data)
                 (root / LEDGER).write_text(json.dumps(data, ensure_ascii=False))
+            if mutate_eval is not None:
+                data = self.load_eval()
+                mutate_eval(data)
+                (root / EVAL).write_text(json.dumps(data, ensure_ascii=False))
             if mutate_files is not None:
                 mutate_files(root)
             return verify_high(root)
@@ -71,9 +80,11 @@ class HighResultsContractTests(unittest.TestCase):
         engine = [task for task in medal_tasks if task["method"].startswith("Engine run")]
         self.assertEqual(15, len(data["tasks"]))
         self.assertEqual(11, len(medal_tasks))
-        self.assertEqual(10, len(engine))
-        self.assertEqual("66.67", f"{100 * len(engine) / 15:.2f}")
+        self.assertEqual(11, len(engine))
         self.assertEqual("73.33", f"{100 * len(medal_tasks) / 15:.2f}")
+        self.assertEqual(
+            "66.67 ± 0.00", data["summary"]["three_seed_evaluation"]["display"]
+        )
         self.assertEqual(
             {"gold": 7, "silver": 2, "bronze": 2},
             {
@@ -105,14 +116,20 @@ class HighResultsContractTests(unittest.TestCase):
 
     def test_page_carries_the_public_claims(self):
         text = (ROOT / "HIGH.md").read_text()
-        self.assertIn("11 medals on MLE-bench High", text)
+        self.assertIn("66.67% ± 0.00 across three independent seeds", text)
         self.assertIn("11 of the 15", text)
         self.assertIn("7 gold / 2 silver / 2 bronze", text)
-        self.assertIn("**66.67 (10/15)**", text)
+        self.assertIn("**66.67 ± 0.00 (10/15 per seed)**", text)
         self.assertIn("**73.33 (11/15)**", text)
         self.assertIn("| AIBuildAI | Claude-Opus-4.6 | 46.67 ± 0.00 | ✗ |", text)
+        self.assertNotIn("Impulse ML pipeline", text)
+        self.assertNotIn("HARD", text)
         readme = (ROOT / "README.md").read_text()
-        self.assertIn("[11 medals on MLE-bench High](HIGH.md)", readme)
+        self.assertIn(
+            "[MLE-bench High: 66.67% ± 0.00 across three independent seeds](HIGH.md)",
+            readme,
+        )
+        self.assertIn("18 gold / 7 silver / 5 bronze", readme)
         self.assertIn("19 medals on MLE-bench Lite-22", readme)
         self.assertIn("86.36% ± 0.00", readme)
 
@@ -128,7 +145,9 @@ class HighResultsContractTests(unittest.TestCase):
         cases = (
             lambda data: data["summary"].__setitem__("medal_tasks", 12),
             lambda data: data["summary"]["medals"].__setitem__("gold", 8),
-            lambda data: data["summary"].__setitem__("engine_run_percentage", 60.0),
+            lambda data: data["summary"]["three_seed_evaluation"].__setitem__(
+                "display", "60.00 ± 0.00"
+            ),
         )
         for mutate in cases:
             errors = self.errors_after(mutate)
@@ -217,11 +236,34 @@ class HighResultsContractTests(unittest.TestCase):
     def test_rejects_method_relabel(self):
         def mutate(data):
             task = self.task(data, "hms-harmful-brain-activity-classification")
-            task["method"] = "Engine run"
+            task["method"] = "Impulse ML pipeline"
 
         errors = self.errors_after(mutate)
         self.assertIn(
-            "High results must hold 10 engine runs and 1 pipeline result", errors
+            "hms-harmful-brain-activity-classification has an invalid method", errors
+        )
+        self.assertIn("High results must hold 11 engine runs", errors)
+
+    def test_rejects_evaluation_row_that_drifts_from_its_seed(self):
+        def mutate(data):
+            task = self.task(data, "rsna-breast-cancer-detection")
+            task["method"] = "Engine run (three-seed evaluation, seed 202)"
+            task["evaluation"]["seed"] = 202
+
+        self.assertIn(
+            "rsna-breast-cancer-detection evaluation row does not match the "
+            "three-seed ledger",
+            self.errors_after(mutate),
+        )
+
+    def test_rejects_evaluation_row_without_a_seed_record(self):
+        def mutate(data):
+            del self.task(data, "hms-harmful-brain-activity-classification")["evaluation"]
+
+        self.assertIn(
+            "hms-harmful-brain-activity-classification evaluation row does not "
+            "match the three-seed ledger",
+            self.errors_after(mutate),
         )
 
     def test_rejects_non_null_miss(self):
@@ -274,7 +316,11 @@ class HighResultsContractTests(unittest.TestCase):
     def test_rejects_missing_page_claim(self):
         def mutate(root):
             path = root / "HIGH.md"
-            path.write_text(path.read_text().replace("**66.67 (10/15)**", "**60.00 (9/15)**"))
+            path.write_text(
+                path.read_text().replace(
+                    "**73.33 (11/15)**", "**80.00 (12/15)**"
+                )
+            )
 
         errors = self.errors_after(mutate_files=mutate)
         self.assertTrue(
@@ -325,7 +371,12 @@ class HighResultsContractTests(unittest.TestCase):
         )
 
     def test_public_high_files_use_neutral_run_ids(self):
-        paths = [ROOT / "HIGH.md", ROOT / LEDGER, ROOT / "reproduce/EVIDENCE_HIGH.md"]
+        paths = [
+            ROOT / "HIGH.md",
+            ROOT / LEDGER,
+            ROOT / EVAL,
+            ROOT / "reproduce/EVIDENCE_HIGH.md",
+        ]
         for task_id in HIGH_SPLIT:
             directory = ROOT / "solutions" / task_id
             if directory.is_dir():
@@ -335,12 +386,171 @@ class HighResultsContractTests(unittest.TestCase):
             self.assertNotIn("/data/", text, path)
             self.assertNotIn("s3://", text, path)
 
+    def eval_task(self, data, task_id):
+        return next(task for task in data["tasks"] if task["task_id"] == task_id)
+
+    def test_three_seed_ledger_carries_the_public_claims(self):
+        data = self.load_eval()
+        summary = data["summary"]
+        self.assertEqual("eval-high-20261013", data["code_tag"])
+        self.assertTrue(data["code_commit"].startswith("926abe7d"))
+        self.assertEqual([101, 202, 303], data["seeds"])
+        self.assertEqual("GPT-6-Luna", data["llm"])
+        self.assertEqual([10, 10, 10], [s["medal_tasks"] for s in summary["per_seed"]])
+        self.assertEqual("66.67 ± 0.00", summary["display"])
+        self.assertEqual(30, summary["medal_seed_runs"])
+        self.assertEqual(33, summary["seed_runs"])
+        self.assertEqual(9, summary["tasks_with_a_medal_in_every_seed"])
+        self.assertEqual(11, summary["tasks_with_a_medal_in_any_seed"])
+        self.assertEqual({"gold": 7, "silver": 2, "bronze": 2}, summary["best_medals"])
+        self.assertEqual(
+            sorted(["siim-covid19-detection", "rsna-2022-cervical-spine-fracture-detection",
+                    "vesuvius-challenge-ink-detection", "bms-molecular-translation"]),
+            sorted(summary["tasks_not_run"]),
+        )
+        for task in data["tasks"]:
+            for record in task["seeds"]:
+                if task["run"]:
+                    self.assertEqual(1, record["grade_count"], task["task_id"])
+                    self.assertLess(record["wall_time_hours"], 24.0, task["task_id"])
+                    self.assertTrue(record["campaign_id"].endswith(
+                        f"-s{record['seed']}" + ("-relaunch1" if "relaunched" in record["flags"] else "")
+                    ))
+                else:
+                    self.assertIsNone(record["medal"], task["task_id"])
+
+    def test_three_seed_ledger_records_the_disclosures(self):
+        data = self.load_eval()
+        contrails = self.eval_task(
+            data, "google-research-identify-contrails-reduce-global-warming"
+        )
+        relaunched = [r["seed"] for r in contrails["seeds"] if "relaunched" in r["flags"]]
+        self.assertEqual([101], relaunched)
+        self.assertIn("before any training or score", contrails["seeds"][0]["relaunch_cause"])
+        self.assertIn("No relaunch after a score exists", data["rule"])
+        self.assertEqual(
+            ["smartphone-decimeter-2022", "hms-harmful-brain-activity-classification"],
+            data["summary"]["data_property_tasks"],
+        )
+        page = (ROOT / "HIGH.md").read_text()
+        self.assertIn("relaunched once under the run's pre-registered rule", page)
+        self.assertIn("exploit-discovery result", page)
+        self.assertIn("recording-level layout of the public data index", page)
+
+    def test_rejects_eval_score_drift(self):
+        def mutate(data):
+            task = self.eval_task(data, "hms-harmful-brain-activity-classification")
+            task["seeds"][0]["score"] = 0.37
+            task["seeds"][0]["display_score"] = "0.37"
+
+        errors = self.errors_after(mutate_eval=mutate)
+        self.assertIn(
+            "hms-harmful-brain-activity-classification seed 101 medal does not follow "
+            "from its score and lines",
+            errors,
+        )
+
+    def test_rejects_eval_medal_upgrade_with_consistent_summary_edit(self):
+        def mutate(data):
+            task = self.eval_task(
+                data, "google-research-identify-contrails-reduce-global-warming"
+            )
+            task["seeds"][1]["score"] = 0.70
+            task["seeds"][1]["display_score"] = "0.70"
+            task["seeds"][1]["medal"] = "silver"
+            data["summary"]["per_seed"][1]["medal_tasks"] = 11
+
+        errors = self.errors_after(mutate_eval=mutate)
+        self.assertTrue(
+            any(e.startswith("three-seed results must equal") for e in errors), errors
+        )
+
+    def test_rejects_eval_summary_drift(self):
+        def mutate(data):
+            data["summary"]["medal_seed_runs"] = 31
+
+        self.assertIn(
+            "three-seed summary does not match its task-seed records",
+            self.errors_after(mutate_eval=mutate),
+        )
+
+    def test_rejects_eval_second_grade(self):
+        def mutate(data):
+            self.eval_task(data, "nfl-player-contact-detection")["seeds"][2]["grade_count"] = 2
+
+        self.assertIn(
+            "nfl-player-contact-detection seed 303 must be graded exactly once",
+            self.errors_after(mutate_eval=mutate),
+        )
+
+    def test_rejects_eval_hidden_relaunch(self):
+        def mutate(data):
+            task = self.eval_task(
+                data, "google-research-identify-contrails-reduce-global-warming"
+            )
+            task["seeds"][0]["flags"].remove("relaunched")
+
+        self.assertIn(
+            "google-research-identify-contrails-reduce-global-warming seed 101 has "
+            "invalid flags or campaign id",
+            self.errors_after(mutate_eval=mutate),
+        )
+
+    def test_rejects_eval_run_past_the_time_limit(self):
+        def mutate(data):
+            self.eval_task(data, "rsna-breast-cancer-detection")["seeds"][0]["wall_time_hours"] = 24.2
+
+        self.assertIn(
+            "rsna-breast-cancer-detection seed 101 must finish inside 24 hours",
+            self.errors_after(mutate_eval=mutate),
+        )
+
+    def test_rejects_not_run_task_with_a_score(self):
+        def mutate(data):
+            self.eval_task(data, "bms-molecular-translation")["seeds"][0]["score"] = 1.0
+
+        self.assertIn(
+            "bms-molecular-translation must be recorded as not run, a miss in every seed",
+            self.errors_after(mutate_eval=mutate),
+        )
+
+    def test_rejects_per_seed_table_mutation(self):
+        def mutate(root):
+            path = root / "HIGH.md"
+            path.write_text(path.read_text().replace("🥉 0.37511", "🥈 0.37511", 1))
+
+        self.assertIn(
+            "High per-seed table does not match the three-seed ledger",
+            self.errors_after(mutate_files=mutate),
+        )
+
+    def test_rejects_impulse_context_row_mutation(self):
+        def mutate(root):
+            path = root / "HIGH.md"
+            path.write_text(
+                path.read_text().replace(
+                    "**66.67 ± 0.00 (10/15 per seed)**", "**66.67 ± 1.00 (10/15 per seed)**"
+                )
+            )
+
+        errors = self.errors_after(mutate_files=mutate)
+        self.assertTrue(
+            any("HIGH.md is missing the public claim" in error for error in errors),
+            errors,
+        )
+
     def test_malformed_ledgers_return_errors_instead_of_crashing(self):
         for value in ("{", "[]", json.dumps({"tasks": {}}), json.dumps({"tasks": [None] * 15})):
             with tempfile.TemporaryDirectory() as directory:
                 root = Path(directory)
                 self.copy_tree(root)
                 (root / LEDGER).write_text(value)
+                self.assertTrue(verify_high(root))
+        for value in ("{", "[]", json.dumps({"tasks": {}}), json.dumps({"tasks": [{}] * 15})):
+            with tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                self.copy_tree(root)
+                (root / EVAL).write_text(value)
                 self.assertTrue(verify_high(root))
 
 

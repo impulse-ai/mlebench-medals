@@ -43,6 +43,10 @@ class ResultsContractTests(unittest.TestCase):
         shutil.copy(ROOT / "HIGH.md", root / "HIGH.md")
         shutil.copy(ROOT / "HARD.md", root / "HARD.md")
         shutil.copy(ROOT / "results/high15.json", root / "results/high15.json")
+        shutil.copy(
+            ROOT / "results/high15-eval-three-seed.json",
+            root / "results/high15-eval-three-seed.json",
+        )
         shutil.copytree(ROOT / "assets", root / "assets")
         shutil.copytree(ROOT / "reproduce", root / "reproduce")
         shutil.copytree(ROOT / "solutions", root / "solutions")

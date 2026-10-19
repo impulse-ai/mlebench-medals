@@ -1,10 +1,43 @@
-# Impulse AI: 11 medals on MLE-bench High
+# Impulse AI on MLE-bench High: 66.67% ± 0.00 across three independent seeds
 
 **[Interactive walkthrough: ten problems, the data, the model the engine built, and the result](https://mlebench.impulselabs.ai)**
 
-Impulse AI holds medals on 11 of the 15 competitions in the High split of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions: **7 gold / 2 silver / 2 bronze**. Ten of them come from single end-to-end runs of the Impulse engine: **66.67% on the High split, against 46.67% for the top entry on the MLE-bench main leaderboard.** Every score uses OpenAI's MLE-bench grading logic.
+The Impulse engine scores **66.67% ± 0.00 across three independent seeds, against 46.67% for the top entry on the MLE-bench main leaderboard.** Each seed medaled on 10 of the 15 competitions in the High split of [MLE-bench](https://github.com/openai/mle-bench), OpenAI's benchmark of real Kaggle competitions. Across the three seeds the engine medaled on 11 of the 15, and its best medal per competition comes to **7 gold / 2 silver / 2 bronze**.
 
-High is the 15-competition high-complexity split: 3D detection from LiDAR, chest X-ray localisation, satellite contrail segmentation, screening mammography, mRNA degradation, EEG, game video with wearable tracking. This repository contains the results ledger, per-competition solution notes, graded submissions, grading artifacts and verification tooling. The engine itself is proprietary and is not public; a live re-run under observation is available on request.
+Each seed is one hands-off, end-to-end engine run per competition, launched from one frozen code tag, finished inside the benchmark's 24-hour limit and scored once with OpenAI's MLE-bench grading logic; four competitions were not run and count as misses in every seed. The ± is the standard error across seeds, the same convention the MLE-bench leaderboard uses.
+
+High is the 15-competition high-complexity split: 3D detection from LiDAR, chest X-ray localisation, satellite contrail segmentation, screening mammography, mRNA degradation, EEG, game video with wearable tracking. This repository contains the results ledgers, per-competition solution notes, graded submissions, grading artifacts and verification tooling. The engine itself is proprietary and is not public; a live re-run under observation is available on request.
+
+## Three-seed evaluation
+
+Seeds 101, 202 and 303, run from code tag `eval-high-20261013` with GPT-6-Luna as the engine's LLM. Every task-seed run is reported, whatever it scored.
+
+| Competition | Seed 101 | Seed 202 | Seed 303 | Seeds with a medal |
+|---|---|---|---|---:|
+| 3d-object-detection-for-autonomous-vehicles | 🥇 0.17869 | 🥇 0.18186 | 🥇 0.18165 | 3/3 |
+| vinbigdata-chest-xray-abnormalities-detection | 🥇 0.43555 | 🥇 0.43099 | 🥇 0.41884 | 3/3 |
+| iwildcam-2019-fgvc6 | 🥇 0.36575 | 🥇 0.45765 | 🥇 0.41101 | 3/3 |
+| predict-volcanic-eruptions-ingv-oe | 🥇 2,626,042 | 🥇 2,613,825 | 🥇 2,715,601 | 3/3 |
+| stanford-covid-vaccine | 🥇 0.32728 | 🥇 0.33214 | 🥇 0.32809 | 3/3 |
+| smartphone-decimeter-2022 | 🥇 0.000 | 🥇 0.000 | 🥇 0.000 | 3/3 |
+| rsna-breast-cancer-detection | 🥈 0.47312 | 🥈 0.47312 | 🥇 0.54737 | 3/3 |
+| google-research-identify-contrails-reduce-global-warming | 🥈 0.69648 | 0.43955 (no medal) | 0.64167 (no medal) | 1/3 |
+| rsna-miccai-brain-tumor-radiogenomic-classification | 🥈 0.59 | 🥈 0.59 | 🥈 0.59 | 3/3 |
+| nfl-player-contact-detection | 🥉 0.71042 | 🥉 0.71495 | 🥉 0.71533 | 3/3 |
+| hms-harmful-brain-activity-classification | 0.41207 (no medal) | 🥉 0.37228 | 🥉 0.37511 | 2/3 |
+| siim-covid19-detection | not run (miss) | not run (miss) | not run (miss) | 0/3 |
+| rsna-2022-cervical-spine-fracture-detection | not run (miss) | not run (miss) | not run (miss) | 0/3 |
+| vesuvius-challenge-ink-detection | not run (miss) | not run (miss) | not run (miss) | 0/3 |
+| bms-molecular-translation | not run (miss) | not run (miss) | not run (miss) | 0/3 |
+| **Medals per seed** | **10/15** | **10/15** | **10/15** | |
+
+30 of the 33 task-seed runs medaled, nine competitions medaled in every seed, and each of the eleven competitions that were run medaled in at least one seed. Lower is better for volcanic eruptions, OpenVaccine, smartphone GNSS and HMS. The four competitions that were not run in this evaluation (SIIM COVID-19, cervical spine, Vesuvius and BMS) count as misses in every seed, so the 66.67% counts them against Impulse.
+
+The machine-readable record is [results/high15-eval-three-seed.json](results/high15-eval-three-seed.json): the run rule, the tag and commit, and for every task-seed its campaign id, score, medal, single grade, wall time, submission SHA-256 and flags. The ledger also marks the runs that the engine finalised through its built-in salvage or recovery step. Three points recorded there are stated here:
+
+- **Contrails, seed 101** was relaunched once under the run's pre-registered rule: the first attempt's download of the public input archive from S3 broke before any training, so no score existed. The relaunch is the seed-101 result.
+- **Smartphone GNSS** is an exploit-discovery result: the engine reconstructs the positions from logs shipped in the public data.
+- **HMS**: the medals come from the engine's second stage, which uses the recording-level layout of the public data index (rows per recording, their order and length) on top of the signal model.
 
 ## Medal table
 
@@ -13,16 +46,16 @@ High is the 15-competition high-complexity split: 3D detection from LiDAR, chest
 | 1 | 3d-object-detection-for-autonomous-vehicles | 🥇 gold | 0.18128 | 0.139 / 0.053 / 0.046 | Engine run | [solution](solutions/3d-object-detection-for-autonomous-vehicles/) |
 | 2 | iwildcam-2019-fgvc6 | 🥇 gold | 0.48326 | 0.212 / 0.129 / 0.114 | Engine run | [solution](solutions/iwildcam-2019-fgvc6/) |
 | 3 | predict-volcanic-eruptions-ingv-oe | 🥇 gold | 2,740,004 | 3,971,366 / 4,808,057 / 4,999,330 | Engine run | [solution](solutions/predict-volcanic-eruptions-ingv-oe/) |
-| 4 | rsna-breast-cancer-detection | 🥇 gold | 0.50526 | 0.49 / 0.43 / 0.41 | Engine run | [solution](solutions/rsna-breast-cancer-detection/) |
+| 4 | rsna-breast-cancer-detection | 🥇 gold | 0.54737 | 0.49 / 0.43 / 0.41 | Engine run (three-seed evaluation, seed 303) | [solution](solutions/rsna-breast-cancer-detection/) |
 | 5 | smartphone-decimeter-2022 | 🥇 gold | 0.000 | 1.768 / 2.119 / 3.068 | Engine run (exploit discovery) | [solution](solutions/smartphone-decimeter-2022/) |
 | 6 | stanford-covid-vaccine | 🥇 gold | 0.32671 | 0.34728 / 0.35175 / 0.3534 | Engine run | [solution](solutions/stanford-covid-vaccine/) |
 | 7 | vinbigdata-chest-xray-abnormalities-detection | 🥇 gold | 0.4256 | 0.289 / 0.257 / 0.243 | Engine run | [solution](solutions/vinbigdata-chest-xray-abnormalities-detection/) |
 | 8 | google-research-identify-contrails-reduce-global-warming | 🥈 silver | 0.69712 | 0.71059 / 0.6936 / 0.67929 | Engine run | [solution](solutions/google-research-identify-contrails-reduce-global-warming/) |
 | 9 | rsna-miccai-brain-tumor-radiogenomic-classification | 🥈 silver | 0.59 | 0.60096 / 0.5815 / 0.57449 | Engine run | [solution](solutions/rsna-miccai-brain-tumor-radiogenomic-classification/) |
 | 10 | nfl-player-contact-detection | 🥉 bronze | 0.71956 | 0.78167 / 0.72203 / 0.69652 | Engine run | [solution](solutions/nfl-player-contact-detection/) |
-| 11 | hms-harmful-brain-activity-classification | 🥉 bronze | 0.36573 | 0.290807 / 0.353323 / 0.375383 | Impulse ML pipeline | [solution](solutions/hms-harmful-brain-activity-classification/) |
+| 11 | hms-harmful-brain-activity-classification | 🥉 bronze | 0.37228 | 0.290807 / 0.353323 / 0.375383 | Engine run (three-seed evaluation, seed 202) | [solution](solutions/hms-harmful-brain-activity-classification/) |
 
-Lower is better for rows 3, 5, 6 and 11; higher is better elsewhere. Engine runs are single end-to-end runs inside the benchmark's 24-hour limit, each scored once. Scores and medals come from the evidence ledger in [results/high15.json](results/high15.json).
+Lower is better for rows 3, 5, 6 and 11; higher is better elsewhere. Each row is a graded submission published in this repository, with its file and grade report. Rows 4 and 11 come from the three-seed evaluation; the other rows are earlier single end-to-end engine runs inside the benchmark's 24-hour limit, each scored once. Scores and medals come from the evidence ledger in [results/high15.json](results/high15.json).
 
 ## Published High context
 
@@ -30,8 +63,8 @@ The [MLE-bench project](https://github.com/openai/mle-bench#leaderboard) publish
 
 | Agent | LLM(s) used | High any-medal (%) | Source code available |
 |---|---|---:|---|
-| **Impulse AI, all verified medals (this repository)** | GPT-6-Luna (engine runs) | **73.33 (11/15)** | ✗ |
-| **Impulse EES, engine runs (this repository)** | GPT-6-Luna | **66.67 (10/15)** | ✗ |
+| **Impulse EES, three-seed evaluation (this repository)** | GPT-6-Luna | **66.67 ± 0.00 (10/15 per seed)** | ✗ |
+| **Impulse EES, tasks medaled across the three seeds (this repository)** | GPT-6-Luna | **73.33 (11/15)** | ✗ |
 | AIBuildAI | Claude-Opus-4.6 | 46.67 ± 0.00 | ✗ |
 | CAIR MARS+ | Gemini-3-Pro-Preview | 44.44 ± 2.22 | ✗ |
 | Famou-Agent 2.0 | Gemini-3-Pro-Preview | 42.22 ± 2.22 | ✗ |
@@ -40,8 +73,8 @@ The [MLE-bench project](https://github.com/openai/mle-bench#leaderboard) publish
 | PiEvolve (Fractal AI Research) | Gemini-3-Pro-Preview | 40.0 ± 0.00 | ✗ |
 | AIDE (OpenAI's reference agent) | o1-preview | 11.67 ± 1.27 | ✓ |
 
-![MLE-bench High split, any-medal rate. Impulse engine runs: 66.67% (10/15). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-light.svg#gh-light-mode-only)
-![MLE-bench High split, any-medal rate. Impulse engine runs: 66.67% (10/15). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-dark.svg#gh-dark-mode-only)
+![MLE-bench High split, any-medal rate. Impulse, three independent seeds: 66.67% ± 0.00 (10/15 per seed). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-light.svg#gh-light-mode-only)
+![MLE-bench High split, any-medal rate. Impulse, three independent seeds: 66.67% ± 0.00 (10/15 per seed). Top entry on the MLE-bench main leaderboard: 46.67%.](assets/high-any-medal-dark.svg#gh-dark-mode-only)
 
 The project also lists additional submissions that it marks as not directly comparable to the main leaderboard; the highest High figure there is 71.11 ± 2.22. They are not included in this table.
 
@@ -50,20 +83,22 @@ The project also lists additional submissions that it marks as not directly comp
 - **3D object detection (LiDAR):** pillar encoding into a bird's-eye-view grid with centre-based heads.
 - **Wildlife camera traps (iWildCam):** a pretrained ConvNeXt-Base fine-tuned at 384 px with class balancing for the long-tailed label set, mixup and CutMix, and test-time augmentation.
 - **Volcanic eruption timing:** 245 features engineered from each segment's sensor signals, with a weighted blend of LightGBM regressors.
-- **Screening mammography:** per-file DICOM windowing, breast crop, high-resolution EfficientNetV2 with a breast-level second stage over both views.
+- **Screening mammography:** each DICOM file decoded, cropped to the breast and side-normalised; high-resolution EfficientNetV2 members trained on patient-grouped folds, combined per breast, with the flagged fraction chosen on out-of-fold predictions.
 - **Smartphone GNSS:** reconstruction of ground-truth positions from logs shipped in the public data.
 - **mRNA degradation (OpenVaccine):** message-passing graph networks over each molecule's sequence graph, three seeds blended.
 - **Chest X-ray abnormalities (VinBig):** COCO-pretrained two-stage detector fine-tuned at 800 px.
 - **Contrails:** false-colour composite from infrared bands, six-member U-Net ensemble with offset-corrected mirroring in three members.
 - **NFL player contact:** pairwise tracking features with a temporal second stage along each player pair's timeline.
 - **Brain-tumour MRI (MICCAI radiogenomics):** a family of six EfficientNet-B2 classifiers, each over a different view of the four MRI sequences, trained without augmentation under repeated patient-level cross-validation with bootstrap intervals; rank-averaged across members.
-- **EEG harmful brain activity (HMS):** CNNs over EEG-window and spectrogram images, with a cross-fitted second stage built on the recording-level structure of the data index.
+- **EEG harmful brain activity (HMS):** CNNs over EEG-window and spectrogram images, with a cross-fitted second stage built on the recording-level structure of the public data index.
 
 ## Product capabilities used in these runs
 
 Impulse's agent can use public external data, web research, pretrained models, and exploit discovery. These are enabled product capabilities, and the ledger's method field identifies the route used for each result.
 
 ## The four High tasks without a medal
+
+These four were not run in the three-seed evaluation and count as misses in every seed:
 
 - [SIIM-FISABIO-RSNA COVID-19 Detection](https://www.kaggle.com/c/siim-covid19-detection)
 - [RSNA 2022 Cervical Spine Fracture Detection](https://www.kaggle.com/c/rsna-2022-cervical-spine-fracture-detection)
@@ -73,7 +108,8 @@ Impulse's agent can use public external data, web research, pretrained models, a
 ## How to verify
 
 - [High evidence index](reproduce/EVIDENCE_HIGH.md): per-task results, methods and SHA-256 hashes.
-- [Results verifier](reproduce/verify_results.py): validate the checked-in ledgers, graded-submission hashes, links, and public claims.
+- [Three-seed ledger](results/high15-eval-three-seed.json): every task-seed run of the evaluation.
+- [Results verifier](reproduce/verify_results.py): validate the checked-in ledgers, graded-submission hashes, links, and public claims, and recompute the three-seed figures from the task-seed records.
 
 Every published submission can be independently re-graded with OpenAI's unmodified `mlebench` grader; no Impulse code is required:
 
