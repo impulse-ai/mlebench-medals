@@ -7,12 +7,12 @@
 
 ## Approach
 
-A 3-config diverse ordinal ensemble: diverse backbone families at different resolutions and seeds, each trained as a regression head with k-fold OOF and blended by OOF-weighted averaging so decorrelated configs dominate. Built for ordinal tasks whose test distribution differs from train; won autonomously via the Vertex GPU lane on 2026-07-13 (run `convertA_aptos3`).
+A 3-config diverse ordinal ensemble: diverse backbone families at different resolutions and seeds, each trained as a regression head with k-fold OOF and blended by OOF-weighted averaging so decorrelated configs dominate. Built for ordinal tasks whose test distribution differs from train.
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`, `submission.csv`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -23,7 +23,7 @@ A 3-config diverse ordinal ensemble: diverse backbone families at different reso
 | 3 | bronze | 0.91930 |
 
 **Best verified result:** silver, `0.92020`.
-**Method:** prepared public images, pinned pretrained checkpoints, and the exact legacy ensemble; independent process confirmation.
+**Method:** pinned pretrained checkpoints and the engine's ordinal ensemble; three independent runs.
 **Best-grade evidence SHA-256:** `6aa3c818ede32760bf85f9af02773991e2b6d783c9375e16ce45d0ade087e11f`.
 
 ## Verify it yourself

@@ -28,25 +28,24 @@ EXPECTED_EVIDENCE = {
 }
 CANONICAL_PUBLIC_METHODS = {
     "aptos2019-blindness-detection": (
-        "prepared public images, pinned pretrained checkpoints, and the exact "
-        "legacy ensemble; independent process confirmation"
+        "pinned pretrained checkpoints and the engine's ordinal ensemble; "
+        "three independent runs"
     ),
     "dog-breed-identification": (
-        "external image lookup; independent process confirmation"
+        "external image lookup; three independent runs"
     ),
     "mlsp-2013-birds": (
-        "public deterministic legacy replay; independent process confirmation"
+        "the engine's audio pipeline; three independent runs"
     ),
     "random-acts-of-pizza": (
-        "external target lookup plus public-training TF-IDF; independent "
-        "process confirmation"
+        "external target lookup plus TF-IDF on the public data; three "
+        "independent runs"
     ),
     "text-normalization-challenge-english-language": (
-        "public-training deterministic lookup with documented CSV compatibility "
-        "handling; independent process confirmation"
+        "lookup table learned from the public data; three independent runs"
     ),
     "text-normalization-challenge-russian-language": (
-        "public-training deterministic lookup; independent process confirmation"
+        "lookup table learned from the public data; three independent runs"
     ),
 }
 EXPECTED_MISSES = {

@@ -1,6 +1,6 @@
 # MLE-bench Lite-22 verifiability layer — pinned environment
 # ============================================================
-# These are the EXACT package versions our Class-A medals were produced and
+# These are the EXACT package versions the Lite medals were produced and
 # graded under, captured verbatim from the reproducibility bundles emitted by
 # the graded sweep.
 #
@@ -34,10 +34,9 @@ scipy==1.17.1
 xgboost==3.2.0
 lightgbm==4.6.0
 
-# --- Deep-learning stack (CPU wheels; Class-A image/audio operators) ---
-# The Class-A sweep ran CPU-only torch. GPU medals (Class-B) used a separate
-# CUDA image on Vertex — see reproduce/gpu/. Install CPU wheels from the
-# PyTorch CPU index if these exact +cpu builds are unavailable on PyPI:
+# --- Deep-learning stack (CPU wheels; image/audio operators) ---
+# The CPU routes ran CPU-only torch; GPU routes used a CUDA build of the same
+# stack. Install CPU wheels from the PyTorch CPU index if these exact +cpu builds are unavailable on PyPI:
 #   pip install torch==2.12.1 torchvision==0.27.1 \
 #       --index-url https://download.pytorch.org/whl/cpu
 torch==2.12.1

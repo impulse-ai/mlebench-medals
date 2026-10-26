@@ -11,8 +11,8 @@ The same general seq2seq lookup operator as the English task — exact-match / m
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`, `submission.csv`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -23,7 +23,7 @@ The same general seq2seq lookup operator as the English task — exact-match / m
 | 3 | bronze | 0.97906 |
 
 **Best verified result:** bronze, `0.97915`.
-**Method:** public-training deterministic lookup; independent process confirmation.
+**Method:** lookup table learned from the public data; three independent runs.
 **Best-grade evidence SHA-256:** `aea2c0e1f8d0cf52b4c49e8c8dde795ba4ea7693ab43923df0ffae1a8c7d376f`.
 
 ## Verify it yourself

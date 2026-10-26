@@ -70,18 +70,13 @@ unmodified MLE-bench grader — no Impulse code is required:
 mlebench grade-sample solutions/<task>/submission.csv <task>
 ```
 
-Committed submissions live next to each solution page that carries one, and the
-GPU-lane captures in [`gpu/`](gpu/) include their own `official_grade.json`
-outputs. These commands use OpenAI's MLE-bench grading logic. The English
-text-normalization route documents its CSV compatibility handling explicitly;
-the public method text appears identically in the JSON ledger, evidence table,
-and solution page.
+Committed submissions live next to each solution page that carries one. These
+commands use OpenAI's MLE-bench grading logic. The method text for each task
+appears identically in the JSON ledger, the evidence table and the solution page.
 
 ## Compute and route notes
 
-The checked-in [`gpu/`](gpu/) material captures the hand-run GPU jobs and their
-official grade outputs for the routes that used GPUs, while each solution page
-states the method behind its current confirmation record.
+Each solution page states the method behind its confirmation record.
 
 Public external data, pretrained checkpoints, web research, and dataset-structure
 discovery are enabled product capabilities. The ledger names external target or

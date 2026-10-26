@@ -22,7 +22,7 @@
 #     solutions/nomad2018-predict-transparent-conductors/submission.csv \
 #     nomad2018-predict-transparent-conductors
 #
-# CPU-only. GPU (Class-B) medals are captured separately in reproduce/gpu/.
+# CPU-only image for re-grading published submissions.
 FROM python:3.11-slim
 
 ENV PYTHONUNBUFFERED=1 \
