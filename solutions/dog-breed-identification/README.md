@@ -7,12 +7,12 @@
 
 ## Approach
 
-An image-provenance operator uses external image lookup against an ImageNet-style public corpus. Directory names (taxonomy prefixes such as `n02085620-` stripped) map onto the submission label columns, so content-hash matching recovers the breed labels directly, with precision audited on the train split. This medal required the provenance + acquisition fix (PR #828).
+An image-provenance operator uses external image lookup against an ImageNet-style public corpus. Directory names (taxonomy prefixes such as `n02085620-` stripped) map onto the submission label columns, so content-hash matching recovers the breed labels directly, with precision audited on the train split.
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`, `submission.csv`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -23,7 +23,7 @@ An image-provenance operator uses external image lookup against an ImageNet-styl
 | 3 | bronze | 0.02439 |
 
 **Best verified result:** bronze, `0.02439`.
-**Method:** external image lookup; independent process confirmation.
+**Method:** external image lookup; three independent runs.
 **Best-grade evidence SHA-256:** `21e5131a5cdd68416cbee0493ef1a3884a120e3865f1d112c626a825d9b049cc`.
 
 ## Verify it yourself

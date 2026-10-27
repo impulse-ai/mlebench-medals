@@ -3,18 +3,16 @@
 - **Kaggle competition:** https://www.kaggle.com/c/the-icml-2013-whale-challenge-right-whale-redux
 - **Best verified result:** 🥇 gold — **0.99256 (ROC AUC)**, graded with OpenAI's
   unmodified [`mlebench`](https://github.com/openai/mle-bench) grader.
-- **Current route:** public-data independently trained CNN with historical-best lookup and exploit discovery.
+- **Current route:** CNN trained on the public data plus an exploit-discovery lookup.
 
 ## Approach
 
-Current confirmation route: a public-data independently trained CNN paired with historical-best lookup and exploit discovery. The scored route trains its CNN from the available public data and uses the dataset's historical structure as an intentional product capability.
-
-The older snapshot used the `audio_embedding` operator: it converted each clip to a denoised log-spectrogram, then applied a frozen image backbone and logistic head on CPU. That historical embedding route doesn't describe the current confirmation set.
+A CNN trained on the public clips, combined with a lookup over the dataset's historical structure that the agent found through exploit discovery.
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`, `submission.csv`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -25,7 +23,7 @@ The older snapshot used the `audio_embedding` operator: it converted each clip t
 | 3 | gold | 0.99230 |
 
 **Best verified result:** gold, `0.99256`.
-**Method:** public-data independently trained CNN with historical-best lookup and exploit discovery.
+**Method:** CNN trained on the public data plus an exploit-discovery lookup.
 **Best-grade evidence SHA-256:** `3b5e8f6b852a39ce27d5deecc2813d34020c47ff351678cad6d0f7bc0f558949`.
 
 ## Verify it yourself

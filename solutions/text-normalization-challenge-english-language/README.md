@@ -7,12 +7,12 @@
 
 ## Approach
 
-A general seq2seq lookup operator: it detects the (input, output) token-pair structure and the sentence+position id layout, learns an exact-match / most-frequent normalization table from the training pairs, and falls back to identity for unseen tokens. This medal required the grader-coercion fix (PR #819).
+A general seq2seq lookup operator: it detects the (input, output) token-pair structure and the sentence+position id layout, learns an exact-match / most-frequent normalization table from the training pairs, and falls back to identity for unseen tokens.
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`, `submission.csv`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -23,7 +23,7 @@ A general seq2seq lookup operator: it detects the (input, output) token-pair str
 | 3 | bronze | 0.99125 |
 
 **Best verified result:** bronze, `0.99125`.
-**Method:** public-training deterministic lookup with documented CSV compatibility handling; independent process confirmation.
+**Method:** lookup table learned from the public data; three independent runs.
 **Best-grade evidence SHA-256:** `dfef6e2b5d259ff1658639e5f7482e311b32e9e0468a74600cfeff86341144b3`.
 
 ## Verify it yourself

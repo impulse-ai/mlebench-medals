@@ -7,12 +7,12 @@
 
 ## Approach
 
-A CPU image-to-image denoising operator for per-pixel regression: it detects the one-row-per-pixel submission shape (`<imageId>_<row>_<col>`), estimates each page's background with a large-kernel box blur, and reconstructs the cleaned intensities from the paired dirty/clean training images — no torch, no GPU. (The snapshot `submission.csv` is 76 MB and is not committed.)
+A CPU image-to-image denoising operator for per-pixel regression: it detects the one-row-per-pixel submission shape (`<imageId>_<row>_<col>`), estimates each page's background with a large-kernel box blur, and reconstructs the cleaned intensities from the paired dirty/clean training images — no torch, no GPU. (The submission file is 76 MB and is not committed.)
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 

@@ -11,20 +11,21 @@ ROOT = Path(__file__).resolve().parents[1]
 
 CURRENT_ROUTE_MARKERS = {
     "dogs-vs-cats-redux-kernels-edition": (
-        "Current confirmation route: public-training image fine-tuning with "
+        "Image fine-tuning on the competition's public training set, run with "
         "three independent GPU seeds."
     ),
     "leaf-classification": (
-        "Current confirmation route: public training with an ImageNet-pretrained "
-        "model."
+        "An image model trained on the competition's public training labels, "
+        "starting from ImageNet pretraining."
     ),
     "mlsp-2013-birds": (
-        "Current confirmation route: public deterministic legacy replay, "
-        "verified through independent process confirmation."
+        "Three independent runs of the pipeline each produced the same "
+        "`0.93170` result."
     ),
     "the-icml-2013-whale-challenge-right-whale-redux": (
-        "Current confirmation route: a public-data independently trained CNN "
-        "paired with historical-best lookup and exploit discovery."
+        "A CNN trained on the public clips, combined with a lookup over the "
+        "dataset's historical structure that the agent found through exploit "
+        "discovery."
     ),
 }
 
@@ -185,7 +186,7 @@ class ResultsContractTests(unittest.TestCase):
             path = root / "reproduce/EVIDENCE.md"
             path.write_text(
                 path.read_text().replace(
-                    "external image lookup; independent process confirmation",
+                    "external image lookup; three independent runs",
                     "external image lookup",
                     1,
                 )

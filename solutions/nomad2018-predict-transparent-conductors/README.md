@@ -11,8 +11,8 @@ A geometry-aware operator: it parses each crystal's geometry file (lattice vecto
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`, `submission.csv`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -23,7 +23,7 @@ A geometry-aware operator: it parses each crystal's geometry file (lattice vecto
 | 3 | silver | 0.05993 |
 
 **Best verified result:** gold, `0.05373`.
-**Method:** public-training geometry files.
+**Method:** trained on the public geometry files.
 **Best-grade evidence SHA-256:** `08c4a8c606a1fca796c23a47837641af2e3e955fa068db81192f87a7b5bf4dab`.
 
 ## Verify it yourself

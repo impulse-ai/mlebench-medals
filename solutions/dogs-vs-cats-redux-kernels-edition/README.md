@@ -7,14 +7,12 @@
 
 ## Approach
 
-Current confirmation route: public-training image fine-tuning with three independent GPU seeds. Each run trains the image model on the competition's public training set; the scored confirmations are the three seed runs, while the derived blend stays outside the confirmation set.
-
-The older snapshot used a frozen pretrained embedding backbone with a logistic head and OOF-only backbone/calibration selection. That historical route remains useful reproduction context for the local files below, but it isn't the route represented by the current three-run table.
+Image fine-tuning on the competition's public training set, run with three independent GPU seeds. Each seed is one confirmation run; the blend derived from them is not counted among the confirmations.
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`, `submission.csv`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -25,7 +23,7 @@ The older snapshot used a frozen pretrained embedding backbone with a logistic h
 | 3 | gold | 0.00974 |
 
 **Best verified result:** gold, `0.00597`.
-**Method:** public-training image fine-tuning; three independent GPU seeds; derived blend excluded.
+**Method:** image fine-tuning on the public data; three GPU seeds.
 **Best-grade evidence SHA-256:** `6005accddf7b756344e89b0eed9333f37ac59bcc43db047493e26b2437cd2ca9`.
 
 ## Verify it yourself

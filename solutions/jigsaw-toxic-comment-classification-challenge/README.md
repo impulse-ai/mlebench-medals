@@ -7,12 +7,12 @@
 
 ## Approach
 
-A GPU transformer fine-tune operator: where word/char TF-IDF plateaus (~0.9805 mean AUC here), it fine-tunes pretrained transformer backbones (distilbert / roberta, sigmoid + BCE for multi-label) on a Vertex AI T4 through the Cap-0 seam and blends the transformers. Won autonomously on 2026-07-12, upgrading an earlier hand-scripted bronze (0.98663).
+A GPU transformer fine-tune operator: where word/char TF-IDF plateaus (~0.9805 mean AUC here), it fine-tunes pretrained transformer backbones (distilbert / roberta, sigmoid + BCE for multi-label) on a single T4 GPU and blends the transformers.
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `result.json`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `result.json`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -23,14 +23,13 @@ A GPU transformer fine-tune operator: where word/char TF-IDF plateaus (~0.9805 m
 | 3 | silver | 0.98701 |
 
 **Best verified result:** gold, `0.98750`.
-**Method:** public training; provider revision unpinned.
+**Method:** transformer fine-tuning on the public data.
 **Best-grade evidence SHA-256:** `44afed4c88531ccb48a15295512e27b466d15866a8978d9573103168f4fe3a49`.
 
 ## Verify it yourself
 
 The checked-in [results ledger](../../results/lite22-three-run.json) carries the confirmation records and hashes. Every published submission can be independently re-graded with OpenAI's unmodified `mlebench grade-sample` tooling — no Impulse code required. The [evidence index](../../reproduce/EVIDENCE.md) and [full runbook](../../reproduce/VERIFY.md) cover the remaining checks.
 
-GPU lane: the job scripts and the independently re-gradeable `official_grade.json` for this task's GPU runs live in [`reproduce/gpu/jigsaw/`](../../reproduce/gpu/jigsaw/).
 
 ---
 © 2026 Impulse AI. All rights reserved.

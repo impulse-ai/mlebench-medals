@@ -11,8 +11,8 @@ A text-provenance operator: test excerpts are normalized (unicode/punctuation ca
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`, `submission.csv`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -23,7 +23,7 @@ A text-provenance operator: test excerpts are normalized (unicode/punctuation ca
 | 3 | gold | 0.12424 |
 
 **Best verified result:** gold, `0.12422`.
-**Method:** external Gutenberg corpus plus public-training TF-IDF.
+**Method:** external Gutenberg corpus plus TF-IDF on the public data.
 **Best-grade evidence SHA-256:** `899717911d78a596c77cc431c5dfd74faa7bc8b0695e737795a6535d0786e365`.
 
 ## Verify it yourself

@@ -11,8 +11,8 @@ The agent intentionally uses an external target lookup for this route, then comb
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `result.json`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `result.json`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -23,7 +23,7 @@ The agent intentionally uses an external target lookup for this route, then comb
 | 3 | gold | 1.00000 |
 
 **Best verified result:** gold, `1.00000`.
-**Method:** external target lookup plus public-training TF-IDF; independent process confirmation.
+**Method:** external target lookup plus TF-IDF on the public data; three independent runs.
 **Best-grade evidence SHA-256:** `cbe1c76927d23be31015a8c04a3c8f6fb8deb209dd72a4988808125f6c990fcd`.
 
 ## Verify it yourself

@@ -7,12 +7,12 @@
 
 ## Approach
 
-A typed tabular portfolio operator: it detects column types from the data and runs a portfolio of tree-based candidates (including ExtraTrees, per the PR #824 row-handling fix), selecting on out-of-fold performance. Pure CPU.
+A typed tabular portfolio operator: it detects column types from the data and runs a portfolio of tree-based candidates (including ExtraTrees), selecting on out-of-fold performance. Pure CPU.
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`, `submission.csv`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -23,7 +23,7 @@ A typed tabular portfolio operator: it detects column types from the data and ru
 | 3 | gold | 0.95887 |
 
 **Best verified result:** gold, `0.95996`.
-**Method:** public-training outer final.
+**Method:** tabular portfolio trained on the public data.
 **Best-grade evidence SHA-256:** `bf88bf41114859a33a79af13a92f4a6cb356414c689e00d7e1a964fa1bcf6c23`.
 
 ## Verify it yourself

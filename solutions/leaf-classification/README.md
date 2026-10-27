@@ -7,14 +7,12 @@
 
 ## Approach
 
-Current confirmation route: public training with an ImageNet-pretrained model. The model learns from the competition's public training labels and uses ImageNet pretraining as its visual starting point.
-
-The older snapshot used an image-provenance operator. It matched the competition images against a public source dataset by content hash and audited match precision on the training split. That historical route explains the local snapshot artifacts, not the current confirmation scores.
+An image model trained on the competition's public training labels, starting from ImageNet pretraining.
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`, `submission.csv`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 

@@ -11,8 +11,8 @@ A zip-backed image operator: it streams the aerial photos directly out of the co
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`, `submission.csv`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -23,7 +23,7 @@ A zip-backed image operator: it streams the aerial photos directly out of the co
 | 3 | gold | 1.00000 |
 
 **Best verified result:** gold, `1.00000`.
-**Method:** public/current trained route.
+**Method:** trained on the public data.
 **Best-grade evidence SHA-256:** `be68a3a22c5ee339302a9661cfa668e374d6b2e97f45f393121ff53b8860875c`.
 
 ## Verify it yourself

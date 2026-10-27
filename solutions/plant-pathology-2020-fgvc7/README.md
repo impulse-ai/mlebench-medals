@@ -7,12 +7,12 @@
 
 ## Approach
 
-Full end-to-end fine-tuning of a torchvision backbone — the escalation tier above frozen embeddings — trained on the leaf images with held-out validation. This medal required the one-hot label fix (PR #808) that landed after the 2026-07-07 snapshot.
+Full end-to-end fine-tuning of a torchvision backbone — the escalation tier above frozen embeddings — trained on the leaf images with held-out validation.
 
 ## Evidence in this directory
 
-- Snapshot artifacts from the 2026-07-07 `cloud-harvest-0708` run: `grade.json`, `result.json`, `submission.csv`.
-- These local files preserve the earlier snapshot. The three-run table below and the checked-in results ledger carry the current evidence.
+- Files from the engine's development run of 7 July 2026: `grade.json`, `result.json`, `submission.csv`.
+- The three confirmation runs below are recorded, with their submission hashes, in the [results ledger](../../results/lite22-three-run.json).
 
 ## Three-run confirmation
 
@@ -23,7 +23,7 @@ Full end-to-end fine-tuning of a torchvision backbone — the escalation tier ab
 | 3 | gold | 0.97976 |
 
 **Best verified result:** gold, `0.98902`.
-**Method:** public/current independently trained image route.
+**Method:** image models trained on the public data.
 **Best-grade evidence SHA-256:** `593b5b013c670dc6620343d1fd5ef776bb0124b67d42da38655854abf755aca8`.
 
 ## Verify it yourself
